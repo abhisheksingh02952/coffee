@@ -1,0 +1,87 @@
+<?php
+include 'auth.php';
+authorize('employee'); 
+if (isset($_GET['shop_id'])) {
+    $_SESSION['shop_id'] = $_GET['shop_id'];
+}
+
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <?php
+include "head.php";
+?>
+</head>
+<body>
+
+<div class="container-fluid">
+  <div class="row">
+    <!-- Sidebar -->
+   <?php
+
+      include "sidebar.php";
+
+   ?>
+
+    <!-- Main Content Area -->
+    <main class="col-md-10 ms-sm-auto px-4 py-4">
+      <h2 class="mb-4">Shops Data</h2>
+      <table id="usersTable" class="display table table-striped" style="width:100%">
+        <thead>
+          <tr>
+            <th>Shop ID</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>GST NO</th>
+            <th>Address</th>
+            <th>Pin Code</th>
+            <th>Area</th>
+            <th>Phone</th>
+            <th>Scheme</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+      </table>
+      <div class="clearfix">
+            <button type="button" class="update" onclick="window.location.href='profile.php'">Back</button>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <!-- DataTables JS -->
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+  <script>
+$(document).ready(function() {
+  $('#usersTable').DataTable({
+    "ajax": "allshopdata.php",
+    "columns": [
+      { "data": "shop_id" },
+      { "data": "name" },
+      { "data": "fathername" },
+      { "data": "gst" },
+      { "data": "address" },
+      { "data": "pin" },
+      { "data": "area" },
+      { "data": "phone" },
+      { "data": "scheme" },
+      {
+        data: null,
+        render: function(data, type, row) {
+        return `<a href="dealer_edit.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Place Order</a>`;
+
+        }
+      }
+    ]
+  });
+});
+
+  </script>
+</body>
+</html>
+
