@@ -314,17 +314,17 @@ while ($row = $product_result->fetch_assoc()) {
             </div>
                 <button type="buttons" class="buttons" onclick="addRow()">Add More</button><br><br>
 
-            <label for=""><b>Payment Type</b></label>
-            <input type="text" placeholder="Enter Payment Type" name="payment_type" id="payment_type" required><br>
-
             <label for="payment_type"><b>Choose Payment Type:</b></label>
             <select id="payment_type" name="payment_type" class="select">
               <option value="cash">Cash</option>
               <option value="online">Online</option>
             </select><br>
-            
-            <label for="pin"><b>Payment Status</b></label>
-            <input type="text" placeholder="Enter Payment Status" name="payment_status" id="payment_status" required><br>
+
+            <label for="payment_status"><b>Choose Payment Status:</b></label>
+            <select id="payment_status" name="payment_status" class="select">
+              <option value="Pending">Pending</option>
+              <option value="Paid">Paid</option>
+            </select><br>
 
             <div class="clearfix">
               <button type="button"  class="cancel" onclick="location.href='all_shop.php'" class="cancelbtn">Cancel</button>
