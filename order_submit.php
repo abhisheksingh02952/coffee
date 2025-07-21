@@ -27,7 +27,7 @@ for ($i = 0; $i < count($product_ids); $i++) {
         $conn->query("INSERT INTO order_items (order_id, product_id, quantity, price) 
                       VALUES ($order_id, $product_id, $quantity, $price)");
 
-                          }
+                           }
 }
 
 
