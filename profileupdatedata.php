@@ -7,7 +7,7 @@ $name = $_POST['name'];
 $phone = $_POST['phone'];
 $email = $_POST['email'];
 $address = $_POST['address'];
-$em_user_id = $_POST['em_user_id'];
+$user_id = $_POST['user_id'];
 $password = $_POST['password'];
 
 // Basic SQL UPDATE

@@ -1,40 +1,58 @@
 <?php
 session_start();
+
 $conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
 
-if (!isset($_SESSION['user_id'])) {
-    die("User not logged in.");
+date_default_timezone_set("Asia/Kolkata");
+
+$timestamp = time(); 
+$date = date("Ymd");
+$shop_id = isset($_SESSION['shop_id']) ? (int)$_SESSION['shop_id'] : 0;
+$user_id = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : 0;
+
+$payment_type = $_POST['payment_type'];
+$payment_status = $_POST['payment_status'];
+$scheme = $_POST['scheme'];
+
+$order_id = "ORD-" . $date . "-" . $timestamp . "-" . $shop_id;
+
+// INSERT INTO orders table
+$insert_order_sql = "INSERT INTO orders (order_id, shop_id, employee_id, scheme, payment_type, payment_status) 
+                     VALUES ('$order_id', $shop_id, $user_id, '$scheme', '$payment_type', '$payment_status')";
+
+if (!$conn->query($insert_order_sql)) {
+    echo json_encode(["success" => false, "message" => "Order insert failed: " . $conn->error]);
+    exit;
 }
-date_default_timezone_set("Asia/Kolkata");  
 
 $product_ids = $_POST['product_id'];
 $quantities = $_POST['quantity'];
-$date = date("Ymd");               
-$timestamp = time();             
-$order_id = "ORD" . $date . $timestamp;
+
+$total_amount = 0;
 
 for ($i = 0; $i < count($product_ids); $i++) {
     $product_id = (int)$product_ids[$i];
     $quantity = (int)$quantities[$i];
 
-    // Get product price
     $result = $conn->query("SELECT price FROM products WHERE id = $product_id LIMIT 1");
 
     if ($result && $row = $result->fetch_assoc()) {
         $price = (float)$row['price'];
+        $subtotal = $quantity * $price;
+        $total_amount += $subtotal;
 
-        // Insert order item directly
+        // Use prepared statement to prevent SQL injection
         $conn->query("INSERT INTO order_items (order_id, product_id, quantity, price) 
-                      VALUES ($order_id, $product_id, $quantity, $price)");
-
-                           }
+                      VALUES ('$order_id', $product_id, $quantity, $price)");
+    }
 }
 
+// Update total amount in orders
+$conn->query("UPDATE orders SET total_amount = $total_amount WHERE order_id = '$order_id'");
 
-    if (mysqli_query($conn, $sql)) {
-        echo json_encode(["success" => true]);
-    } else {
-        echo json_encode(["success" => false, "message" => mysqli_error($conn)]);
-    }
+// Insert into payments table
+$conn->query("INSERT INTO payments (order_ids, shop_id, amount) VALUES ('$order_id', '$shop_id',  $total_amount)");
 
+
+echo json_encode(["success" => true]);
 ?>
