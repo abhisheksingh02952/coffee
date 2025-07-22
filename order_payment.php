@@ -1,8 +1,8 @@
 <?php
 include 'auth.php';
 authorize('employee'); 
-if (isset($_GET['order_ids'])) {
-    $_SESSION['order_ids'] = $_GET['order_ids'];
+if (isset($_GET['order_id'])) {
+    $_SESSION['order_id'] = $_GET['order_id'];
 }
 
 ?>
@@ -61,7 +61,7 @@ $(document).ready(function() {
   $('#usersTable').DataTable({
     "ajax": "order_payment_show.php",
     "columns": [
-      { "data": "order_ids" },
+      { "data": "order_id" },
       { "data": "shop_id" },
       { "data": "amount" },
       { "data": "payment_type" },
@@ -73,7 +73,7 @@ $(document).ready(function() {
       {
         data: null,
         render: function(data, type, row) {
-         return `<a href="order_payment_update.php?order_ids=${row.order_ids}" class="btn btn-sm btn-primary">Edit Payment</a>`;
+         return `<a href="order_payment_update.php?order_id=${row.order_id}" class="btn btn-sm btn-primary">Edit Payment</a>`;
         }
       }
     ]

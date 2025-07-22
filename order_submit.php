@@ -51,7 +51,7 @@ for ($i = 0; $i < count($product_ids); $i++) {
 $conn->query("UPDATE orders SET total_amount = $total_amount WHERE order_id = '$order_id'");
 
 // Insert into payments table
-$conn->query("INSERT INTO payments (order_ids, shop_id, amount) VALUES ('$order_id', '$shop_id',  $total_amount)");
+$conn->query("INSERT INTO payments (order_id, shop_id, amount) VALUES ('$order_id', '$shop_id',  $total_amount)");
 
 
 echo json_encode(["success" => true]);

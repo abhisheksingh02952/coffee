@@ -3,8 +3,8 @@
 include 'auth.php';
 authorize('employee');
 
-if (isset($_GET['order_ids'])) {
-    $_SESSION['order_ids'] = $_GET['order_ids'];
+if (isset($_GET['order_id'])) {
+    $_SESSION['order_id'] = $_GET['order_id'];
 }
 ?>
 <!DOCTYPE html>
@@ -143,7 +143,7 @@ include "head.php";
             <hr>
 
             <label for="name"><b>Order ID</b></label>
-            <input type="text"  name="order_ids" id="order_ids" required><br>
+            <input type="text"  name="order_id" id="order_id" required><br>
 <!--
             <label for="name"><b>Shop ID</b></label>
             <input type="text"  name="shop_id" id="shop_id" required><br>
@@ -196,7 +196,7 @@ include "head.php";
         dataType: "json",
         success: function (data) {
             if (data) {
-                $("#order_ids").val(data.order_ids);
+                $("#order_id").val(data.order_id);
                 $("#shop_id").val(data.shop_id);
                 $("#amount").val(data.amount);
                 $("#payment_type").val(data.payment_type);
