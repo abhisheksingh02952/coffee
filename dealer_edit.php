@@ -288,10 +288,7 @@ while ($row = $product_result->fetch_assoc()) {
 
     <!-- Form Content -->
     <main class="col-md-10 py-4">
-        <div class="clearfix"> 
-            
-        </div>
-
+       
             <form action=""  method="POST" id="geoForm" enctype="multipart/form-data">
         <div id="data" class="container">
             <h1>Add Order Details</h1>

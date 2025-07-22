@@ -7,7 +7,8 @@
         <li class="nav-item"><a href="all_shop.php" id="profile-data"  class="nav-link text-white">All SHOP</a></li>
         <li class="nav-item"><a href="all_orders.php" id="profile-data"  class="nav-link text-white">All Orders</a></li>
         <li class="nav-item"><a href="order_payment.php" id="profile-data"  class="nav-link text-white">Order Payment</a></li>
-        <li class="nav-item"><a href="shop_stock.php" id="profile-data"  class="nav-link text-white">Shop Stock</a></li>
+        <li class="nav-item"><a href="shop_stock.php" id="profile-data"  class="nav-link text-white">Check Shop Stock</a></li>
+        <li class="nav-item"><a href="shop_stock_update.php" id="profile-data"  class="nav-link text-white">Update Shop Stock</a></li>
         <li class="nav-item"><a href="login.php" class="nav-link text-white">Login</a></li>
         <li class="nav-item"><a href="logout.php" class="nav-link text-white">Logout</a></li>
       </ul>

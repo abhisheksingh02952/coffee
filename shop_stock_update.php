@@ -69,7 +69,7 @@ $(document).ready(function() {
       {
         data: null,
         render: function(data, type, row) {
-        return `<a href="shop_stock_check.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Check Stock</a>`;
+        return `<a href="insert_stock_form.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Insert Stock</a>`;
 
         }
       }
