@@ -205,6 +205,7 @@ include "head.php";
             processData: false,
             success: function (response) {
                 alert("Employee updated successfully!");
+                window.location.href = 'admin_allemployee.php';
             },
         });
     });

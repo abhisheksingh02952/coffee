@@ -1,8 +1,8 @@
 <?php
 include 'auth.php';
 authorize('employee'); 
-if (isset($_GET['shop_id'])) {
-    $_SESSION['shop_id'] = $_GET['shop_id'];
+if (isset($_GET['order_ids'])) {
+    $_SESSION['order_ids'] = $_GET['order_ids'];
 }
 
 ?>
@@ -38,6 +38,7 @@ include "head.php";
             <th>order_date</th>
             <th>Collection Employee ID</th>
             <th>Collection Employee Date</th>
+            <th>Remarks</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -66,12 +67,13 @@ $(document).ready(function() {
       { "data": "payment_type" },
       { "data": "payment_status" },
       { "data": "order_date" },
-      { "data": "collection _employee_ id" },
-      { "data": "collection _employee_ date" },
+      { "data": "employee_id" },
+      { "data": "collection_date" },
+      { "data": "remarks" },
       {
         data: null,
         render: function(data, type, row) {
-         return `<a href="all_order_show_edit.php?shop_id=${row.shop_id}" class="btn btn-sm btn-primary">Edit Order</a>`;
+         return `<a href="order_payment_update.php?order_ids=${row.order_ids}" class="btn btn-sm btn-primary">Edit Payment</a>`;
         }
       }
     ]

@@ -1,6 +1,11 @@
 <?php
+
 include 'auth.php';
-authorize('employee'); 
+authorize('employee');
+
+if (isset($_GET['order_ids'])) {
+    $_SESSION['order_ids'] = $_GET['order_ids'];
+}
 ?>
 <!DOCTYPE html>
 <html>
@@ -75,12 +80,30 @@ include "head.php";
         margin: 10px 5px 0 0;
         border-radius: 5px;
         cursor: pointer;
-        width: 48%;
+        width: 30%;
         font-size: 16px;
         transition: background-color 0.3s ease;
       }
 
       button.update:hover {
+        background-color: #3749b5;
+      }
+
+      
+        button {
+        background-color: #4761d3;
+        color: white;
+        border: none;
+        padding: 14px 20px;
+        margin: 10px 5px 0 0;
+        border-radius: 5px;
+        cursor: pointer;
+        width: 30%;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      button:hover {
         background-color: #3749b5;
       }
 
@@ -104,56 +127,51 @@ include "head.php";
   <div class="container-fluid">
   <div class="row">
     <!-- Sidebar -->
-      <?php
+ 
+  <?php
 
-      include "admin_sidebar.php";
+      include "sidebar.php";
 
-        ?>
+   ?>
 
     <!-- Form Content -->
     <main class="col-md-10 py-4">
-        <div class="clearfix"> 
-            <button type="button" onclick="location.href='task.php'" class="cancelbtn">Cancel</button>
-        </div>
         
         <form action=""  method="POST" id="geoForm" enctype="multipart/form-data">
         <div id="data" class="container">
-            <h1>Add New Shop</h1>
+            <h1>Payment Update</h1>
             <hr>
 
-            <label for="Title"><b>Owner Name</b></label>
-            <input type="text" placeholder="Enter Name" name="name" id="name" required><br>
+            <label for="name"><b>Order ID</b></label>
+            <input type="text"  name="order_ids" id="order_ids" required><br>
+<!--
+            <label for="name"><b>Shop ID</b></label>
+            <input type="text"  name="shop_id" id="shop_id" required><br>
 
-            <label for="Title"><b>Owner Name Father Name</b></label>
-            <input type="text" placeholder="Enter Name" name="fathername" id="fathername" required><br>
+            <label for="name"><b>Amount</b></label>
+            <input type="text" name="amount" id="amount" required><br>
 
-            <label for="gst"><b>GST NO</b></label>
-            <input type="text" placeholder="Enter GST NO" name="gst" id="gst" required><br>
+            -->
 
-            <label for="phone"><b>Phone Number</b></label>
-            <input type="text" placeholder="Enter Address" name="phone" id="phone" required><br>
+            <label for="payment_type"><b>Choose Payment Type:</b></label>
+            <select id="payment_type" name="payment_type" class="payment_type">
+              <option value="cash">Cash</option>
+              <option value="online">Online</option>
+            </select><br>
 
-            <label for="Address"><b>Address</b></label>
-            <input type="text" placeholder="Enter Address" name="Address" id="Address" required><br>
+            <label for="payment_status"><b>Choose Payment Status:</b></label>
+            <select id="payment_status" name="payment_status" class="payment_type">
+              <option value="Pending">Pending</option>
+              <option value="Paid">Paid</option>
+            </select><br>
             
-            <label for="pin"><b>Pin</b></label>
-            <input type="text" placeholder="Enter Pin code" name="Pin" id="Pin" required><br>
-
-            <label for="area"><b>Area</b></label>
-            <input type="text" placeholder="Enter Pin code" name="area" id="area" required><br>
-
-            <label for="latitude"><b>Latitude</b></label>
-            <input type="text" name="latitude" id="latitude" readonly><br>
-
-            <label for="longitude"><b>Longitude</b></label>
-            <input type="text" name="longitude" id="longitude" readonly><br>
-
-            <label for="Title"><b>Scheme</b></label>
-            <input type="text" placeholder="Enter Scheme Name" name="scheme" id="scheme" required><br>
-
+            <label for="name"><b>Remarks</b></label>
+            <input type="text" placeholder="Enter Remarks" name="remarks" id="remarks" required><br>
+            
+           
             <div class="clearfix">
-            <button type="submit" id="profile-update-data" class="update">Submiit</button>
-            <button type="button" onclick="getLocation()" class="update">Get Geo Location</button>
+                 <button type="button" onclick="location.href='order_payment.php'" class="cancelbtn">Cancel</button>
+            <button type="submit" id="admin-add-employee-data" class="update">Submiit</button>
             </div>
         </div>
     </form>
@@ -169,44 +187,48 @@ include "head.php";
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 <script>
-    function getLocation() {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
-        document.getElementById("latitude").value = position.coords.latitude;
-        document.getElementById("longitude").value = position.coords.longitude;
-        // ✅ Do NOT submit the form
-        }, function (error) {
-        alert("Error getting location: " + error.message);
-        });
-    } else {
-        alert("Geolocation is not supported by this browser.");
-    }
-    }
 
+   $(document).ready(function () {
+    // Load employee data
+    $.ajax({
+        url: "payment_edit_data.php",
+        type: "POST",
+        dataType: "json",
+        success: function (data) {
+            if (data) {
+                $("#order_ids").val(data.order_ids);
+                $("#shop_id").val(data.shop_id);
+                $("#amount").val(data.amount);
+                $("#payment_type").val(data.payment_type);
+                $("#payment_status").val(data.payment_status);
+                $("#remarks").val(data.remarks);
+                
+            }
+        },
+    });
 
-      $(document).ready(function () {
-        $("#geoForm").on("submit", function (e) {
-          e.preventDefault(); // Prevent form from reloading the page
+    // Update on submit
+    $("#admin-add-employee-data").on("click", function (e) {
+        e.preventDefault();
 
-          var formData = new FormData(this);
+        var formData = new FormData($('#geoForm')[0]);
 
-          $.ajax({
-            url: "insert_dealers.php", // your PHP handler
+        $.ajax({
+            url: "payment_edit_data_update.php", 
             type: "POST",
             data: formData,
             contentType: false,
             processData: false,
             success: function (response) {
-              alert(response); // or show a message in the page
-              $("#geoForm")[0].reset(); // reset the form
+                alert("Employee updated successfully!");
             },
-            error: function () {
-              alert("Something went wrong!");
+            error: function (xhr, status, error) {
+                console.error("Update failed:", status, error);
+                alert("Failed to update employee.");
             }
-          });
         });
-      });
-
+    });
+});
 
 </script>
 </body>
