@@ -31,16 +31,11 @@ include "head.php";
         <thead>
           <tr>
             <th>Order ID</th>
-            <th>Product 1</th>
-            <th>Product 2</th>
-            <th>Product 3</th>
-            <th>Product 4</th>
-            <th>Product 5</th>
-            <th>Quantity</th>
-            <th>Cost</th>
+            <th>Shop ID</th>
             <th>Payment Type</th>
             <th>Payment Status</th>
             <th>Scheme</th>
+            <th>Total Amount</th>
             <th>Date</th>
             <th>Action</th>
           </tr>
@@ -65,21 +60,16 @@ $(document).ready(function() {
     "ajax": "all_order_show.php",
     "columns": [
       { "data": "order_id" },
-      { "data": "product1" },
-      { "data": "product2" },
-      { "data": "product3" },
-      { "data": "product4" },
-      { "data": "product5" },
-      { "data": "quantity" },
-      { "data": "cost" },
+      { "data": "shop_id" },
       { "data": "payment_type" },
       { "data": "payment_status" },
       { "data": "scheme" },
+      { "data": "total_amount" },
       { "data": "date" },
       {
         data: null,
         render: function(data, type, row) {
-         return `<a href="all_order_show_edit.php?shop_id=${row.shop_id}" class="btn btn-sm btn-primary">Places Order</a>`;
+         return `<a href="all_order_show_edit.php?shop_id=${row.shop_id}" class="btn btn-sm btn-primary">Edit Order</a>`;
         }
       }
     ]
