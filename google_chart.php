@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Org Chart with Google Charts</title>
-   <!-- <script type="text/javascript" src="javascript/loader.js"></script> -->
+<head>
+    <title>Treant Collapsible OrgChart</title>
+    <link rel="stylesheet" href="./treant/Treant.css">
+    <link rel="stylesheet" href="css/chart.css">
+</head>
+<body>
 
-    <script src="javascript/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load('current', {packages:["orgchart"]});
-      google.charts.setOnLoadCallback(drawChart);
+<div id="chart-container" style="width:100%; height:auto;"></div>
 
-      function drawChart() {
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'ID');
-        data.addColumn('string', 'Manager');
-        data.addColumn('string', 'ToolTip');
 
-        data.addRows([
-            <?php include("google_data.php"); ?>
-        ]);
+<div id="info-panel" style="display:none;" class="profile-panel">
+  <div class="profile-header">
+    <span id="panel-title">Employee Name</span>
+    <span onclick="document.getElementById('info-panel').style.display='none'" style="cursor:pointer;">✖</span>
+  </div>
+  
+  <div class="profile-details">
+    <div id="panel-content">Click on a node to see details here.</div>
+  </div>
+</div>
 
-        var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
-        chart.draw(data, {'allowHtml':true});
-      }
-    </script>
-  </head>
-  <body>
-    <h2>Org Chart using Google Charts</h2>
-    <div id="chart_div"></div>
-  </body>
+
+<script src="./treant/vendor/raphael.js"></script>
+<script src="./treant/Treant.js"></script>
+<script src="javascript/chart.js"></script>
+
+</body>
 </html>
