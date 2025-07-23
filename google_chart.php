@@ -2,7 +2,9 @@
 <html>
   <head>
     <title>Org Chart with Google Charts</title>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <!-- <script type="text/javascript" src="javascript/loader.js"></script> -->
+
+    <script src="javascript/loader.js"></script>
     <script type="text/javascript">
       google.charts.load('current', {packages:["orgchart"]});
       google.charts.setOnLoadCallback(drawChart);

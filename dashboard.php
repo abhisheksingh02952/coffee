@@ -85,8 +85,12 @@ if (!isset($_SESSION['user_id'])) {
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
   <!-- OrgChart.js -->
-  <script src="https://balkangraph.com/js/latest/OrgChart.js"></script>
-  <script src="https://cdn.balkan.app/orgchart.js"></script>
+    <!-- <script src="https://balkangraph.com/js/latest/OrgChart.js"></script>
+          <script src="https://cdn.balkan.app/orgchart.js"></script>                    -->
+ 
+    <script src="javascript/OrgChart1.js"></script>
+    <script src="javascript/OrgChart.js"></script>
+  
 
   <script>
     fetch('google_data.php?reporting_id=<?= $_SESSION['user_id'] ?>') 
@@ -94,6 +98,9 @@ if (!isset($_SESSION['user_id'])) {
       .then(data => {
         new OrgChart(document.getElementById("tree"), {
           nodes: data,
+          editForm: {
+            buttons: false,
+          },
           collapse: { level: 2, allChildren: true },
           showXScroll: true,
           showYScroll: true,
@@ -101,7 +108,6 @@ if (!isset($_SESSION['user_id'])) {
           nodeBinding: {
             field_0: "name",
             field_1: "position",
-           
           },
           toolbar: {
             layout: true,
