@@ -10,7 +10,7 @@ $sql = "SELECT
         FROM stock s
         JOIN products p ON s.product_id = p.id
         WHERE s.shop_id = $shop_id
-        ORDER BY p.name";
+        ORDER BY p.name AND is_deleted = 1";
 
 $result = mysqli_query($conn, $sql);
 

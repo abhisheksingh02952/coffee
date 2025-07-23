@@ -3,7 +3,7 @@ session_start();
 
 $conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
 
-$sql = "SELECT * FROM payments";
+$sql = "SELECT * FROM payments WHERE is_deleted = 1";
 $result = mysqli_query($conn, $sql) or die("Query Failed");
 
 $data = [];

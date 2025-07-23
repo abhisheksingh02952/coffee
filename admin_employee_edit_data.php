@@ -11,7 +11,7 @@ if (!isset($_SESSION['user_id'])) {
 // Sanitize the session value (assumes it's an integer)
  $user_id = (int) $_SESSION['user_id'];
 
-$sql = "SELECT * FROM employees WHERE user_id = $user_id";
+$sql = "SELECT * FROM employees WHERE user_id = $user_id AND is_deleted = 1";
 $result = mysqli_query($conn, $sql) or die("Query Error");
 
 $data = [];

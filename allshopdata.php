@@ -5,7 +5,7 @@ session_start();
 $conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
 
 // SQL query
-$sql = "SELECT * FROM shop";
+$sql = "SELECT * FROM shop WHERE is_deleted = 1";
 $result = mysqli_query($conn, $sql) or die("Query Failed");
 
 $data = [];

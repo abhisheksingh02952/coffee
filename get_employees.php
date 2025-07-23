@@ -4,7 +4,7 @@ $conn = new mysqli("localhost", "root", "", "sales_db");
 function getEmployees($parent_id = NULL, $conn) {
     $data = [];
     $sql = "SELECT * FROM employees WHERE parent_id " . 
-           (is_null($parent_id) ? "IS NULL" : "= $parent_id");
+           (is_null($parent_id) ? "IS NULL" : "= $parent_id") ;
     $result = $conn->query($sql);
     
     while ($row = $result->fetch_assoc()) {

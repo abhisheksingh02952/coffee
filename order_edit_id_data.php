@@ -5,7 +5,7 @@ $conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Faile
 
 $shop_id = (int) $_SESSION['shop_id'];
 
-$sql = "SELECT * FROM shop WHERE shop_id = $shop_id";
+$sql = "SELECT * FROM shop WHERE shop_id = $shop_id AND is_deleted = 1";
 $result = mysqli_query($conn, $sql) or die("Query Error");
 
 $data = [];

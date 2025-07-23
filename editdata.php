@@ -13,7 +13,7 @@ if (!isset($_SESSION['task_id'])) {
 // Sanitize the session value (assumes it's an integer)
  $task_id = (int) $_SESSION['task_id'];
 
-$sql = "SELECT * FROM task WHERE id = $task_id";
+$sql = "SELECT * FROM task WHERE id = $task_id ";
 $result = mysqli_query($conn, $sql) or die("Query Error");
 
 $data = [];

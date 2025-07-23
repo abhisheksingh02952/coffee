@@ -12,7 +12,7 @@ if (!isset($_SESSION['id'])) {
 // Sanitize the session value (assumes it's an integer)
  $id = (int) $_SESSION['id'];
 
-$sqli = "SELECT * FROM products WHERE id = $id";
+$sqli = "SELECT * FROM products WHERE id = $id AND is_deleted = 1";
 $result = mysqli_query($conn, $sqli) or die("Query Error");
 
 $data = [];

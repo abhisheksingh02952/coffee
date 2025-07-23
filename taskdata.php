@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_id'])) {
 $user_id = (int) $_SESSION['user_id'];
 
 // Query to fetch tasks for the user
-$sql = "SELECT * FROM task WHERE user_id = $user_id";
+$sql = "SELECT * FROM task WHERE user_id = $user_id AND is_deleted = 1";
 $result = mysqli_query($conn, $sql)or die ("Connection Failed");
 
 $data = [];
