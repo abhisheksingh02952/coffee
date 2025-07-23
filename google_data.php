@@ -126,7 +126,7 @@ function buildTree(array $elements, $parentId = null) {
     $branch = [];
 
     foreach ($elements as $element) {
-        if ($element['pid'] == $parentId) {
+        if ((string)$element['pid'] === (string)$parentId) {
             $children = buildTree($elements, $element['id']);
 
             $node = [
@@ -136,7 +136,6 @@ function buildTree(array $elements, $parentId = null) {
                 ],
                 "HTMLid" => "node_" . $element['id'],
                 "HTMLclass" => "node-style",
-                "collapsed" => true,
                 "data" => [
                     "id" => $element['id'],
                     "order_id" => $element['order_id'],
@@ -151,20 +150,55 @@ function buildTree(array $elements, $parentId = null) {
 
             if (!empty($children)) {
                 $node["children"] = $children;
-                $node["stackChildren"] = true; // <-- Add stacking only if children exist
+                $node["stackChildren"] = true;
+                $node["collapsed"] = true;
             }
 
             $branch[] = $node;
         }
     }
+
     return $branch;
+}
+
+function buildTreeFromStart(array $elements, $startId) {
+    // Map all elements by their ID for quick lookup
+    $map = [];
+    foreach ($elements as $el) {
+        $map[$el['id']] = $el;
+    }
+
+    // If the starting node doesn't exist, return empty
+    if (!isset($map[$startId])) {
+        return null;
+    }
+
+    // Climb to the root (pid == 0 or null)
+    $currentId = $startId;
+    while (
+        isset($map[$currentId]) &&
+        isset($map[$currentId]['pid']) &&
+        $map[$currentId]['pid'] !== null &&
+        $map[$currentId]['pid'] != 0 &&
+        isset($map[$map[$currentId]['pid']])
+    ) {
+        $currentId = $map[$currentId]['pid'];
+    }
+
+    $rootPid = $map[$currentId]['pid'] ?? null;
+
+    // Now build the tree from that root
+    $tree = buildTree($elements, $rootPid);
+
+    // Return only the root node (if exists)
+    return $tree[0] ?? null;
 }
 
 
 
-$tree = buildTree($descendants);
+$tree = buildTreeFromStart($descendants, $start_id);
 
 header('Content-Type: application/json');
-echo json_encode($tree[0], JSON_PRETTY_PRINT); // assuming one root node
+echo json_encode($tree, JSON_PRETTY_PRINT); // assuming one root node
 
 ?>
