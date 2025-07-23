@@ -37,55 +37,6 @@ while ($row = $result->fetch_assoc()) {
     ]);
 }
 
-$shop_result = $mysqli->query("
-   SELECT * FROM shop");
-   while ($row = $shop_result->fetch_assoc()) {
-    array_push($users, [
-            'id' => $row['shop_id'],
-            'pid' => $row['reporting_id'] ?: null,
-            'name' => $row['name'],
-            'position' => 'shop',
-            'order_id' =>  null,
-            'quantity' => null,
-            'payment_type' => null,
-            'payment_status' => null,
-            'date' => null,
-            'scheme' => null,
-            'shop_name' => null,
-    ]);
-}
-
-$order_result = $mysqli->query("
-   SELECT 
-        order_db.order_id, 
-        order_db.quantity, 
-        order_db.payment_type, 
-        order_db.payment_status, 
-        order_db.scheme, 
-        order_db.date,
-        shop.shop_id,
-        shop.name AS shop_name,
-        order_db.reporting_id, 
-        shop.reporting_id AS shop_reporting_id
-    FROM order_db
-    JOIN shop ON shop.shop_id = order_db.shop_id");
-   while ($row = $order_result->fetch_assoc()) {
-    array_push($users, [
-            'id' => $row['order_id'] + "10000",
-            'pid' => $row['shop_id'] ?: null,
-            'name' => $row['shop_name'],
-            'position' => 'order',
-            'order_id' =>  $row['order_id'],
-            'quantity' => $row['quantity'],
-            'payment_type' => $row['payment_type'],
-            'payment_status' => $row['payment_status'],
-            'date' => $row['date'],
-            'scheme' => $row['scheme'],
-            'shop_name' => $row['shop_name'],
-    ]);
-}
-
-
 function getUserAndDescendants(array $employees, $startId): array {
     $result = [];
 
@@ -116,6 +67,60 @@ function getDescendants(array $employees, $parentId): array {
 }
 
 $descendants = getUserAndDescendants($users, $start_id);
+
+$shops = [];
+foreach ($descendants as $emp) {
+    $employ = $emp['id'];
+    $shop_result = $mysqli->query("
+    SELECT shop.shop_id, shop.reporting_id ,shop.name FROM shop where reporting_id = $employ");
+    while ($row = $shop_result->fetch_assoc()) {
+        $shop_id = $row['shop_id'];
+        $order_result = $mysqli->query("
+    SELECT 
+            orders.order_id, 
+            orders.payment_type, 
+            orders.payment_status, 
+            orders.scheme, 
+            orders.date,
+            orders.shop_id,
+            orders.total_amount
+        FROM orders WHERE shop_id =$shop_id ORDER BY id DESC LIMIT 1");
+        $order_row = mysqli_fetch_assoc($order_result);
+        array_push($shops, [
+                'id' => $row['shop_id'],
+                'pid' => $row['reporting_id'] ?: null,
+                'name' => $row['name'],
+                'position' => 'shop',
+                'order_id' =>  $order_row['order_id'],
+                'quantity' => null,
+                'payment_type' => $order_row['payment_type'],
+                'payment_status' => $order_row['payment_status'],
+                'date' => $order_row['date'],
+                'scheme' => $order_row['scheme'],
+                'shop_name' => null,
+        ]);
+        $stock_result = $mysqli->query("
+        SELECT stock.shop_id, stock.product_id, stock.quantity, products.name FROM stock 
+        JOIN products on products.id = stock.product_id WHERE shop_id = $shop_id");
+        while ($stock_row = $stock_result->fetch_assoc()) {
+            array_push($shops, [
+                'id' => $stock_row['product_id']+1000,
+                'pid' => $stock_row['shop_id'] ?: null,
+                'name' => $stock_row['name'],
+                'position' => 'Product quantity ' . $stock_row['quantity'],
+                'order_id' =>  null,
+                'quantity' => $stock_row['quantity'],
+                'payment_type' => null,
+                'payment_status' => null,
+                'date' => null,
+                'scheme' => null,
+                'shop_name' => null,
+        ]);
+        }
+    }
+}
+
+$descendants = array_merge($descendants, $shops);
 
 header('Content-Type: application/json');
 echo json_encode($descendants);
