@@ -13,8 +13,6 @@ $result = mysqli_query($conn, $sql) or die("Query Error");
 
 $data = [];
 
-
-
 if(mysqli_num_rows($result) > 0){
     $data = mysqli_fetch_assoc($result);
 }

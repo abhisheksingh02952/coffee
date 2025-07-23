@@ -1,7 +1,6 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "test");
 
-// Get shop ID from GET or POST (e.g., ?shop_id=1)
 $shop_id = isset($_GET['shop_id']) ? (int)$_GET['shop_id'] : 0;
 
 $sql = "SELECT 

@@ -3,7 +3,6 @@ session_start();
 // Create connection
 $conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
 
-
 $shop_id = (int) $_SESSION['shop_id'];
 
 $sql = "SELECT * FROM shop WHERE shop_id = $shop_id";

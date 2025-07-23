@@ -111,41 +111,6 @@
         border: 1px solid #ddd; /* Optional: adds visible borders */
         }
 
-
-      .Retailer {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      .Task {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      .Wholesaler {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-       .Attendance {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      /* Float cancel and signup buttons and add an equal width */
-      .Distributor, .Wholesaler, .Retailer, .Task, .Attendance {
-        float: left;
-        width: 18%;
-      }
-
       /* Add padding to container elements */
       .container {
         padding: 16px;
