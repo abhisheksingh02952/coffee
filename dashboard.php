@@ -128,28 +128,7 @@ if (!isset($_SESSION['user_id'])) {
     fetch('google_data.php?reporting_id=<?= $_SESSION['user_id'] ?>')
       .then(res => res.json())
       .then(data => {
-        /* new OrgChart(document.getElementById("tree"), {
-           nodes: data,
-           editForm: {
-             buttons: false,
-           },
-           collapse: { level: 2, allChildren: true },
-           showXScroll: true,
-           showYScroll: true,
-           template: 'polina',
-           nodeBinding: {
-             field_0: "name",
-             field_1: "position",
-           },
-           toolbar: {
-             layout: true,
-             zoom: true,
-             fit: true,
-             expandAll: false,
-             fullScreen: true
-           }
-         });*/
-
+      
         const chart_config = {
           chart: {
             container: "#tree",
@@ -182,77 +161,7 @@ if (!isset($_SESSION['user_id'])) {
             HTMLclass: 'node-style'
           },
 
-          nodeStructure: {
-            text: {
-              name: "CEO"
-            },
-            HTMLid: "node_2",
-            HTMLclass: "node-style",
-            data: {
-              id: 1,
-              email: "john@example.com",
-              phone: "1111111111"
-            },
-            children: [{
-                text: {
-                  name: "CTO"
-                },
-                HTMLclass: "node-style",
-                data: {
-                  id: 2,
-                  email: "jane@example.com",
-                  phone: "9876543210"
-                },
-                children: [{
-                  text: {
-                    name: "Dev Team Lead"
-                  },
-                  HTMLclass: "node-style",
-                  stackChildren: true,
-                  data: {
-                    id: 2,
-                    email: "jane@example.com",
-                    phone: "9876543210"
-                  },
-                  children: [{
-                      text: {
-                        name: "Developer 1"
-                      },
-                      HTMLclass: "node-style",
-                      data: {
-                        id: 2,
-                        email: "jane@example.com",
-                        phone: "9876543210"
-                      },
-                    },
-                    {
-                      text: {
-                        name: "Developer 2"
-                      },
-                      HTMLclass: "node-style",
-                      data: {
-                        id: 2,
-                        email: "jane@example.com",
-                        phone: "9876543210"
-                      },
-                    }
-                  ]
-                }]
-              },
-              {
-                text: {
-                  name: "CFO"
-                },
-                HTMLclass: "node-style",
-                children: [{
-                  text: {
-                    name: "Accountant"
-                  },
-                  HTMLclass: "node-style"
-                }]
-              }
-            ]
-          }
+          nodeStructure: data
         };
 
         new Treant(chart_config);
@@ -262,7 +171,6 @@ if (!isset($_SESSION['user_id'])) {
           document.querySelectorAll('.node-style').forEach(el => {
             el.addEventListener('click', function() {
               const clickedId = this.id; // this.id will now work!
-              console.log("Clicked node ID:", clickedId);
               const dataNode = findNodeById(chart_config.nodeStructure, clickedId);
               if (dataNode && dataNode.data) {
                 showPanel(dataNode.text.name, dataNode.data);

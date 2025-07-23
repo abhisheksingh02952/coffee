@@ -122,7 +122,49 @@ foreach ($descendants as $emp) {
 
 $descendants = array_merge($descendants, $shops);
 
+function buildTree(array $elements, $parentId = null) {
+    $branch = [];
+
+    foreach ($elements as $element) {
+        if ($element['pid'] == $parentId) {
+            $children = buildTree($elements, $element['id']);
+
+            $node = [
+                "text" => [
+                    "name" => $element['name'],
+                    "title" => $element['position']
+                ],
+                "HTMLid" => "node_" . $element['id'],
+                "HTMLclass" => "node-style",
+                "collapsed" => true,
+                "data" => [
+                    "id" => $element['id'],
+                    "order_id" => $element['order_id'],
+                    "quantity" => $element['quantity'],
+                    "payment_type" => $element['payment_type'],
+                    "payment_status" => $element['payment_status'],
+                    "date" => $element['date'],
+                    "scheme" => $element['scheme'],
+                    "shop_name" => $element['shop_name']
+                ]
+            ];
+
+            if (!empty($children)) {
+                $node["children"] = $children;
+                $node["stackChildren"] = true; // <-- Add stacking only if children exist
+            }
+
+            $branch[] = $node;
+        }
+    }
+    return $branch;
+}
+
+
+
+$tree = buildTree($descendants);
+
 header('Content-Type: application/json');
-echo json_encode($descendants);
+echo json_encode($tree[0], JSON_PRETTY_PRINT); // assuming one root node
 
 ?>

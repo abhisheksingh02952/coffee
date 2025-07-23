@@ -15,8 +15,11 @@ function showPanel(name, data) {
     panel.style.display = "block";
     document.getElementById("panel-title").innerText = name;
     document.getElementById("panel-content").innerHTML = `
-    <p><strong>Phone:</strong> ${data.phone}</p>
-    <p><strong>Email:</strong> ${data.email}</p>
+    <p><strong>order_id:</strong> ${data.order_id}</p>
+    <p><strong>payment_status:</strong> ${data.payment_status}</p>
+    <p><strong>payment_type:</strong> ${data.payment_type}</p>
+    <p><strong>date:</strong> ${data.date}</p>
+    <p><strong>scheme:</strong> ${data.scheme}</p>
   `;
 }
 
