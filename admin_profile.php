@@ -128,9 +128,6 @@ authorize('admin');
           <label for="password"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="password" id="password" required>
 
-          <label for="location"><b>Location</b></label>
-          <input type="text" placeholder="Enter location" name="location" id="location" required>
-
           <label for="Pin Code"><b>Pin</b></label>
           <input type="text" placeholder="Enter pin" name="pin" id="pin" required>
 

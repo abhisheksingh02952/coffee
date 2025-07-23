@@ -20,9 +20,7 @@ include "head.php";
     <!-- Sidebar -->
    
   <?php
-
       include "admin_sidebar.php";
-
    ?>
     <!-- Main Content Area -->
     <main class="col-md-10 ms-sm-auto px-4 py-4">
@@ -51,7 +49,7 @@ include "head.php";
         </thead>
       </table>
       <div class="clearfix">
-            <button type="button" class="update" onclick="window.location.href='profile.php'">Back</button>
+            <button type="button" class="update" onclick="window.location.href='admin_profile.php'">Back</button>
       </div>
     </main>
   </div>

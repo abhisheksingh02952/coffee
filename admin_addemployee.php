@@ -124,9 +124,7 @@ include "head.php";
     <!-- Sidebar -->
     
   <?php
-
       include "admin_sidebar.php";
-
    ?>
 
     <!-- Form Content -->
@@ -215,8 +213,8 @@ include "head.php";
         url: "admin_adminadd.php", 
         type: "POST",
         data: formData,
-        contentType: false, // Don't set content-type header manually
-        processData: false, // Don't convert data to query string
+        contentType: false, 
+        processData: false, 
         success: function(response) {
             alert("Employee added successfully!");
             $('#geoForm')[0].reset(); // Reset form after success

@@ -9,13 +9,13 @@ if ($conn->connect_error) {
 }
 
 // Session check
-if (!isset($_SESSION['user_id']) || !isset($_SESSION['em_user_id'])) {
+if (!isset($_SESSION['user_id']) || !isset($_SESSION['username'])) {
     echo json_encode(["error" => "User not authenticated"]);
     exit;
 }
 
 $user_id = (int) $_SESSION['user_id']; 
-$em_user_id = $_SESSION['em_user_id']; 
+$username = $_SESSION['username']; 
 
 // Validate and escape month
 if (!isset($_POST['month']) || !preg_match('/^\d{4}-\d{2}$/', $_POST['month'])) {
@@ -25,8 +25,8 @@ if (!isset($_POST['month']) || !preg_match('/^\d{4}-\d{2}$/', $_POST['month'])) 
 $month = mysqli_real_escape_string($conn, $_POST['month']);
 
 // Query attendance
-$sql = "SELECT user_id, em_user_id, date, status 
-        FROM employee_attendance 
+$sql = "SELECT user_id, username, date, status 
+        FROM attendance 
         WHERE DATE_FORMAT(date, '%Y-%m') = '$month' 
         AND user_id = $user_id";
 
@@ -36,7 +36,7 @@ $attendance = [];
 $dates = [];
 
 while ($row = mysqli_fetch_assoc($result)) {
-    $name = $row['em_user_id'];
+    $name = $row['username'];
     $date = $row['date'];
     $status = $row['status'];
 

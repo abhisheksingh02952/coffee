@@ -5,7 +5,6 @@ session_start();
 // Create connection
 $conn = mysqli_connect("localhost","root","","test") or die("Connect Error");
 
-
 $sql = "SELECT * FROM products";
 
 $result = mysqli_query($conn, $sql) or die("Query Error");

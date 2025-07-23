@@ -2,9 +2,7 @@
 include 'auth.php';
 authorize('employee'); 
 
-
 $conn = mysqli_connect("localhost", "root", "", "test");
-
 
 if (isset($_GET['shop_id'])) {
     $_SESSION['shop_id'] = $_GET['shop_id'];
@@ -12,7 +10,6 @@ if (isset($_GET['shop_id'])) {
 $shop_id = $_SESSION['shop_id'] ?? 0;
 
 $result = mysqli_query($conn, " SELECT p.id AS product_id, p.name, COALESCE(s.quantity, 0) AS quantity FROM products p LEFT JOIN stock s ON s.product_id = p.id AND s.shop_id = $shop_id ");
-
 
 ?>
 <!DOCTYPE html>

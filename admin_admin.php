@@ -60,48 +60,6 @@ authorize('admin');
         width: 100%;
       }
 
-      /* Extra styles for the cancel button */
-      .Distributor {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      .Retailer {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      .Task {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      .Wholesaler {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-       .Attendance {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      /* Float cancel and signup buttons and add an equal width */
-      .Distributor, .Wholesaler, .Retailer, .Task, .Attendance {
-        float: left;
-        width: 18%;
-      }
-
       /* Add padding to container elements */
       .container {
         padding: 16px;
@@ -137,19 +95,11 @@ authorize('admin');
     <!-- Sidebar -->
   
   <?php
-
       include "admin_sidebar.php";
-
    ?>
     <!-- Form Content -->
     <main class="col-md-10 py-4">
-        <div class="clearfix">
-            
-            <button type="button" onclick="location.href='distributor.php'" class="Distributor" >Distributor</button>
-            <button type="button" onclick="location.href='retailer.php'" class="Retailer">Retailer</button>
-            <button type="button" onclick="location.href='task.php'" class="Task">Task</button>
-            <button type="button" onclick="location.href='attendance.php'" class="Attendance">Attendance</button>
-          </div>
+       
       <form action="" method="POST">
         <div id="data" class="container">
           <h1>Employee Profile</h1>

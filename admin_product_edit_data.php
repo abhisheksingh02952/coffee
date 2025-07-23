@@ -9,7 +9,6 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
-
 // Sanitize the session value (assumes it's an integer)
  $id = (int) $_SESSION['id'];
 

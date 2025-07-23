@@ -44,6 +44,7 @@ include "head.php";
       input[type="text"],
       input[type="password"],
       input[type="date"],
+      input[type="number"],
       select,
       input[type="file"] {
         width: 100%;
@@ -58,6 +59,7 @@ include "head.php";
       input[type="text"]:focus,
       input[type="password"]:focus,
       input[type="date"]:focus,
+       input[type="number"]:focus,
       select:focus,
       input[type="file"]:focus {
         background-color: #e0e0e0;
@@ -129,9 +131,7 @@ include "head.php";
     <!-- Sidebar -->
  
   <?php
-
       include "admin_sidebar.php";
-
    ?>
 
     <!-- Form Content -->
@@ -157,7 +157,7 @@ include "head.php";
             <input type="text" placeholder="Enter Mother's Name" name="mothername" id="mothername" required><br>
             
             <label for="phone"><b>Phone Number</b></label>
-            <input type="text" placeholder="Enter Phone Number" name="phone" id="phone" required><br>
+            <input type="number" placeholder="Enter Phone Number" name="phone" id="phone" required><br>
 
             <label for="email"><b>Email Id</b></label>
             <input type="text" placeholder="Enter Email Id" name="email" id="email" required><br>
@@ -166,7 +166,7 @@ include "head.php";
             <input type="text" name="Address" id="Address"><br>
             
             <label for="pin"><b>Pin</b></label>
-            <input type="text" name="Pin" id="Pin"><br>
+            <input type="number" name="Pin" id="Pin"><br>
 
             <label for="UserName"><b>UserName</b></label>
             <input type="text" name="username" id="username" required><br>
@@ -237,8 +237,7 @@ include "head.php";
                 $("#dob").val(data.dob);
                 $("#gender").val(data.gender);
                 $("#position").val(data.position);
-                $("#image").val(data.image);
-                
+                $("#image").val(data.image);              
             }
         },
     });
@@ -256,7 +255,7 @@ include "head.php";
             contentType: false,
             processData: false,
             success: function (response) {
-               // alert("Employee updated successfully!");
+                alert("Employee updated successfully!");
                 window.location.href = 'admin_allemployee.php';
             },
             error: function (xhr, status, error) {

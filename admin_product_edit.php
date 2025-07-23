@@ -131,9 +131,7 @@ include "head.php";
     <!-- Sidebar -->
  
   <?php
-
       include "admin_sidebar.php";
-
    ?>
 
     <!-- Form Content -->
@@ -185,8 +183,7 @@ include "head.php";
                 $("#id").val(data.id);
                 $("#name").val(data.name);
                 $("#sku").val(data.sku);
-                $("#price").val(data.price);
-                
+                $("#price").val(data.price);                
             }
         },
     });
