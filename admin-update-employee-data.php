@@ -15,6 +15,7 @@ $dob = $_POST['dob'];
 $gender = $_POST['gender'];
 $position = $_POST['position'];
 $reporting_id = $_POST['reporting_id'];
+$role = $_POST['role'];
 
 $image_name = "";
 
@@ -48,7 +49,7 @@ if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
 }
 
 // Update employee table
-$sql = "UPDATE employees SET name = '$name', fathername = '$fathername', mothername = '$mothername', phone = '$phone', email = '$email', address = '$address', pin = '$pin', username = '$username', password = '$password', dob = '$dob', gender = '$gender', position = '$position', reporting_id = '$reporting_id', image = '$image_name' WHERE user_id = '$id'";
+$sql = "UPDATE employees SET name = '$name', fathername = '$fathername', mothername = '$mothername', phone = '$phone', email = '$email', address = '$address', pin = '$pin', username = '$username', password = '$password', dob = '$dob', gender = '$gender', position = '$position', reporting_id = '$reporting_id', role = '$role', image = '$image_name' WHERE user_id = '$id'";
 
 if (mysqli_query($conn, $sql)) {
     echo "success";

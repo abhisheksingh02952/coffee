@@ -193,6 +193,12 @@ include "head.php";
               <option value="Admin">Admin</option>
             </select><br>
 
+             <label for="role"><b>Choose Portal Access:</b></label>
+            <select id="role" name="role" class="role">
+              <option value="admin">Admin</option>
+              <option value="employee">Employee</option>
+            </select><br>
+
             <label for="image"><b>Image</b></label>
             <input type="file" name="image" id="image" accept="image/*" required><br>
 
@@ -237,6 +243,7 @@ include "head.php";
                 $("#dob").val(data.dob);
                 $("#gender").val(data.gender);
                 $("#position").val(data.position);
+                $("#role").val(data.role);
                 $("#image").val(data.image);              
             }
         },

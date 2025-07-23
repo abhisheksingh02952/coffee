@@ -16,6 +16,7 @@ $gender = $_POST['gender'];
 $position = $_POST['position'];
 $password  = $_POST['password'];
 $reportingid  = $_POST['reporting_id'];
+$role  = $_POST['role'];
 
 // Image Upload
 $image_name = $_FILES['image']['name'];
@@ -25,8 +26,8 @@ $image_folder = "uploads/" . basename($image_name);
 // Move uploaded image to folder
 if (move_uploaded_file($image_tmp, $image_folder)) {
     // Insert into database
-    $sql = "INSERT INTO employees (name, fathername, mothername, phone, email, address, pin, dob, gender, password, position, image, reporting_id, username)
-        VALUES ('$name', '$fathername', '$mothername', '$phone', '$email', '$address', '$pin', '$dob', '$gender', '$password', '$position', '$image_name', '$reportingid', '$username')";
+    $sql = "INSERT INTO employees (name, fathername, mothername, phone, email, address, pin, dob, gender, password, position, image, reporting_id, username, role)
+        VALUES ('$name', '$fathername', '$mothername', '$phone', '$email', '$address', '$pin', '$dob', '$gender', '$password', '$position', '$image_name', '$reportingid', '$username', '$role')";
 
     if (mysqli_query($conn, $sql)) {
         echo "Employee added successfully.";

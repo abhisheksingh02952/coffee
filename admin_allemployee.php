@@ -43,6 +43,7 @@ include "head.php";
             <th>Date of Birth</th>
             <th>Gender</th>
             <th>Position</th>
+            <th>Portal Access</th>
             <th>Image</th>
             <th>Action</th>
           </tr>
@@ -81,6 +82,7 @@ include "head.php";
     { "data": "dob" },
     { "data": "gender" },
     { "data": "position" },
+    { "data": "role" },
     {
         "data": "image",
         "render": function(data) {
