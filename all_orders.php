@@ -1,8 +1,8 @@
 <?php
 include 'auth.php';
 authorize('employee'); 
-if (isset($_GET['shop_id'])) {
-    $_SESSION['shop_id'] = $_GET['shop_id'];
+if (isset($_GET['order_id'])) {
+    $_SESSION['order_id'] = $_GET['order_id'];
 }
 
 ?>
@@ -69,7 +69,7 @@ $(document).ready(function() {
       {
         data: null,
         render: function(data, type, row) {
-         return `<a href="all_order_show_edit.php?shop_id=${row.shop_id}" class="btn btn-sm btn-primary">Edit Order</a>`;
+         return `<a href="all_order_show_edit.php?order_id=${row.order_id}" class="btn btn-sm btn-primary">Edit Order</a>`;
         }
       }
     ]

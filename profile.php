@@ -143,17 +143,6 @@ authorize('employee');
 
     <!-- Form Content -->
     <main class="col-md-10 py-4">
-        <div class="clearfix">
-            <!--
-            <button type="button" onclick="location.href='distributor.php'" class="Distributor" >Distributor</button>
-            <button type="button" onclick="location.href='retailer.php'" class="Retailer">Retailer</button>
-            <button type="button" onclick="location.href='Wholesaler.php'" class="Wholesaler">Wholesaler</button>
-            -->
-            
-            
-            <button type="button" onclick="location.href='task.php'" class="Task">Task</button>
-            <button type="button" onclick="location.href='attendance.php'" class="Attendance">Attendance</button>
-          </div>
       <form action="" method="POST">
         <div id="data" class="container">
           <h1>Employee Profile</h1>

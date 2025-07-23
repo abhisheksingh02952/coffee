@@ -27,12 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['shop_id'])) {
         if (mysqli_num_rows($check_result) > 0) {
             // Update existing stock
             $update_sql = "UPDATE stock 
-                           SET quantity = $quantity, last_updated = '$timestamp' 
+                           SET quantity = $quantity, updated_at = '$timestamp' 
                            WHERE shop_id = $shop_id AND product_id = $product_id";
             mysqli_query($conn, $update_sql);
         } else {
             // Insert new stock
-            $insert_sql = "INSERT INTO stock (shop_id, product_id, quantity, last_updated) 
+            $insert_sql = "INSERT INTO stock (shop_id, product_id, quantity, created_at) 
                            VALUES ($shop_id, $product_id, $quantity, '$timestamp')";
             mysqli_query($conn, $insert_sql);
         }
