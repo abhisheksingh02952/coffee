@@ -13,7 +13,7 @@ if (!$user_id || !is_numeric($user_id)) {
 // Cast to int for safety
 $user_id = (int) $user_id;
 
-$sql = "SELECT date, checkin_time, checkout_time, total_hours, status FROM employee_attendance WHERE user_id = $user_id";
+$sql = "SELECT date, checkin_time, checkout_time, total_hours, status FROM attendance WHERE user_id = $user_id";
 $result = $conn->query($sql);
 
 $attendance = [];

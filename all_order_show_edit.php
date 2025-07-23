@@ -302,7 +302,7 @@ if (!$result) {
     </table>
     <br>
          <div class="clearfix">
-              <button type="button"  class="cancel" onclick="location.href='all_shop.php'" class="cancelbtn">Cancel</button>
+              <button type="button"  class="cancel" onclick="location.href='all_orders.php'" class="cancelbtn">Cancel</button>
             <button type="submit" name="submit" id="profile-update-data" class="update">Update Order</button>
             </div>
 </form>
@@ -312,6 +312,10 @@ if (!$result) {
 <script>
 $("#updateForm").on("submit", function(e) {
     e.preventDefault();
+
+     if (!confirm("Are you sure you to Update Payment?")) {
+        return;
+    }
 
     $.ajax({
         url: "update_order.php",

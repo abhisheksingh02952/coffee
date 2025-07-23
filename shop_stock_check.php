@@ -37,7 +37,7 @@ include "head.php";
         </thead>
       </table>
       <div class="clearfix">
-            <button type="button" class="update" onclick="window.location.href='profile.php'">Back</button>
+            <button type="button" class="update" onclick="window.location.href='shop_stock.php'">Back</button>
       </div>
     </main>
   </div>

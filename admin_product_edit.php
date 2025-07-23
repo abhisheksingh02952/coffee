@@ -154,7 +154,7 @@ include "head.php";
             <input type="number" placeholder="Enter Product Price" name="price" id="price" required><br>
 
             <div class="clearfix">
-                 <button type="button" onclick="location.href='admin_allemployee.php'" class="cancelbtn">Cancel</button>
+                 <button type="button" onclick="location.href='admin_all_products.php'" class="cancelbtn">Cancel</button>
             <button type="submit" id="admin-add-employee-data" class="update">Submiit</button>
             </div>
         </div>
@@ -192,6 +192,10 @@ include "head.php";
     $("#admin-add-employee-data").on("click", function (e) {
         e.preventDefault();
 
+        if (!confirm("Are you sure you to update?")) {
+        return;
+    }
+
         var formData = new FormData($('#geoForm')[0]);
 
         $.ajax({
@@ -202,7 +206,7 @@ include "head.php";
             processData: false,
             success: function (response) {
                 alert("Employee updated successfully!");
-                window.location.href = 'admin_allemployee.php';
+                window.location.href = 'admin_all_products.php';
             },
         });
     });

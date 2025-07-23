@@ -17,15 +17,15 @@ $time = $_POST['time'] ?? date('H:i:s');
 $type = $_POST['type'] ?? 'checkin';
 
 if ($type === 'checkin') {
-    $check = $conn->query("SELECT * FROM employee_attendance WHERE user_id = $user_id AND date = '$date'");
+    $check = $conn->query("SELECT * FROM attendance WHERE user_id = $user_id AND date = '$date'");
     if ($check->num_rows > 0) {
         echo "Already checked in";
     } else {
-       $conn->query("INSERT INTO employee_attendance (user_id, username, date, checkin_time, latitude_checkin, longitude_checkin) VALUES ('$user_id', '$username', '$date', '$time', '$lat', '$lng')");
+       $conn->query("INSERT INTO attendance (user_id, username, date, checkin_time, latitude_checkin, longitude_checkin) VALUES ('$user_id', '$username', '$date', '$time', '$lat', '$lng')");
         echo "Check-in recorded";
     }
 } elseif ($type === 'checkout') {
-    $result = $conn->query("SELECT * FROM employee_attendance WHERE user_id = $user_id AND date = '$date'");
+    $result = $conn->query("SELECT * FROM attendance WHERE user_id = $user_id AND date = '$date'");
     $row = $result->fetch_assoc();
 
     if ($row) {
@@ -45,7 +45,7 @@ if ($type === 'checkin') {
             $status = 'Absent';
         }
 
-        $conn->query("UPDATE employee_attendance 
+        $conn->query("UPDATE attendance 
                       SET checkout_time = '$time', total_hours = $hours_worked, status = '$status', 
                           latitude_checkout = '$lat', longitude_checkout = '$lng' 
                       WHERE user_id = $user_id AND date = '$date'");

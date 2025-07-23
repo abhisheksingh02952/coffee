@@ -104,16 +104,14 @@ include "head.php";
   <div class="container-fluid">
   <div class="row">
     <!-- Sidebar -->
-      <?php
-
-      include "admin_sidebar.php";
-
-        ?>
+    <?php
+      include "sidebar.php";
+    ?>
 
     <!-- Form Content -->
     <main class="col-md-10 py-4">
         <div class="clearfix"> 
-            <button type="button" onclick="location.href='task.php'" class="cancelbtn">Cancel</button>
+            <button type="button" onclick="location.href='profile.php'" class="cancelbtn">Cancel</button>
         </div>
         
         <form action=""  method="POST" id="geoForm" enctype="multipart/form-data">
@@ -186,12 +184,12 @@ include "head.php";
 
       $(document).ready(function () {
         $("#geoForm").on("submit", function (e) {
-          e.preventDefault(); // Prevent form from reloading the page
+          e.preventDefault(); 
 
           var formData = new FormData(this);
 
           $.ajax({
-            url: "insert_dealers.php", // your PHP handler
+            url: "insert_dealers.php",
             type: "POST",
             data: formData,
             contentType: false,

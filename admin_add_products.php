@@ -149,7 +149,7 @@ include "head.php";
             <input type="number" placeholder="Enter Product Price" name="price" id="price" required><br>
 
             <div class="clearfix">
-                 <button type="button" onclick="location.href=''" class="cancelbtn">Cancel</button>
+                 <button type="button" onclick="location.href='admin_all_products.php'" class="cancelbtn">Cancel</button>
             <button type="submit" id="add-employee-data" class="update">Submiit</button>
             </div>
         </div>
@@ -169,6 +169,11 @@ include "head.php";
 
     $("#add-employee-data").on("click", function(e) {
     e.preventDefault();
+
+     if (!confirm("Are you sure you want to add this product?")) {
+        return;
+    }
+
 
     var form = $('#geoForm')[0]; 
     var formData = new FormData(form); 

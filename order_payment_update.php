@@ -211,6 +211,10 @@ include "head.php";
     $("#admin-add-employee-data").on("click", function (e) {
         e.preventDefault();
 
+         if (!confirm("Are you sure you to Update Payment?")) {
+        return;
+    }
+
         var formData = new FormData($('#geoForm')[0]);
 
         $.ajax({

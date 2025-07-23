@@ -100,7 +100,43 @@ include "head.php";
             });
         });
 
-                
+        
+        $("#log-location").on("click", function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    const latitude = position.coords.latitude;
+                    const longitude = position.coords.longitude;
+
+                    const now = new Date();
+                    const date = now.toISOString().split('T')[0]; // YYYY-MM-DD
+                    const time = now.toTimeString().split(' ')[0]; // HH:MM:SS
+
+                    $.ajax({
+                        url: 'save_location.php',
+                        type: 'POST',
+                        data: {
+                            latitude: latitude,
+                            longitude: longitude,
+                            date: date,
+                            time: time,
+                            type: 'checkin' // differentiate if needed
+                        },
+                        success: function (response) {
+                            alert(response); // Show message from PHP
+                        },
+                        error: function () {
+                            alert('Error sending data.');
+                        }
+                    });
+                }, function (error) {
+                    alert('Geolocation error: ' + error.message);
+                });
+            } else {
+                alert('Geolocation is not supported by your browser.');
+            }
+        });
+
+        
         $("#log-locations").on("click", function () {
             if (navigator.geolocation) {
                 navigator.geolocation.getCurrentPosition(function (position) {

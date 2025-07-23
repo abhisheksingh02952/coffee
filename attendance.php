@@ -124,7 +124,8 @@ include "head.php";
                             type: 'checkin' // differentiate if needed
                         },
                         success: function (response) {
-                            alert(response); // Show message from PHP
+                            alert(response); 
+                            location.reload();
                         },
                         error: function () {
                             alert('Error sending data.');
@@ -159,8 +160,9 @@ include "head.php";
                             time: time,
                             type: 'checkout'
                         },
-                        success: function (response) {
-                            alert(response);
+                       success: function(response) {
+                                alert(response);       
+                                location.reload();     
                         },
                         error: function () {
                             alert('Error sending data.');
