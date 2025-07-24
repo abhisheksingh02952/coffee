@@ -5,6 +5,7 @@
         <li class="nav-item"><a href="profile.php" id="profile-data"  class="nav-link text-white">Profile</a></li>
         <li class="nav-item"><a href="addnewdealer.php" id="profile-data"  class="nav-link text-white">Add SHOP</a></li>
         <li class="nav-item"><a href="all_shop.php" id="profile-data"  class="nav-link text-white">All SHOP</a></li>
+        <li class="nav-item"><a href="place_order.php" id="profile-data"  class="nav-link text-white">Place Order</a></li>
         <li class="nav-item"><a href="all_orders.php" id="profile-data"  class="nav-link text-white">All Orders</a></li>
         <li class="nav-item"><a href="order_payment.php" id="profile-data"  class="nav-link text-white">Order Payment</a></li>
         <li class="nav-item"><a href="task.php" id="profile-data"  class="nav-link text-white">Task</a></li>

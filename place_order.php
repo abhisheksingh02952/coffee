@@ -1,8 +1,8 @@
 <?php
 include 'auth.php';
 authorize('employee'); 
-if (isset($_GET['order_id'])) {
-    $_SESSION['order_id'] = $_GET['order_id'];
+if (isset($_GET['shop_id'])) {
+    $_SESSION['shop_id'] = $_GET['shop_id'];
 }
 
 ?>
@@ -26,7 +26,7 @@ include "head.php";
 
     <!-- Main Content Area -->
     <main class="col-md-10 ms-sm-auto px-4 py-4">
-      <h2 class="mb-4">All Orders Data</h2>
+      <h2 class="mb-4">Shops Data</h2>
       <table id="usersTable" class="display table table-striped" style="width:100%">
         <thead>
           <tr>
@@ -34,7 +34,6 @@ include "head.php";
             <th>Shop ID</th>
             <th>Payment Type</th>
             <th>Payment Status</th>
-            <th>Scheme</th>
             <th>Total Amount</th>
             <th>Date</th>
             <th>Action</th>

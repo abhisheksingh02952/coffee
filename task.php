@@ -33,7 +33,6 @@ include "head.php";
       <table id="taskTable" class="display table table-striped" style="width:100%">
         <thead>
           <tr>
-            <th>ID</th>
             <th>Title </th>
             <th>Description</th>
             <th>Assign Date</th>
@@ -64,7 +63,6 @@ include "head.php";
     $('#taskTable').DataTable({
       "ajax": "taskdata.php",
       "columns": [
-        { "data": "id" },
         { "data": "Title" },
         { "data": "Description" },
         { "data": "Assign_Date" },
