@@ -91,12 +91,12 @@ foreach ($descendants as $emp) {
                 'pid' => $row['reporting_id'] ?: null,
                 'name' => $row['name'],
                 'position' => 'shop',
-                'order_id' =>  $order_row['order_id'],
+                'order_id' =>  $order_row['order_id'] ?? null,
                 'quantity' => null,
-                'payment_type' => $order_row['payment_type'],
-                'payment_status' => $order_row['payment_status'],
-                'date' => $order_row['date'],
-                'scheme' => $order_row['scheme'],
+                'payment_type' => $order_row['payment_type'] ?? null,
+                'payment_status' => $order_row['payment_status'] ?? null,
+                'date' => $order_row['date'] ?? null,
+                'scheme' => $order_row['scheme'] ?? null,
                 'shop_name' => null,
         ]);
         $stock_result = $mysqli->query("
