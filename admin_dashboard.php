@@ -91,7 +91,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="row">
       <!-- Sidebar -->
       <?php
-      include "sidebar.php";
+      include "admin_sidebar.php";
       ?>
       <!-- Main Content -->
       <main class="col-md-10">
