@@ -28,8 +28,8 @@ function showPanel(name, title, data) {
     if (data.payment_type) {
         content += `<p><strong>Payment Type:</strong> ${data.payment_type}</p>`;
     }
-    if (data.date) {
-        content += `<p><strong>Date:</strong> ${data.date}</p>`;
+    if (data.payment_date) {
+        content += `<p><strong>Payment Date:</strong> ${data.payment_date}</p>`;
     }
     if (data.scheme) {
         content += `<p><strong>Scheme:</strong> ${data.scheme}</p>`;

@@ -15,10 +15,23 @@ $remarks = $_POST['remarks'];
 
 $collection_date = date("Y-m-d H:i:s");
 
-// Update employee table
-$sql = "UPDATE payments SET payment_type = '$payment_type', payment_status = '$payment_status', remarks = '$remarks', employee_id = '$user_id', collection_date = NOW() WHERE order_id = '$order_id'";
+// Update payments table
+$sql1 = "UPDATE payments 
+         SET payment_type = '$payment_type', 
+             payment_status = '$payment_status', 
+             remarks = '$remarks', 
+             employee_id = '$user_id', 
+             collection_date = NOW() 
+         WHERE order_id = '$order_id'";
 
-if (mysqli_query($conn, $sql)) {
+// Update orders table
+$sql2 = "UPDATE orders 
+         SET payment_type = '$payment_type', 
+             payment_status = '$payment_status', 
+             payment_date = NOW() 
+         WHERE order_id = '$order_id'";
+
+if (mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)) {
     echo "success";
 } else {
     echo "Error: " . mysqli_error($conn);

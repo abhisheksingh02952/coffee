@@ -31,7 +31,7 @@ while ($row = $result->fetch_assoc()) {
         'quantity' => null,
         'payment_type' => null,
         'payment_status' =>  null,
-        'date' => null,
+        'payment_date' => null,
         'scheme' =>  null,
         'shop_name' => null,
     ]);
@@ -81,7 +81,7 @@ foreach ($descendants as $emp) {
             orders.payment_type, 
             orders.payment_status, 
             orders.scheme, 
-            orders.date,
+            orders.payment_date,
             orders.shop_id,
             orders.total_amount
         FROM orders WHERE shop_id =$shop_id ORDER BY id DESC LIMIT 1");
@@ -95,7 +95,7 @@ foreach ($descendants as $emp) {
                 'quantity' => null,
                 'payment_type' => $order_row['payment_type'] ?? null,
                 'payment_status' => $order_row['payment_status'] ?? null,
-                'date' => $order_row['date'] ?? null,
+                'payment_date' => $order_row['payment_date'] ?? null,
                 'scheme' => $order_row['scheme'] ?? null,
                 'shop_name' => null,
         ]);
@@ -112,7 +112,7 @@ foreach ($descendants as $emp) {
                 'quantity' => $stock_row['quantity'],
                 'payment_type' => null,
                 'payment_status' => null,
-                'date' => null,
+                'payment_date' => null,
                 'scheme' => null,
                 'shop_name' => null,
         ]);
@@ -142,7 +142,7 @@ function buildTree(array $elements, $parentId = null) {
                     "quantity" => $element['quantity'],
                     "payment_type" => $element['payment_type'],
                     "payment_status" => $element['payment_status'],
-                    "date" => $element['date'],
+                    "payment_date" => $element['payment_date'],
                     "scheme" => $element['scheme'],
                     "shop_name" => $element['shop_name']
                 ]
