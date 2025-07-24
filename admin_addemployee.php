@@ -39,6 +39,7 @@ include "head.php";
       input[type="text"],
       input[type="password"],
       input[type="date"],
+      input[type="number"],
       select,
       input[type="file"] {
         width: 100%;
@@ -53,6 +54,7 @@ include "head.php";
       input[type="text"]:focus,
       input[type="password"]:focus,
       input[type="date"]:focus,
+      input[type="number"]:focus,
       select:focus,
       input[type="file"]:focus {
         background-color: #e0e0e0;
@@ -136,7 +138,7 @@ include "head.php";
             <hr>
 
             <label for="name"><b>Enter Reporting Person id</b></label>
-            <input type="text" placeholder="Enter Reporting ID" name="reporting_id" id="reporting_id" required><br>
+            <input type="number" placeholder="Enter Reporting ID" name="reporting_id" id="reporting_id" required><br>
 
             <label for="name"><b>Name</b></label>
             <input type="text" placeholder="Enter Name" name="name" id="name" required><br>
@@ -148,7 +150,7 @@ include "head.php";
             <input type="text" placeholder="Enter Mother's Name" name="mothername" id="mothername" required><br>
             
             <label for="phone"><b>Phone Number</b></label>
-            <input type="text" placeholder="Enter Phone Number" name="phone" id="phone" required><br>
+            <input type="number" placeholder="Enter Phone Number" name="phone" id="phone" required><br>
 
             <label for="email"><b>Email Id</b></label>
             <input type="text" placeholder="Enter Email Id" name="email" id="email" required><br>
@@ -157,7 +159,7 @@ include "head.php";
             <input type="text" name="Address" id="Address"><br>
             
             <label for="pin"><b>Pin</b></label>
-            <input type="text" name="Pin" id="Pin"><br>
+            <input type="number" name="Pin" id="Pin"><br>
 
             <label for="password"><b>Password</b></label>
             <input type="password" name="password" id="password" required><br>

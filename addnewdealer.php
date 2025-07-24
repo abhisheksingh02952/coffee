@@ -39,6 +39,7 @@ include "head.php";
       input[type="text"],
       input[type="password"],
       input[type="date"],
+      input[type="number"],
       select,
       input[type="file"] {
         width: 100%;
@@ -53,6 +54,7 @@ include "head.php";
       input[type="text"]:focus,
       input[type="password"]:focus,
       input[type="date"]:focus,
+      input[type="number"]:focus,
       select:focus,
       input[type="file"]:focus {
         background-color: #e0e0e0;
@@ -129,17 +131,14 @@ include "head.php";
             <input type="text" placeholder="Enter GST NO" name="gst" id="gst" required><br>
 
             <label for="phone"><b>Phone Number</b></label>
-            <input type="text" placeholder="Enter Address" name="phone" id="phone" required><br>
+            <input type="number" placeholder="Enter Phone Number" name="phone" id="phone" required><br>
 
             <label for="Address"><b>Address</b></label>
             <input type="text" placeholder="Enter Address" name="Address" id="Address" required><br>
             
             <label for="pin"><b>Pin</b></label>
-            <input type="text" placeholder="Enter Pin code" name="Pin" id="Pin" required><br>
-
-            <label for="area"><b>Area</b></label>
-            <input type="text" placeholder="Enter Pin code" name="area" id="area" required><br>
-
+            <input type="number" placeholder="Enter Pin code" name="Pin" id="Pin" required><br>
+            
             <label for="latitude"><b>Latitude</b></label>
             <input type="text" name="latitude" id="latitude" readonly><br>
 

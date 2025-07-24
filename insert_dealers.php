@@ -14,7 +14,6 @@ $fathername = $_POST['fathername'];
 $gst = $_POST['gst'];
 $address = $_POST['Address'];
 $pin = $_POST['Pin'];
-$area = $_POST['area'];
 $phone = $_POST['phone'];
 $latitude = $_POST['latitude'];
 $longitude = $_POST['longitude'];
@@ -24,7 +23,7 @@ if (!is_numeric($latitude) || !is_numeric($longitude)) {
     die("Invalid latitude or longitude.");
 }
 
-$sql = "INSERT INTO shop (reporting_id, name, fathername, gst, phone, address, pin, area, latitude, longitude, scheme) VALUES ('$reporting_id', '$name', '$fathername', '$gst', '$phone', '$address', '$pin', '$area','$latitude', '$longitude', '$scheme')";
+$sql = "INSERT INTO shop (reporting_id, name, fathername, gst, phone, address, pin, latitude, longitude, scheme) VALUES ('$reporting_id', '$name', '$fathername', '$gst', '$phone', '$address', '$pin','$latitude', '$longitude', '$scheme')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Added successfully!";

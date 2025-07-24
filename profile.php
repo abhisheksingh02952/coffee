@@ -60,47 +60,6 @@ authorize('employee');
         width: 100%;
       }
 
-      /* Extra styles for the cancel button */
-      .Distributor {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      .Retailer {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      .Task {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      .Wholesaler {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-       .Attendance {
-        text-align: center;
-        margin: 10px;
-        padding: 14px 20px;
-        background-color:rgb(71, 97, 211);
-      }
-
-      /* Float cancel and signup buttons and add an equal width */
-      .Distributor, .Wholesaler, .Retailer, .Task, .Attendance {
-        float: left;
-        width: 18%;
-      }
 
       /* Add padding to container elements */
       .container {
@@ -167,9 +126,6 @@ authorize('employee');
 
           <label for="password"><b>Password</b></label>
           <input type="password" placeholder="Enter Password" name="password" id="password" required>
-
-          <label for="location"><b>Location</b></label>
-          <input type="text" placeholder="Enter location" name="location" id="location" required>
 
           <label for="Pin Code"><b>Pin</b></label>
           <input type="text" placeholder="Enter pin" name="pin" id="pin" required>
