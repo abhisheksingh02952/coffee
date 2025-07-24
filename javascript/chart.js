@@ -10,16 +10,31 @@ function findNodeById(node, id) {
 }
 
 // Show panel with node info
-function showPanel(name, data) {
+function showPanel(name, title, data) {
     const panel = document.getElementById("info-panel");
     panel.style.display = "block";
-    document.getElementById("panel-title").innerText = name;
-    document.getElementById("panel-content").innerHTML = `
-    <p><strong>order_id:</strong> ${data.order_id}</p>
-    <p><strong>payment_status:</strong> ${data.payment_status}</p>
-    <p><strong>payment_type:</strong> ${data.payment_type}</p>
-    <p><strong>date:</strong> ${data.date}</p>
-    <p><strong>scheme:</strong> ${data.scheme}</p>
-  `;
+    document.getElementById("panel-title").innerText = title;
+    document.getElementById("panel-name").innerText = name;
+
+
+    let content = "";
+
+    if (data.order_id) {
+        content += `<p><strong>Order ID:</strong> ${data.order_id}</p>`;
+    }
+    if (data.payment_status) {
+        content += `<p><strong>Payment Status:</strong> ${data.payment_status}</p>`;
+    }
+    if (data.payment_type) {
+        content += `<p><strong>Payment Type:</strong> ${data.payment_type}</p>`;
+    }
+    if (data.date) {
+        content += `<p><strong>Date:</strong> ${data.date}</p>`;
+    }
+    if (data.scheme) {
+        content += `<p><strong>Scheme:</strong> ${data.scheme}</p>`;
+    }
+
+    document.getElementById("panel-content").innerHTML = content || "<p>No details available.</p>";
 }
 

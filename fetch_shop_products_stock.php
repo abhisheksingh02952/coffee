@@ -9,8 +9,8 @@ $sql = "SELECT
             s.last_updated
         FROM stock s
         JOIN products p ON s.product_id = p.id
-        WHERE s.shop_id = $shop_id
-        ORDER BY p.name AND is_deleted = 1";
+        WHERE s.shop_id = $shop_id AND s.is_deleted = 1
+        ORDER BY p.name";
 
 $result = mysqli_query($conn, $sql);
 

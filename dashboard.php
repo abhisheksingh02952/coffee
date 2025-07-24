@@ -103,6 +103,7 @@ if (!isset($_SESSION['user_id'])) {
 
         <div id="info-panel" style="display:none;" class="profile-panel">
           <div class="profile-header">
+            <span id="panel-name">Employee Name</span>
             <span id="panel-title">Employee Name</span>
             <span onclick="document.getElementById('info-panel').style.display='none'" style="cursor:pointer;">✖</span>
           </div>
@@ -173,7 +174,7 @@ if (!isset($_SESSION['user_id'])) {
               const clickedId = this.id; // this.id will now work!
               const dataNode = findNodeById(chart_config.nodeStructure, clickedId);
               if (dataNode && dataNode.data) {
-                showPanel(dataNode.text.name, dataNode.data);
+                showPanel(dataNode.text.name, dataNode.text.title, dataNode.data);
               }
             });
           });
