@@ -1,15 +1,15 @@
 <?php
 include 'auth.php';
 authorize('employee'); 
-if (isset($_GET['shop_id'])) {
-    $_SESSION['shop_id'] = $_GET['shop_id'];
+if (isset($_GET['id'])) {
+    $_SESSION['dealer_id'] = $_GET['id'];
 }
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <?php
+<?php
 include "head.php";
 ?>
 </head>
@@ -19,26 +19,25 @@ include "head.php";
   <div class="row">
     <!-- Sidebar -->
    <?php
-
       include "sidebar.php";
-
    ?>
-
     <!-- Main Content Area -->
     <main class="col-md-10 ms-sm-auto px-4 py-4">
-      <h2 class="mb-4">Shops Data</h2>
-      <table id="usersTable" class="display table table-striped" style="width:100%">
+      <h2 class="mb-4">Distributor Data</h2>
+      <table id="userTable" class="display table table-striped" style="width:100%">
         <thead>
           <tr>
-            <th>Shop ID</th>
+            <th>ID</th>
             <th>Name</th>
-            <th>Father Name</th>
             <th>GST NO</th>
             <th>Address</th>
             <th>Pin Code</th>
-            <th>Area</th>
-            <th>Phone</th>
+            <th>Onboarding Date</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
             <th>Scheme</th>
+            <th>Image</th>
+            <th>Remarks</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -56,25 +55,29 @@ include "head.php";
   <!-- DataTables JS -->
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-  <script>
-$(document).ready(function() {
-  $('#usersTable').DataTable({
-    "ajax": "allshopdata.php",
+<script>
+  $(document).ready(function() {
+  $('#userTable').DataTable({
+    "ajax": "distributordata.php",
     "columns": [
-      { "data": "shop_id" },
-      { "data": "name" },
-      { "data": "fathername" },
-      { "data": "gst" },
-      { "data": "address" },
-      { "data": "pin" },
-      { "data": "area" },
-      { "data": "phone" },
-      { "data": "scheme" },
+      { "data": "dealer_id" },
+      { "data": "dealer_name" },
+      { "data": "dealer_gst_no" },
+      { "data": "dealer_address" },
+      { "data": "dealer_pin" },
+      { "data": "dealer_onboarding_date" },
+      { "data": "dealer_latitude" },
+      { "data": "dealer_longitude" },
+      {
+        "data": "dealer_image",
+        "render": function(data) {
+          return `<img src="uploads/${data}" width="50" height="50" alt="image">`;
+        }
+      },
       {
         data: null,
         render: function(data, type, row) {
-        return `<a href="shop_edit.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Edit Details</a>`;
-
+          return `<a href="dealer_edit.php?id=${row.dealer_id}" class="btn btn-sm btn-primary">Edit</a>`;
         }
       }
     ]

@@ -30,12 +30,15 @@ include "head.php";
       <table id="usersTable" class="display table table-striped" style="width:100%">
         <thead>
           <tr>
-            <th>Order ID</th>
             <th>Shop ID</th>
-            <th>Payment Type</th>
-            <th>Payment Status</th>
-            <th>Total Amount</th>
-            <th>Date</th>
+            <th>Name</th>
+            <th>Father Name</th>
+            <th>GST NO</th>
+            <th>Address</th>
+            <th>Pin Code</th>
+            <th>Area</th>
+            <th>Phone</th>
+            <th>Scheme</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -55,29 +58,27 @@ include "head.php";
 
   <script>
 $(document).ready(function() {
-$('#usersTable').DataTable({
-  "ajax": "all_order_show.php",
-  "columns": [
-    { "data": "order_id" },
-    { "data": "shop_id" },
-    { "data": "payment_type" },
-    { "data": "payment_status" },
-    { "data": "scheme" },
-    { "data": "total_amount" },
-    { "data": "date" },
-    {
-      data: null,
-      render: function(data, type, row) {
-        if (row.payment_status.toLowerCase() !== 'paid') {
-          return `<a href="all_order_show_edit.php?order_id=${row.order_id}" class="btn btn-sm btn-primary">Edit Order</a>`;
-        } else {
-          return ''; // or return a disabled button or message
+  $('#usersTable').DataTable({
+    "ajax": "allshopdata.php",
+    "columns": [
+      { "data": "shop_id" },
+      { "data": "name" },
+      { "data": "fathername" },
+      { "data": "gst" },
+      { "data": "address" },
+      { "data": "pin" },
+      { "data": "area" },
+      { "data": "phone" },
+      { "data": "scheme" },
+      {
+        data: null,
+        render: function(data, type, row) {
+        return `<a href="dealer_edit.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Place Order</a>`;
+
         }
       }
-    }
-  ]
-});
-
+    ]
+  });
 });
 
   </script>

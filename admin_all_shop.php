@@ -1,6 +1,6 @@
 <?php
 include 'auth.php';
-authorize('employee'); 
+authorize('admin'); 
 if (isset($_GET['shop_id'])) {
     $_SESSION['shop_id'] = $_GET['shop_id'];
 }
@@ -58,28 +58,27 @@ include "head.php";
 
   <script>
 $(document).ready(function() {
-  $('#usersTable').DataTable({
-    "ajax": "allshopdata.php",
-    "columns": [
-      { "data": "shop_id" },
-      { "data": "name" },
-      { "data": "fathername" },
-      { "data": "gst" },
-      { "data": "address" },
-      { "data": "pin" },
-      { "data": "area" },
-      { "data": "phone" },
-      { "data": "scheme" },
-      {
-        data: null,
-        render: function(data, type, row) {
-        return `<a href="shop_edit.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Edit Details</a>`;
-
-        }
-      }
-    ]
-  });
-});
+$('#usersTable').DataTable({
+  "ajax": "admin_allshopdata.php",
+  "columns": [
+    { "data": "shop_id" },
+    { "data": "name" },
+    { "data": "fathername" },
+    { "data": "gst" },
+    { "data": "address" },
+    { "data": "pin" },
+    { "data": "area" },
+    { "data": "phone" },
+    { "data": "scheme" },
+    {
+            data: null,
+            render: function(data, type, row) {
+             return `<a href="admin_all_shop_show.php?shop_id=${row.shop_id}" class="btn btn-sm btn-primary">Edit</a>`;
+            }
+          }
+        ]
+      });
+    });
 
   </script>
 </body>

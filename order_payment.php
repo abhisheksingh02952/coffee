@@ -1,8 +1,8 @@
 <?php
 include 'auth.php';
 authorize('employee'); 
-if (isset($_GET['order_id'])) {
-    $_SESSION['order_id'] = $_GET['order_id'];
+if (isset($_GET['order_ids'])) {
+    $_SESSION['order_ids'] = $_GET['order_ids'];
 }
 
 ?>
@@ -39,7 +39,9 @@ include "head.php";
             <th>Collection Employee ID</th>
             <th>Collection Employee Date</th>
             <th>Remarks</th>
+<?php if ($_SESSION['position'] == "Distributor Sales") { ?>
             <th>Action</th>
+            <?php } ?>
           </tr>
         </thead>
       </table>
@@ -56,31 +58,37 @@ include "head.php";
   <!-- DataTables JS -->
   <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
-  <script>
+<script>
 $(document).ready(function() {
+  const columns = [
+    { "data": "order_id" },
+    { "data": "shop_id" },
+    { "data": "amount" },
+    { "data": "payment_type" },
+    { "data": "payment_status" },
+    { "data": "order_date" },
+    { "data": "employee_id" },
+    { "data": "collection_date" },
+    { "data": "remarks" }
+    <?php if ($_SESSION['position'] == "Distributor Sales") { ?>
+    ,
+    {
+      data: null,
+      render: function(data, type, row) {
+        return `<a href="order_payment_update.php?order_id=${row.order_id}" class="btn btn-sm btn-primary">Edit Payment</a>`;
+      }
+    }
+    <?php } ?>
+  ];
+
   $('#usersTable').DataTable({
     "ajax": "order_payment_show.php",
-    "columns": [
-      { "data": "order_id" },
-      { "data": "shop_id" },
-      { "data": "amount" },
-      { "data": "payment_type" },
-      { "data": "payment_status" },
-      { "data": "order_date" },
-      { "data": "employee_id" },
-      { "data": "collection_date" },
-      { "data": "remarks" },
-      {
-        data: null,
-        render: function(data, type, row) {
-         return `<a href="order_payment_update.php?order_id=${row.order_id}" class="btn btn-sm btn-primary">Edit Payment</a>`;
-        }
-      }
-    ]
+    "columns": columns
   });
 });
+</script>
 
-  </script>
+
 </body>
 </html>
 

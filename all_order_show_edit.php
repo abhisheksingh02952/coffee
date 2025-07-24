@@ -340,7 +340,8 @@ if (!$result) {
                   </td>
                   <td>
                     <input type="hidden" class="unit-price" value="<?php echo $row['price']; ?>">
-                    <input type="number" step="0.01" class="total-price" name="items[<?php echo $row['product_id']; ?>][price]" value="<?php echo $row['price']; ?>" readonly>
+                    <input type="number" step="0.01" class="total-price" name="items[<?php echo $row['product_id']; ?>][price]" value="<?php echo $row['quantity'] * $row['price']; ?>" readonly>
+
                   </td>
 
                 </tr>
@@ -371,7 +372,7 @@ if (!$result) {
           $("#updateForm").on("submit", function(e) {
             e.preventDefault();
 
-            if (!confirm("Are you sure you to Update Payment?")) {
+            if (!confirm("Are you sure you want to update the order quantity?")) {
               return;
             }
 
@@ -380,30 +381,34 @@ if (!$result) {
               method: "POST",
               data: $(this).serialize(),
               success: function(response) {
-                $("#result").html("<strong>" + response + "</strong>");
+                alert("Order is successfully updated");
+                window.location.href = "all_orders.php";
+              },
+              error: function() {
+                alert("Something went wrong. Please try again.");
               }
             });
+          });
 
-            $("#delete-order").on("click", function() {
-              if (confirm("Are you sure you want to delete this order?")) {
-                const orderId = $("input[name='order_id']").val();
+          $("#delete-order").on("click", function() {
+            if (confirm("Are you sure you want to delete this order?")) {
+              const orderId = $("input[name='order_id']").val();
 
-                $.ajax({
-                  url: "delete_order.php", // This should point to your PHP delete handler
-                  type: "POST",
-                  data: {
-                    order_id: orderId
-                  },
-                  success: function(response) {
-                    alert("Order deleted successfully!");
-                    window.location.href = 'all_orders.php';
-                  },
-                  error: function() {
-                    alert("Failed to delete the order.");
-                  }
-                });
-              }
-            });
+              $.ajax({
+                url: "delete_order.php", // This should point to your PHP delete handler
+                type: "POST",
+                data: {
+                  order_id: orderId
+                },
+                success: function(response) {
+                  alert("Order deleted successfully!");
+                  window.location.href = 'all_orders.php';
+                },
+                error: function() {
+                  alert("Failed to delete the order.");
+                }
+              });
+            }
           });
         </script>
 </body>
