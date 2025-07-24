@@ -29,7 +29,7 @@ function showPanel(name, title, data) {
         content += `<p><strong>Payment Type:</strong> ${data.payment_type}</p>`;
     }
     if (data.payment_date) {
-        content += `<p><strong>Payment Date:</strong> ${data.payment_date}</p>`;
+        content += `<p><strong>Last Payment Date:</strong> ${data.payment_date}</p>`;
     }
     if (data.scheme) {
         content += `<p><strong>Scheme:</strong> ${data.scheme}</p>`;

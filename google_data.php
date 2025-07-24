@@ -37,7 +37,8 @@ while ($row = $result->fetch_assoc()) {
     ]);
 }
 
-function getUserAndDescendants(array $employees, $startId): array {
+function getUserAndDescendants(array $employees, $startId): array
+{
     $result = [];
 
     foreach ($employees as $employee) {
@@ -52,7 +53,8 @@ function getUserAndDescendants(array $employees, $startId): array {
     return $result;
 }
 
-function getDescendants(array $employees, $parentId): array {
+function getDescendants(array $employees, $parentId): array
+{
     $descendants = [];
 
     foreach ($employees as $employee) {
@@ -87,42 +89,51 @@ foreach ($descendants as $emp) {
         FROM orders WHERE shop_id =$shop_id AND is_deleted = 1 ORDER BY id DESC LIMIT 1");
         $order_row = mysqli_fetch_assoc($order_result);
         array_push($shops, [
-                'id' => $row['shop_id'],
-                'pid' => $row['reporting_id'] ?: null,
-                'name' => $row['name'],
-                'position' => 'shop',
-                'order_id' =>  $order_row['order_id'] ?? null,
-                'quantity' => null,
-                'payment_type' => $order_row['payment_type'] ?? null,
-                'payment_status' => $order_row['payment_status'] ?? null,
-                'payment_date' => $order_row['payment_date'] ?? null,
-                'scheme' => $order_row['scheme'] ?? null,
-                'shop_name' => null,
+            'id' => $row['shop_id'],
+            'pid' => $row['reporting_id'] ?: null,
+            'name' => $row['name'],
+            'position' => 'shop',
+            'order_id' =>  $order_row['order_id'] ?? null,
+            'quantity' => null,
+            'payment_type' => $order_row['payment_type'] ?? null,
+            'payment_status' => $order_row['payment_status'] ?? null,
+            'payment_date' => $order_row['payment_date'] ?? null,
+            'scheme' => $order_row['scheme'] ?? null,
+            'shop_name' => null,
         ]);
         $stock_result = $mysqli->query("
         SELECT stock.shop_id, stock.product_id, stock.quantity, products.name FROM stock 
         JOIN products on products.id = stock.product_id WHERE shop_id = $shop_id");
+        $total_quantity = 0;
         while ($stock_row = $stock_result->fetch_assoc()) {
+            $total_quantity += (int) $stock_row['quantity'];
+
             array_push($shops, [
-                'id' => $stock_row['product_id']+1000,
+                'id' => $stock_row['product_id'] + 1000,
                 'pid' => $stock_row['shop_id'] ?: null,
                 'name' => $stock_row['name'],
                 'position' => 'Product quantity ' . $stock_row['quantity'],
-                'order_id' =>  null,
+                'order_id' => null,
                 'quantity' => $stock_row['quantity'],
                 'payment_type' => null,
                 'payment_status' => null,
                 'payment_date' => null,
                 'scheme' => null,
                 'shop_name' => null,
-        ]);
+            ]);
+        }
+        $last_shop_index = count($shops) - $stock_result->num_rows - 1;
+        if (isset($shops[$last_shop_index])) {
+            $shops[$last_shop_index]['quantity'] = $total_quantity;
+            $shops[$last_shop_index]['position'] .= " | Total Qty: $total_quantity";
         }
     }
 }
 
 $descendants = array_merge($descendants, $shops);
 
-function buildTree(array $elements, $parentId = null) {
+function buildTree(array $elements, $parentId = null)
+{
     $branch = [];
 
     foreach ($elements as $element) {
@@ -161,7 +172,8 @@ function buildTree(array $elements, $parentId = null) {
     return $branch;
 }
 
-function buildTreeFromStart(array $elements, $startId) {
+function buildTreeFromStart(array $elements, $startId)
+{
     // Map all elements by their ID for quick lookup
     $map = [];
     foreach ($elements as $el) {
@@ -200,5 +212,3 @@ $tree = buildTreeFromStart($descendants, $start_id);
 
 header('Content-Type: application/json');
 echo json_encode($tree, JSON_PRETTY_PRINT); // assuming one root node
-
-?>
