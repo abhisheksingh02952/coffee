@@ -17,7 +17,7 @@ $result = $mysqli->query("
         employees.reporting_id, 
         employees.name AS user_name, 
         employees.position
-    FROM employees 
+    FROM employees WHERE is_deleted = 1; 
 ");
 
 $users = [];
@@ -72,7 +72,7 @@ $shops = [];
 foreach ($descendants as $emp) {
     $employ = $emp['id'];
     $shop_result = $mysqli->query("
-    SELECT shop.shop_id, shop.reporting_id ,shop.name FROM shop where reporting_id = $employ");
+    SELECT shop.shop_id, shop.reporting_id ,shop.name FROM shop where reporting_id = $employ AND is_deleted = 1");
     while ($row = $shop_result->fetch_assoc()) {
         $shop_id = $row['shop_id'];
         $order_result = $mysqli->query("
@@ -84,7 +84,7 @@ foreach ($descendants as $emp) {
             orders.payment_date,
             orders.shop_id,
             orders.total_amount
-        FROM orders WHERE shop_id =$shop_id ORDER BY id DESC LIMIT 1");
+        FROM orders WHERE shop_id =$shop_id AND is_deleted = 1 ORDER BY id DESC LIMIT 1");
         $order_row = mysqli_fetch_assoc($order_result);
         array_push($shops, [
                 'id' => $row['shop_id'],
