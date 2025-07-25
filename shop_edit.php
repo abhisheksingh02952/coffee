@@ -173,7 +173,7 @@ if (isset($_GET['shop_id'])) {
             <input type="text" placeholder="Enter Father's Name" name="fathername" id="fathername" required><br>
 
             <label for="name"><b>GST Number</b></label>
-            <input type="text" placeholder="Enter GST NUMBER" name="gst" id="gst" ><br>
+            <input type="text" placeholder="Enter GST NUMBER" name="gst" id="gst"><br>
 
             <label for="phone"><b>Phone Number</b></label>
             <input type="number" placeholder="Enter Phone Number" name="phone" id="phone" required><br>
@@ -227,7 +227,7 @@ if (isset($_GET['shop_id'])) {
             $("#Pin").val(data.pin);
             $("#area").val(data.area);
             $("#scheme").val(data.scheme);
-            
+
           }
         },
       });
@@ -256,24 +256,26 @@ if (isset($_GET['shop_id'])) {
       });
 
       // Delete button handler
-     $("#delete-employee").on("click", function () {
-  if (confirm("Are you sure you want to delete this employee?")) {
-    const shop_id = $("#shop_id").val();
+      $("#delete-employee").on("click", function() {
+        if (confirm("Are you sure you want to delete this employee?")) {
+          const shop_id = $("#shop_id").val();
 
-    $.ajax({
-      url: "delete-shop.php",
-      type: "POST",
-      data: { shop_id: shop_id },
-      success: function (response) {
-        alert("Shop deleted successfully!");
-        window.location.href = 'all_shop.php';
-      },
-      error: function () {
-        alert("Failed to delete shop.");
-      }
-    });
-  }
-});
+          $.ajax({
+            url: "delete-shop.php",
+            type: "POST",
+            data: {
+              shop_id: shop_id
+            },
+            success: function(response) {
+              alert("Shop deleted successfully!");
+              window.location.href = 'all_shop.php';
+            },
+            error: function() {
+              alert("Failed to delete shop.");
+            }
+          });
+        }
+      });
 
 
     });

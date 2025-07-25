@@ -39,6 +39,8 @@ include "head.php";
             <th>Area</th>
             <th>Phone</th>
             <th>Scheme</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -69,6 +71,8 @@ $(document).ready(function() {
       { "data": "pin" },
       { "data": "area" },
       { "data": "phone" },
+      { "data": "latitude" },
+      { "data": "longitude" },
       { "data": "scheme" },
       {
         data: null,

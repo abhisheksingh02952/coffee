@@ -19,9 +19,7 @@ if (isset($_GET['shop_id'])) {
   <div class="row">
     <!-- Sidebar -->
    <?php
-
       include "sidebar.php";
-
    ?>
 
     <!-- Main Content Area -->
@@ -37,6 +35,9 @@ if (isset($_GET['shop_id'])) {
             <th>Area</th>
             <th>Phone</th>
             <th>Scheme</th>
+             <th>Stock Update Latitude</th>
+              <th>Stock Update Longitude</th>
+               <th>Stock Update Employee ID</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -66,6 +67,9 @@ $(document).ready(function() {
       { "data": "area" },
       { "data": "phone" },
       { "data": "scheme" },
+      { "data": "stock_latitude" },
+      { "data": "stock_longitude" },
+      { "data": "stock_user_id" },
       {
         data: null,
         render: function(data, type, row) {
