@@ -79,7 +79,7 @@ authorize('employee');
       border-radius: 5px;
       cursor: pointer;
       width: 30%;
-      flex:  auto;
+      flex: auto;
       font-size: 16px;
       transition: background-color 0.3s ease;
     }
@@ -111,10 +111,41 @@ authorize('employee');
       flex-wrap: wrap;
     }
 
+    button.update {
+      background-color: #4761d3;
+      color: white;
+    }
+
+    button.update:hover {
+      background-color: #3749b5;
+    }
+
+    button.cancelbtn {
+      background-color: #6c757d;
+      color: white;
+    }
+
+    button.cancelbtn:hover {
+      background-color: #5a6268;
+    }
+
+    button.deletebtn {
+      background-color: #d9534f;
+      color: white;
+    }
+
+    button.deletebtn:hover {
+      background-color: #c9302c;
+    }
+
+    /* Responsive */
     @media (max-width: 600px) {
-      button.update {
+      .clearfix {
+        flex-direction: column;
+      }
+
+      button {
         width: 100%;
-        margin-bottom: 10px;
       }
     }
   </style>

@@ -15,7 +15,6 @@ if (isset($_GET['shop_id'])) {
   include "head.php";
   ?>
   <style>
-    
     * {
       box-sizing: border-box;
       font-family: Arial, sans-serif;
@@ -135,12 +134,126 @@ if (isset($_GET['shop_id'])) {
       flex-wrap: wrap;
     }
 
-    @media (max-width: 600px) {
-      button.update {
+  button.update {
+            background-color: #4761d3;
+            color: white;
+        }
+
+        button.update:hover {
+            background-color: #3749b5;
+        }
+
+        button.cancelbtn {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        button.cancelbtn:hover {
+            background-color: #5a6268;
+        }
+
+        button.deletebtn {
+            background-color: #d9534f;
+            color: white;
+        }
+
+        button.deletebtn:hover {
+            background-color: #c9302c;
+        }
+
+        .clearfix {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    /* Child Elements */
+    .clearfix > * {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .clearfix > *:hover {
+      background-color: #0056b3;
+    }
+
+    /* 🟡 Extra Small Devices (Phones, ≤ 480px) */
+    @media (max-width: 480px) {
+      .clearfix {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .clearfix > * {
         width: 100%;
         margin-bottom: 10px;
       }
     }
+
+    /* 🟡 Small Devices (Phones Landscape, ≤ 600px) */
+    @media (max-width: 600px) {
+      .clearfix {
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .clearfix > * {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* 🟠 Medium Devices (Tablets, 601px - 768px) */
+    @media (min-width: 601px) and (max-width: 768px) {
+      .clearfix {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .clearfix > * {
+        flex: 1 1 45%;
+        margin: 10px;
+      }
+    }
+
+    /* 🔵 Large Devices (Small Desktops, 769px - 1024px) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .clearfix {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .clearfix > * {
+        flex: 1 1 30%;
+      }
+    }
+
+    /* 🟣 Extra Large Devices (Desktops, > 1024px) */
+    @media (min-width: 1025px) {
+      .clearfix {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .clearfix > * {
+        flex: 1 1 20%;
+      }
+    }
+  
+
   </style>
 
 </head>
@@ -223,7 +336,7 @@ if (isset($_GET['shop_id'])) {
             $("#name").val(data.name);
             $("#fathername").val(data.fathername);
             $("#gst").val(data.gst);
-            $("#phone").val(data.phone);          
+            $("#phone").val(data.phone);
             $("#Address").val(data.address);
             $("#Pin").val(data.pin);
             $("#area").val(data.area);

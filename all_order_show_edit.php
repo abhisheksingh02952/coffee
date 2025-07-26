@@ -33,187 +33,280 @@ if (!$result) {
   include "head.php";
   ?>
   <style>
-   /* Base Reset */
-* {
-  box-sizing: border-box;
-  font-family: Arial, sans-serif;
-}
+    /* Base Reset */
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
 
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  color: #000;
-  background-color: #fff;
-}
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      color: #000;
+      background-color: #fff;
+    }
 
-/* Layout Structure */
-.container-fluid {
-  height: 100%;
-}
+    /* Layout Structure */
+    .container-fluid {
+      height: 100%;
+    }
 
-.row {
-  display: flex;
-  min-height: 100vh;
-}
+    .row {
+      display: flex;
+      min-height: 100vh;
+    }
 
-/* Sidebar */
-#sidebar {
-  min-height: 100vh;
-  background: #2b2b2b;
-  color: white;
-}
+    /* Sidebar */
+    #sidebar {
+      min-height: 100vh;
+      background: #2b2b2b;
+      color: white;
+    }
 
-#sidebar .nav-link {
-  color: #ccc;
-}
+    #sidebar .nav-link {
+      color: #ccc;
+    }
 
-#sidebar .nav-link.active,
-#sidebar .nav-link:hover {
-  background-color: #495057;
-  color: #ffc107 !important;
-}
+    #sidebar .nav-link.active,
+    #sidebar .nav-link:hover {
+      background-color: #495057;
+      color: #ffc107 !important;
+    }
 
-/* Main Content */
-main {
-  flex-grow: 1;
-  padding: 20px;
-}
+    /* Main Content */
+    main {
+      flex-grow: 1;
+      padding: 20px;
+    }
 
-/* Form Container */
-.container {
-  max-width: 700px;
-  margin: auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
+    /* Form Container */
+    .container {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
 
-/* Typography */
-h1 {
-  text-align: center;
-  margin-bottom: 10px;
-  color: #333;
-}
+    /* Typography */
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+      color: #333;
+    }
 
-label {
-  display: block;
-  margin-bottom: 6px;
-  font-weight: bold;
-  color: #333;
-}
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
+    }
 
-/* Inputs & Selects */
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="number"],
-select,
-input[type="file"] {
-  width: 100%;
-  padding: 12px 15px;
-  margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  background: #f9f9f9;
-  color: #000;
-}
+    /* Inputs & Selects */
+    input[type="text"],
+    input[type="password"],
+    input[type="date"],
+    input[type="number"],
+    select,
+    input[type="file"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+      color: #000;
+    }
 
-input:focus,
-select:focus {
-  background-color: #eee;
-  outline: none;
-}
+    input:focus,
+    select:focus {
+      background-color: #eee;
+      outline: none;
+    }
 
-select {
-  appearance: none;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 16px 16px;
-}
+    select {
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px 16px;
+    }
 
-/* Table */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  background-color: #f5f5f5;
-  color: #000;
-}
+    /* Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background-color: #f5f5f5;
+      color: #000;
+    }
 
-th, td {
-  padding: 12px;
-  border: 1px solid #ccc;
-  text-align: center;
-}
+    th,
+    td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
 
-th {
-  background-color: #ddd;
-}
+    th {
+      background-color: #ddd;
+    }
 
-/* Button Styles */
-.clearfix {
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-  flex-wrap: wrap;
-}
+    /* Button Styles */
+    .clearfix {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
 
-button {
-  border: none;
-  padding: 14px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  flex: 1;
-  min-width: 100px;
-  transition: background-color 0.3s ease;
-}
+    button {
+      border: none;
+      padding: 14px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      flex: 1;
+      min-width: 100px;
+      transition: background-color 0.3s ease;
+    }
 
-button.update {
-  background-color: #4761d3;
-  color: white;
-}
+    button.update {
+      background-color: #4761d3;
+      color: white;
+    }
 
-button.update:hover {
-  background-color: #3749b5;
-}
+    button.update:hover {
+      background-color: #3749b5;
+    }
 
-button.cancelbtn {
-  background-color: #6c757d;
-  color: white;
-}
+    button.cancelbtn {
+      background-color: #6c757d;
+      color: white;
+    }
 
-button.cancelbtn:hover {
-  background-color: #5a6268;
-}
+    button.cancelbtn:hover {
+      background-color: #5a6268;
+    }
 
-button.deletebtn {
-  background-color: #d9534f;
-  color: white;
-}
+    button.deletebtn {
+      background-color: #d9534f;
+      color: white;
+    }
 
-button.deletebtn:hover {
-  background-color: #c9302c;
-}
+    button.deletebtn:hover {
+      background-color: #c9302c;
+    }
 
-/* Responsive */
-@media (max-width: 600px) {
-  .clearfix {
-    flex-direction: column;
-  }
+    /* Responsive */
+    @media (max-width: 600px) {
+      .clearfix {
+        flex-direction: column;
+      }
 
-  button {
-    width: 100%;
-  }
-}
+      button {
+        width: 100%;
+      }
+    }
+    .clearfix {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
 
+    /* Child Elements */
+    .clearfix > * {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .clearfix > *:hover {
+      background-color: #0056b3;
+    }
+
+    /* 🟡 Extra Small Devices (Phones, ≤ 480px) */
+    @media (max-width: 480px) {
+      .clearfix {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .clearfix > * {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* 🟡 Small Devices (Phones Landscape, ≤ 600px) */
+    @media (max-width: 600px) {
+      .clearfix {
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+
+      .clearfix > * {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+    }
+
+    /* 🟠 Medium Devices (Tablets, 601px - 768px) */
+    @media (min-width: 601px) and (max-width: 768px) {
+      .clearfix {
+        flex-direction: row;
+        justify-content: center;
+      }
+
+      .clearfix > * {
+        flex: 1 1 45%;
+        margin: 10px;
+      }
+    }
+
+    /* 🔵 Large Devices (Small Desktops, 769px - 1024px) */
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .clearfix {
+        flex-direction: row;
+        justify-content: space-around;
+      }
+
+      .clearfix > * {
+        flex: 1 1 30%;
+      }
+    }
+
+    /* 🟣 Extra Large Devices (Desktops, > 1024px) */
+    @media (min-width: 1025px) {
+      .clearfix {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+
+      .clearfix > * {
+        flex: 1 1 20%;
+      }
+    }
+  
   </style>
 
 </head>

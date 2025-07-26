@@ -14,8 +14,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['order_id'])) {
     $order_id = mysqli_real_escape_string($conn, $_POST['order_id']);
 
     // Soft delete both records
-    $sql1 = "UPDATE orders SET is_deleted = 1 WHERE order_id = '$order_id'";
-    $sql2 = "UPDATE payments SET is_deleted = 1 WHERE order_id = '$order_id'";
+    $sql1 = "UPDATE orders SET is_deleted = 0 WHERE order_id = '$order_id'";
+    $sql2 = "UPDATE payments SET is_deleted = 0 WHERE order_id = '$order_id'";
 
     $success1 = mysqli_query($conn, $sql1);
     $success2 = mysqli_query($conn, $sql2);
