@@ -218,9 +218,6 @@ if (isset($_GET['id'])) {
               <option value="employee">Employee</option>
             </select><br>
 
-            <label for="image"><b>Image</b></label>
-            <input type="file" name="image" id="image" accept="image/*" required><br>
-
             <div class="clearfix">
               <button type="button" id="delete-employee" class="delete">Delete</button>
               <button type="button" onclick="location.href='admin_allemployee.php'" class="cancelbtn">Cancel</button>
@@ -263,7 +260,6 @@ if (isset($_GET['id'])) {
             $("#gender").val(data.gender);
             $("#position").val(data.position);
             $("#role").val(data.role);
-            $("#image").val(data.image);
           }
         },
       });

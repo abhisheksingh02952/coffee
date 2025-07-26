@@ -2,40 +2,34 @@
 // Connect to database
 $conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
 
-// Get POST values
-$name = $_POST['name'];
-$fathername = $_POST['fathername'];
-$mothername = $_POST['mothername'];
-$phone = $_POST['phone'];
-$email = $_POST['email'];
-$address = $_POST['Address'];
-$username = $_POST['email'];
-$pin = $_POST['Pin'];
-$dob = $_POST['dob'];
-$gender = $_POST['gender'];
-$position = $_POST['position'];
-$password  = $_POST['password'];
-$reportingid  = $_POST['reporting_id'];
-$role  = $_POST['role'];
+// Get POST values safely
+$name         = $_POST['name'] ?? '';
+$fathername   = $_POST['fathername'] ?? '';
+$mothername   = $_POST['mothername'] ?? '';
+$phone        = $_POST['phone'] ?? '';
+$email        = $_POST['email'] ?? '';
+$address      = $_POST['Address'] ?? '';
+$username     = $username['username'];
+$pin          = $_POST['Pin'] ?? '';
+$dob          = $_POST['dob'] ?? '';
+$gender       = $_POST['gender'] ?? '';
+$position     = $_POST['position'] ?? '';
+$password     = $_POST['password'] ?? '';
+$reportingid  = $_POST['reporting_id'] ?? '';
+$role         = $_POST['role'] ?? '';
 
-// Image Upload
-$image_name = $_FILES['image']['name'];
-$image_tmp = $_FILES['image']['tmp_name'];
-$image_folder = "uploads/" . basename($image_name);
 
-// Move uploaded image to folder
-if (move_uploaded_file($image_tmp, $image_folder)) {
-    // Insert into database
-    $sql = "INSERT INTO employees (name, fathername, mothername, phone, email, address, pin, dob, gender, password, position, image, reporting_id, username, role)
-        VALUES ('$name', '$fathername', '$mothername', '$phone', '$email', '$address', '$pin', '$dob', '$gender', '$password', '$position', '$image_name', '$reportingid', '$username', '$role')";
+// Insert SQL query
+$sql = "INSERT INTO employees 
+        (name, fathername, mothername, phone, email, address, pin, dob, gender,username, password, position, reporting_id, username, role)
+        VALUES 
+        ('$name', '$fathername', '$mothername', '$phone', '$email', '$address', '$pin', '$dob', '$gender','$username', '$Password', '$position', '$reportingid', '$username', '$role')";
 
-    if (mysqli_query($conn, $sql)) {
-        echo "Employee added successfully.";
-    } else {
-        echo "Error: " . mysqli_error($conn);
-    }
+// Execute query
+if (mysqli_query($conn, $sql)) {
+    echo "✅ Employee added successfully.";
 } else {
-    echo "Failed to upload image.";
+    echo "❌ Error: " . mysqli_error($conn);
 }
 
 // Close connection

@@ -189,9 +189,6 @@ include "head.php";
               <option value="employee">Employee</option>
             </select><br>
 
-            <label for="image"><b>Image</b></label>
-            <input type="file" name="image" id="image" accept="image/*" required><br>
-
             <div class="clearfix">
                  <button type="button" onclick="location.href=''" class="cancelbtn">Cancel</button>
             <button type="submit" id="add-employee-data" class="update">Submiit</button>
