@@ -2,7 +2,8 @@
 
 session_start();
 
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

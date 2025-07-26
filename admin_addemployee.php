@@ -9,6 +9,7 @@ authorize('admin');
 include "head.php";
 ?>
 <style>
+  
       * {
         box-sizing: border-box;
         font-family: Arial, sans-serif;

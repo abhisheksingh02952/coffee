@@ -1,18 +1,20 @@
- <nav id="sidebar" class="col-md-2 bg-dark text-white py-4">
-      <h4 class="text-center"><a href="#" class="nav-link text-white">Welcome <?php echo $_SESSION['name']; ?></a></a></h4>
-      <ul class="nav flex-column">
-        <li class="nav-item"><a href="dashboard.php" class="nav-link text-white py-4">Dashboard</a></li>
-        <li class="nav-item"><a href="profile.php" id="profile-data"  class="nav-link text-white">Profile</a></li>
-        <li class="nav-item"><a href="addnewdealer.php" id="profile-data"  class="nav-link text-white">Add SHOP</a></li>
-        <li class="nav-item"><a href="all_shop.php" id="profile-data"  class="nav-link text-white">All SHOP</a></li>
-        <li class="nav-item"><a href="place_order.php" id="profile-data"  class="nav-link text-white">Place Order</a></li>
-        <li class="nav-item"><a href="all_orders.php" id="profile-data"  class="nav-link text-white">All Orders</a></li>
-        <li class="nav-item"><a href="order_payment.php" id="profile-data"  class="nav-link text-white">Order Payment</a></li>
-        <li class="nav-item"><a href="task.php" id="profile-data"  class="nav-link text-white">Task</a></li>
-        <li class="nav-item"><a href="attendance.php" id="profile-data"  class="nav-link text-white">Attendance</a></li>
-        <li class="nav-item"><a href="shop_stock.php" id="profile-data"  class="nav-link text-white">Check Shop Stock</a></li>
-        <li class="nav-item"><a href="shop_stock_update.php" id="profile-data"  class="nav-link text-white">Update Shop Stock</a></li>
-        <li class="nav-item"><a href="login.php" class="nav-link text-white">Login</a></li>
-        <li class="nav-item"><a href="logout.php" class="nav-link text-white">Logout</a></li>
-      </ul>
+    <nav id="sidebarMenu" class="col-md-2 d-md-block bg-dark  sidebar collapse show py-4">
+      <div class="position-sticky">
+        <h5 class="text-center text-white mb-4 d-none d-md-block">
+          Welcome <?php echo $_SESSION['name']; ?>
+        </h5>
+        <ul class="nav flex-column">
+          <li class="nav-item"><a href="dashboard.php" class="nav-link">Dashboard</a></li>
+          <li class="nav-item"><a href="profile.php" class="nav-link">Profile</a></li>
+          <li class="nav-item"><a href="addnewdealer.php" class="nav-link">Add SHOP</a></li>
+          <li class="nav-item"><a href="all_shop.php" class="nav-link">All SHOP</a></li>
+          <li class="nav-item"><a href="place_order.php" class="nav-link">Place Order</a></li>
+          <li class="nav-item"><a href="all_orders.php" class="nav-link">All Orders</a></li>
+          <li class="nav-item"><a href="order_payment.php" class="nav-link">Order Payment</a></li>
+          <li class="nav-item"><a href="shop_stock.php" class="nav-link">Check Shop Stock</a></li>
+          <li class="nav-item"><a href="shop_stock_update.php" class="nav-link">Update Shop Stock</a></li>
+          <li class="nav-item"><a href="login.php" class="nav-link">Login</a></li>
+          <li class="nav-item"><a href="logout.php" class="nav-link">Logout</a></li>
+        </ul>
+      </div>
     </nav>

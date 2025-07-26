@@ -1,7 +1,8 @@
 <?php
 session_start();
 // Create connection
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 
 if (!isset($_SESSION['task_id'])) {    

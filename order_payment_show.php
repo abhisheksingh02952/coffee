@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 $sql = "SELECT * FROM payments WHERE is_deleted = 1";
 $result = mysqli_query($conn, $sql) or die("Query Failed");

@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$conn = mysqli_connect("localhost", "root", "", "test");
+include 'db.php';
+
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['shop_id'])) {

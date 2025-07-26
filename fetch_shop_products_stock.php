@@ -1,5 +1,6 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "test");
+include 'db.php';
+
 
 $shop_id = isset($_GET['shop_id']) ? (int)$_GET['shop_id'] : 0;
 

@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 if (!isset($_SESSION['user_id'])) {
     echo json_encode(["error" => "User not authenticated"]);

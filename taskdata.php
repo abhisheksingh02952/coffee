@@ -2,7 +2,8 @@
 session_start();
 
 // Create database connection
-$conn = mysqli_connect("localhost", "root", "", "test")  or die ("Connection Failed");
+include 'db.php';
+
 
 // Check if user is authenticated
 if (!isset($_SESSION['user_id'])) {

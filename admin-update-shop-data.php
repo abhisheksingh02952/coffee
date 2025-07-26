@@ -1,5 +1,6 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 $shop_id = $_POST['shop_id'];
 $reporting_id = $_POST['reporting_id'];

@@ -15,6 +15,8 @@ if (isset($_GET['shop_id'])) {
   include "head.php";
   ?>
   <style>
+
+    
     * {
       box-sizing: border-box;
       font-family: Arial, sans-serif;
@@ -150,7 +152,7 @@ if (isset($_GET['shop_id'])) {
       <!-- Sidebar -->
 
       <?php
-      include "admin_sidebar.php";
+      include "sidebar.php";
       ?>
 
       <!-- Form Content -->

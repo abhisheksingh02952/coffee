@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-$conn = mysqli_connect("localhost", "root", "", "test");
+include 'db.php';
 
 // Set timezone
 mysqli_query($conn, "SET time_zone = '+05:30'");

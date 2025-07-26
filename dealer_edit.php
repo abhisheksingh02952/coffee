@@ -13,7 +13,8 @@ if (isset($_GET['shop_id']) && isset($_GET['scheme'])) {
 </script>
 
 <?php
-$conn = new mysqli("localhost", "root", "", "test");
+include 'db.php';
+
 
 // Fetch products
 $product_result = $conn->query("SELECT id, name FROM products");
@@ -29,6 +30,8 @@ while ($row = $product_result->fetch_assoc()) {
     include "head.php";
     ?>
 <style>
+
+  
           * {
             box-sizing: border-box;
             font-family: Arial, sans-serif;

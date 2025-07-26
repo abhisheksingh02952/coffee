@@ -15,6 +15,7 @@ if (isset($_GET['shop_id'])) {
   include "head.php";
   ?>
   <style>
+    
     * {
       box-sizing: border-box;
       font-family: Arial, sans-serif;

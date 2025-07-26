@@ -1,6 +1,6 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "test");
-if (!$conn) die("Connection failed: " . mysqli_connect_error());
+include 'db.php';
+
 
 $order_id = isset($_POST['order_id']) ? mysqli_real_escape_string($conn, $_POST['order_id']) : '';
 if ($order_id === '') {

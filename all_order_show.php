@@ -2,7 +2,8 @@
 session_start();
 
 // Create connection
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 // SQL query
 $sql = "SELECT * FROM orders WHERE is_deleted = 1";

@@ -3,7 +3,8 @@
 session_start();
 
 
-$conn = new mysqli("localhost", "root", "", "test");
+include 'db.php';
+
 if ($conn->connect_error) {
     die(json_encode(["error" => "Connection Failed"]));
 }

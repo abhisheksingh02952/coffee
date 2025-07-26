@@ -1,7 +1,8 @@
 <?php
 session_start(); 
 
-$conn = new mysqli("localhost", "root", "", "test")  or die("Connection Failed");
+include 'db.php';
+
 
 if (!isset($_SESSION['user_id'])) {
     die("User not logged in.");

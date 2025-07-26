@@ -1,6 +1,7 @@
 <?php
 
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 $id = $_POST['id'];
 $name = $_POST['name'];

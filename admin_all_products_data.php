@@ -3,7 +3,8 @@
 session_start();
 
 // Create connection
-$conn = mysqli_connect("localhost","root","","test") or die("Connect Error");
+include 'db.php';
+
 
 $sql = "SELECT * FROM products WHERE is_deleted = 1;";
 

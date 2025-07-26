@@ -1,5 +1,6 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "test");
+include 'db.php';
+
 
 $result = $mysqli->query("SELECT user_id, parent_id, em_name, position, sale  FROM user_db");
 

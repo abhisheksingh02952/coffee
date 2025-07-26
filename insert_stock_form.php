@@ -2,7 +2,8 @@
 include 'auth.php';
 authorize('employee');
 
-$conn = mysqli_connect("localhost", "root", "", "test");
+include 'db.php';
+
 
 if (isset($_GET['shop_id'])) {
     $_SESSION['shop_id'] = $_GET['shop_id'];
@@ -18,6 +19,8 @@ $result = mysqli_query($conn, "SELECT p.id AS product_id, p.name, COALESCE(s.qua
 <head>
     <?php include "head.php"; ?>
     <style>
+
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #f8f9fa;

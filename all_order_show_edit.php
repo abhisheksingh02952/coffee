@@ -5,7 +5,8 @@ authorize('employee');
 
 $order_id = isset($_GET['order_id']) ? $_GET['order_id'] : '';
 
-$conn = mysqli_connect("localhost", "root", "", "test");
+include 'db.php';
+
 
 $order_id_safe = mysqli_real_escape_string($conn, $order_id);
 
@@ -32,274 +33,187 @@ if (!$result) {
   include "head.php";
   ?>
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-      color: #444;
-    }
-
-    input[type="text"],
-    input[type="password"],
-    input[type="date"],
-    input[type="number"],
-    select,
-    input[type="file"] {
-      width: 53%;
-      padding: 12px 15px;
-      margin-bottom: 20px;
-      border: none;
-      border-radius: 5px;
-      background: #f1f1f1;
-      transition: background-color 0.3s ease;
-    }
-
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    input[type="date"]:focus,
-    input[type="number"]:focus,
-    select:focus,
-    input[type="file"]:focus {
-      background-color: #e0e0e0;
-      outline: none;
-    }
-
-    select {
-      appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      background-size: 16px 16px;
-    }
-
-    button.update {
-      background-color: #4761d3;
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      margin: 10px 5px 0 0;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 30%;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-
-    button.update:hover {
-      background-color: #3749b5;
-    }
-
-    .clearfix {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 600px) {
-      button.update {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
-
-    /* Full-width input fields */
-    input[type=text],
-    input[type=password] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    input[type=text]:focus,
-    input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    hr {
-      border: 1px solid #f1f1f1;
-      margin-bottom: 25px;
-    }
-
-    /* Set a style for all buttons */
-    /* Full-width input fields */
-    input[type=text],
-    input[type=password] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    input[type=text]:focus,
-    input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    hr {
-      border: 1px solid #f1f1f1;
-      margin-bottom: 25px;
-    }
-
-    /* Set a style for all buttons */
-    .buttone {
-      text-align: center;
-      margin: 10px;
-      float: right;
-      background-color: rgb(71, 97, 211);
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 20%;
-      opacity: 0.9;
-    }
-
-    .button:hover {
-      opacity: 1;
-    }
-
-    .buttons {
-      text-align: center;
-      margin: 10px;
-      float: right;
-      background-color: rgb(71, 97, 211);
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 30%;
-      opacity: 0.9;
-    }
-
-    .buttons:hover {
-      opacity: 1;
-    }
+   /* Base Reset */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
 
 
-    /* Submit Button */
-    button.update {
-      background-color: #4761d3;
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      margin: 10px 5px 0 0;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 30%;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
 
-    button.update:hover {
-      background-color: #3749b5;
-    }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  background-color: #fff;
+}
 
-    /* Cancel Button – Styled same as Update but different color */
-    button.cancelbtn {
-      background-color: #3749b5;
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      margin: 10px 5px 0 0;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 30%;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
+/* Layout Structure */
+.container-fluid {
+  height: 100%;
+}
 
-    button.cancelbtn:hover {
-      background-color: #3749b5;
-    }
+.row {
+  display: flex;
+  min-height: 100vh;
+}
 
-    /* Delete Button – Red */
-    button.deletebtn {
-      background-color: #d9534f;
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      margin: 10px 5px 0 0;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 30%;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
+/* Sidebar */
+#sidebar {
+  min-height: 100vh;
+  background: #2b2b2b;
+  color: white;
+}
 
-    button.deletebtn:hover {
-      background-color: #c9302c;
-    }
+#sidebar .nav-link {
+  color: #ccc;
+}
 
+#sidebar .nav-link.active,
+#sidebar .nav-link:hover {
+  background-color: #495057;
+  color: #ffc107 !important;
+}
 
-    a.button {
-      display: inline-block;
-      text-align: center;
-      color: white;
-      text-decoration: none;
-      padding: 14px 20px;
-      margin: 8px 0;
-      width: 100%;
-    }
+/* Main Content */
+main {
+  flex-grow: 1;
+  padding: 20px;
+}
 
-    /* Add padding to container elements */
-    .container {
-      padding: 16px;
-    }
+/* Form Container */
+.container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 
-    /* Clear floats */
-    .clearfix::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
+/* Typography */
+h1 {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #333;
+}
 
-    /* Change styles for cancel button and signup button on extra small screens */
-    @media screen and (max-width: 300px) {
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: #333;
+}
 
-      .cancelbtn,
-      .update {
-        width: 100%;
-      }
-    }
+/* Inputs & Selects */
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="number"],
+select,
+input[type="file"] {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background: #f9f9f9;
+  color: #000;
+}
 
-    #sidebar {
-      min-height: 100vh;
-    }
+input:focus,
+select:focus {
+  background-color: #eee;
+  outline: none;
+}
 
-    .nav-link.active,
-    .nav-link:hover {
-      background-color: #495057;
-      color: #ffc107 !important;
-    }
+select {
+  appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px 16px;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #f5f5f5;
+  color: #000;
+}
+
+th, td {
+  padding: 12px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+th {
+  background-color: #ddd;
+}
+
+/* Button Styles */
+.clearfix {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+button {
+  border: none;
+  padding: 14px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  flex: 1;
+  min-width: 100px;
+  transition: background-color 0.3s ease;
+}
+
+button.update {
+  background-color: #4761d3;
+  color: white;
+}
+
+button.update:hover {
+  background-color: #3749b5;
+}
+
+button.cancelbtn {
+  background-color: #6c757d;
+  color: white;
+}
+
+button.cancelbtn:hover {
+  background-color: #5a6268;
+}
+
+button.deletebtn {
+  background-color: #d9534f;
+  color: white;
+}
+
+button.deletebtn:hover {
+  background-color: #c9302c;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .clearfix {
+    flex-direction: column;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
   </style>
 
 </head>

@@ -12,6 +12,80 @@ if (isset($_GET['shop_id'])) {
     <?php
 include "head.php";
 ?>
+
+<style>
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  .row {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  #sidebar {
+    background-color: #2b2b2b;
+    color: white;
+    min-height: 100vh;
+  }
+
+  #sidebar .nav-link {
+    color: #ccc;
+  }
+
+  #sidebar .nav-link.active,
+  #sidebar .nav-link:hover {
+    background-color: #495057;
+    color: #ffc107 !important;
+  }
+
+  main {
+    flex-grow: 1;
+    background-color: #fff;
+    padding: 20px;
+  }
+
+  .update {
+    background-color: #4761d3;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+
+  .update:hover {
+    background-color: #3749b5;
+  }
+
+  .clearfix {
+    margin-top: 20px;
+  }
+
+  /* Flex container for DataTable */
+.datatable-flex-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* space between elements if needed */
+}
+
+/* Optional: make table scrollable if overflow occurs */
+#usersTable {
+  width: 100%;
+  overflow-x: auto;
+  display: block;
+}
+
+  
+</style>
 </head>
 <body>
 

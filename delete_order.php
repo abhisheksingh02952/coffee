@@ -2,7 +2,8 @@
 include 'auth.php';
 authorize('employee');
 
-$conn = mysqli_connect("localhost", "root", "", "test");
+include 'db.php';
+
 if (!$conn) {
     http_response_code(500);
     echo "Connection failed";

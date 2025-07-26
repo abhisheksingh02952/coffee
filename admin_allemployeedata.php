@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connect Error");
+include 'db.php';
+
 
 $sql = "SELECT * FROM employees WHERE is_deleted = 1";
 $result = mysqli_query($conn, $sql) or die("Query Error");

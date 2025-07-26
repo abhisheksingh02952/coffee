@@ -1,7 +1,8 @@
 <?php
 
 session_start();
-$conn = new mysqli("localhost", "root", "", "test");
+include 'db.php';
+
 
 $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'] ?? null;

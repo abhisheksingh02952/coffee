@@ -1,6 +1,7 @@
 <?php
 // Connect to database
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 // Get POST values safely
 $name         = $_POST['name'] ?? '';

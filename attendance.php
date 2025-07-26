@@ -10,6 +10,8 @@ authorize('employee');
       <?php
 include "head.php";
 ?>
+
+
 </head>
 <body>
 

@@ -9,6 +9,8 @@ authorize('admin');
         include "head.php";
     ?>
 <style>
+
+  
      * {box-sizing: border-box}
 
       /* Full-width input fields */

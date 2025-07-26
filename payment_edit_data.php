@@ -1,6 +1,7 @@
 <?php
 session_start();
-$conn = mysqli_connect("localhost", "root", "", "test") or die("Connection Failed");
+include 'db.php';
+
 
 // Use proper key name — assuming it's order_id (not order_id)
 $order_id = isset($_SESSION['order_id']) ? mysqli_real_escape_string($conn, $_SESSION['order_id']) : '';

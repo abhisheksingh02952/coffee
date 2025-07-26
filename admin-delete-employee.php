@@ -1,8 +1,8 @@
 <?php
 include 'auth.php';
 authorize('admin');
+include 'db.php';
 
-$conn = mysqli_connect("localhost", "root", "", "test");
 if (!$conn) die("Connection failed: " . mysqli_connect_error());
 
 if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['user_id'])) {

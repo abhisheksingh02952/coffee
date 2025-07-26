@@ -1,5 +1,6 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "sales_db");
+include 'db.php';
+
 
 function getEmployees($parent_id = NULL, $conn) {
     $data = [];
