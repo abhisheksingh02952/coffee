@@ -42,7 +42,7 @@ authorize('employee');
         margin: 8px 0;
         border: none;
         cursor: pointer;
-        width: 20%;
+        width: 35%;
         opacity: 0.9;
       }
 
@@ -79,6 +79,23 @@ authorize('employee');
           width: 100%;
         }
       }
+      @media (min-width: 1200px) {
+    .container {
+        width: 550px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 550px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 550px;
+    }
+}
 
       #sidebar {
         min-height: 100vh;
