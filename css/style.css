@@ -13,8 +13,6 @@ body {
       background-color: #495057;
       color: white;
     }
-
-
     #content {
       margin-left: 250px;
     }
@@ -193,3 +191,11 @@ body {
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
+
+nav .nav-link {
+  color: white;
+}
+
+.sidebar .nav-link {
+  color: #ffffff !important;
+}

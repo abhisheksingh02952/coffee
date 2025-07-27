@@ -17,7 +17,7 @@ if (!isset($_SESSION['user_id'])) {
   <title>Org Chart</title>
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="css/style.css">
+
   <link rel="stylesheet" href="./treant/Treant.css">
   <link rel="stylesheet" href="css/chart.css">
   <!-- Bootstrap 5 CSS -->
@@ -28,6 +28,7 @@ if (!isset($_SESSION['user_id'])) {
 
   <!-- DataTables CSS -->
   <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="css/style.css">
 
   <style>
     * {
