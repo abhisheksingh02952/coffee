@@ -402,7 +402,7 @@ if (isset($_GET['id'])) {
           processData: false,
           success: function(response) {
             alert("Employee updated successfully!");
-            window.location.href = 'admin_allemployee.php';
+            //window.location.href = 'admin_allemployee.php';
           },
           error: function(xhr, status, error) {
             console.error("Update failed:", status, error);
