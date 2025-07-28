@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 24, 2025 at 08:08 PM
+-- Generation Time: Jul 28, 2025 at 08:02 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.0.30
 
@@ -86,10 +86,10 @@ CREATE TABLE `employees` (
   `name` varchar(100) DEFAULT NULL,
   `fathername` varchar(100) DEFAULT NULL,
   `mothername` varchar(100) DEFAULT NULL,
-  `phone` varchar(20) DEFAULT NULL,
+  `phone` int(40) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `address` text DEFAULT NULL,
-  `pin` varchar(10) DEFAULT NULL,
+  `pin` int(40) DEFAULT NULL,
   `dob` date DEFAULT NULL,
   `gender` varchar(20) DEFAULT NULL,
   `position` enum('Distributor','Territory Sales Executive','Distributor Sales','Retailer','Admin') DEFAULT NULL,
@@ -105,28 +105,28 @@ CREATE TABLE `employees` (
 --
 
 INSERT INTO `employees` (`user_id`, `reporting_id`, `name`, `fathername`, `mothername`, `phone`, `email`, `address`, `pin`, `dob`, `gender`, `position`, `username`, `password`, `role`, `image`, `is_deleted`) VALUES
-(1, 0, 'Employee Test 1', 'Employee Test 1', 'Employee Test 1', '08766', 'Employee Test 1', 'Employee Test 1', '123', '2025-07-16', 'Male', 'Territory Sales Executive', 'Employee Test 1', 'Employee Test 1', 'employee', 'employee_68775a73195008.72976769.jpg', '1'),
-(2, 1, 'Employee Test 2', 'Employee Test 2', 'Employee Test 2', '8755', 'Employee Test 2', 'Employee Test 2', '2456', '2025-07-16', 'Female', 'Distributor', 'Test2', 'Employee Test 2', 'employee', 'employee_68775e220c7e20.30761491.jpg', '1'),
-(3, 1, 'Employee Test 3', 'Employee Test 3', 'Employee Test 3', '7546', 'Employee Test 3', 'Employee Test 3', '110091', '2025-07-15', 'Male', 'Distributor', 'Employee Test 3', 'Employee Test 3', 'employee', 'remarks.jpeg', '1'),
-(4, 2, 'Employee Test 4', 'Employee Test 4', 'Employee Test 4', '75456', 'Employee Test 4', 'Employee Test 4', '110011', '2025-07-15', 'Male', 'Distributor Sales', 'Employee Test 4', 'Employee Test 4', 'employee', 'remarks.jpeg', '1'),
-(5, 2, 'Employee Test 5', 'Employee Test 5', 'Employee Test 5', '86446', 'Employee Test 5', 'Employee Test 5', '110012', '2025-07-15', 'Male', 'Distributor Sales', 'Employee Test 5', 'Employee Test 5', 'employee', 'remarks.jpeg', '1'),
-(6, 3, 'Employee Test 6', 'Employee Test 6', 'Employee Test 6', '64566', 'Employee Test 6', 'Employee Test 6', '110012', '2025-07-17', 'Female', 'Distributor Sales', 'Employee Test 6', 'Employee Test 6', 'employee', 'remarks.svg', '1'),
-(7, 3, 'Employee Test 7', 'Employee Test 7', 'Employee Test 7', '86456', 'Employee Test 7', 'Employee Test 7', '110011', '2025-07-17', 'Female', 'Distributor Sales', 'Employee Test 7', 'Employee Test 7', 'employee', 'remarks.svg', '1'),
-(8, 4, 'Employee Test 8', 'Employee Test 8', 'Employee Test 8', '96545', 'Employee Test 8', 'Employee Test 8', '110099', '2025-07-15', 'Male', 'Retailer', 'Employee Test 8', 'Employee Test 8', 'employee', 'remarks.svg', '1'),
-(9, 4, 'Employee Test 9', 'Employee Test 9', 'Employee Test 9', '0865', 'Employee Test 9', 'Employee Test 9', 'Employee T', '2025-07-15', 'Transgender', 'Retailer', 'Employee Test 9', 'Employee Test 9', 'employee', 'remarks.svg', '1'),
-(10, 1, 'Employee Test 10', 'Employee Test 10', 'Employee Test 10', 'Employee Test 10', 'Employee Test 10', 'Employee Test 10', 'Employee T', '2025-07-15', 'Transgender', 'Admin', 'Employee Test 10', 'Employee Test 10', 'admin', 'remarks.svg', '0'),
-(11, 4, 'Employee Test 11', 'Employee Test 11', 'Employee Test 11', 'Employee Test 11', 'Employee Test 11', 'Employee Test 11', 'Employee T', '2025-07-15', 'Transgender', 'Retailer', 'Employee Test 11', 'Employee Test 11', 'employee', 'remarks.svg', '1'),
-(13, 4, 'Employee Test 12', 'Employee Test 12', 'Employee Test 12', 'Employee Test 12', 'Employee Test 12', 'Employee Test 12', 'Employee T', '2025-07-16', 'Transgender', 'Retailer', 'Employee Test 12', 'Employee Test 12', 'employee', 'Honeycombs-Header-Image-1-q8wk39fjeqpu9ibnr8hf0yg3yvjjltljxjgsgu38co.jpg', '1'),
-(14, 5, 'Employee Test 13', 'Employee Test 13', 'Employee Test 13', 'Employee Test 13', 'Employee Test 13', 'Employee Test 13', 'Employee T', '2025-07-16', 'Transgender', 'Retailer', 'Employee Test 13', 'Employee Test 13', 'employee', 'Heading-Image-Template-3-ql3c7ub4dm6jf53qdee9uxumudxcenol634q8hdnuw.jpg', '1'),
-(15, 5, 'Employee Test 14', 'Employee Test 14', 'Employee Test 14', 'Employee Test 14', 'Employee Test 14', 'Employee Test 14', 'Employee T', '2025-07-16', 'Transgender', 'Retailer', 'Employee Test 14', 'Employee Test 14', 'employee', 'remarks.jpeg', '1'),
-(16, 6, 'Employee Test 15', 'Employee Test 15', 'Employee Test 15', 'Employee Test 15', 'Employee Test 15', 'Employee Test 15', 'Employee T', '2025-07-16', 'Male', 'Retailer', 'Employee Test 15', 'Employee Test 15', 'employee', 'remarks.jpeg', '1'),
-(17, 7, 'Employee Test 161', 'Employee Test 16', 'Employee Test 16', 'Employee Test 16', 'Employee Test 16', 'Employee Test 16', 'Employee T', '2025-07-16', 'Transgender', 'Retailer', 'Employee Test 161', 'Employee Test 16', 'employee', 'remarks.jpeg', '1'),
-(18, 1, 'Employee Test 16', 'Employee Test 16', 'Employee Test 16', 'Employee Test 16', 'Employee Test 16', 'Employee Test 16', 'Employee T', '2025-07-16', 'Transgender', 'Admin', 'Employee Test 16', 'Employee Test 16', 'employee', 'remarks.jpeg', '0'),
-(19, 1, 'Employee Test 17', 'Employee Test 17', 'Employee Test 17', 'Employee Test 17', 'Employee Test 17', 'Employee Test 17', 'Employee T', '2025-07-21', 'Male', 'Admin', 'Employee Test 17', 'Employee Test 17', 'admin', 'uploads/dealer_6878d67ef41a81.80310863.jpg', '1'),
-(20, 7, 'Employee Test 18', 'Employee Test 18', 'Employee Test 18', 'Employee Test 18', 'Employee Test 18', 'Employee Test 18', 'Employee T', '2025-07-21', 'Female', 'Retailer', 'Employee Test 18', 'Employee Test 18', 'employee', 'uploads/dealer_6878d6dd842bf5.58900929.jpg', '1'),
-(21, 1, 'Employee Test 19', 'Employee Test 19', 'Employee Test 19', 'Employee Test 19', 'Employee Test 19', 'Employee Test 19', 'Employee T', '2025-07-21', 'Male', 'Admin', 'Employee Test 19', 'Employee Test 19', 'admin', 'uploads/dealer_6878d7e789def6.39097023.jpg', '1'),
-(22, 1, 'Employee Test 20', 'Employee Test 20', 'Employee Test 20', 'Employee Test 20', 'Employee Test 20', 'Employee Test 20', 'Employee T', '2025-07-21', 'Female', 'Admin', 'Employee Test 20', 'Employee Test 20', 'admin', 'uploads/dealer_6878e632e350f4.25646760.jpg', ''),
-(23, 1, 'Employee Test 21', 'Employee Test 21', 'Employee Test 21', '882679', 'Employee Test 21', 'Employee Test 11', '110091', '2025-07-16', 'Male', 'Admin', 'Employee Test 21', 'Employee Test 21', 'admin', '61Edzdb4SOL._SL1500_.jpg', '1');
+(1, 0, 'Employee Test 1', 'Employee Test 1', 'Employee Test 1', 8766, 'Employee Test 1', 'Employee Test 1', 123, '2025-07-16', 'Male', 'Territory Sales Executive', 'Employee Test 1', 'Employee Test 1', 'employee', 'employee_68775a73195008.72976769.jpg', '1'),
+(2, 1, 'Employee Test 2', 'Employee Test 2', 'Employee Test 2', 8755, 'Employee Test 2', 'Employee Test 2', 2456, '2025-07-16', 'Female', 'Distributor', 'Test2', 'Employee Test 2', 'employee', 'employee_68775e220c7e20.30761491.jpg', '1'),
+(3, 1, 'Employee Test 3', 'Employee Test 3', 'Employee Test 3', 7546, 'Employee Test 3', 'Employee Test 3', 110091, '2025-07-15', 'Male', 'Distributor', 'Employee Test 3', 'Employee Test 3', 'employee', 'remarks.jpeg', '1'),
+(4, 2, 'Employee Test 4', 'Employee Test 4', 'Employee Test 4', 75456, 'Employee Test 4', 'Employee Test 4', 110011, '2025-07-15', 'Male', 'Distributor Sales', 'Employee Test 4', 'Employee Test 4', 'employee', 'remarks.jpeg', '1'),
+(5, 2, 'Employee Test 5', 'Employee Test 5', 'Employee Test 5', 86446, 'Employee Test 5', 'Employee Test 5', 110012, '2025-07-15', 'Male', 'Distributor Sales', 'Employee Test 5', 'Employee Test 5', 'employee', 'remarks.jpeg', '1'),
+(6, 3, 'Employee Test 6', 'Employee Test 6', 'Employee Test 6', 64566, 'Employee Test 6', 'Employee Test 6', 110012, '2025-07-17', 'Female', 'Distributor Sales', 'Employee Test 6', 'Employee Test 6', 'employee', 'remarks.svg', '1'),
+(7, 3, 'Employee Test 7', 'Employee Test 7', 'Employee Test 7', 86456, 'Employee Test 7', 'Employee Test 7', 110011, '2025-07-17', 'Female', 'Distributor Sales', 'Employee Test 7', 'Employee Test 7', 'employee', 'remarks.svg', '1'),
+(8, 4, 'Employee Test 8', 'Employee Test 8', 'Employee Test 8', 96545, 'Employee Test 8', 'Employee Test 8', 110099, '2025-07-15', 'Male', 'Retailer', 'Employee Test 8', 'Employee Test 8', 'employee', 'remarks.svg', '1'),
+(9, 4, 'Employee Test 9', 'Employee Test 9', 'Employee Test 9', 865, 'Employee Test 9', 'Employee Test 9', 0, '2025-07-15', 'Transgender', 'Retailer', 'Employee Test 9', 'Employee Test 9', 'employee', 'remarks.svg', '1'),
+(10, 1, 'Employee Test 10', 'Employee Test 10', 'Employee Test 10', 0, 'Employee Test 10', 'Employee Test 10', 0, '2025-07-15', 'Transgender', 'Admin', 'Employee Test 10', 'Employee Test 10', 'admin', 'remarks.svg', '1'),
+(11, 4, 'Employee Test 11', 'Employee Test 11', 'Employee Test 11', 0, 'Employee Test 11', 'Employee Test 11', 0, '2025-07-15', 'Transgender', 'Retailer', 'Employee Test 11', 'Employee Test 11', 'employee', 'remarks.svg', '1'),
+(13, 4, 'Employee Test 12', 'Employee Test 12', 'Employee Test 12', 0, 'Employee Test 12', 'Employee Test 12', 0, '2025-07-16', 'Transgender', 'Retailer', 'Employee Test 12', 'Employee Test 12', 'employee', 'Honeycombs-Header-Image-1-q8wk39fjeqpu9ibnr8hf0yg3yvjjltljxjgsgu38co.jpg', '1'),
+(14, 5, 'Employee Test 13', 'Employee Test 13', 'Employee Test 13', 0, 'Employee Test 13', 'Employee Test 13', 0, '2025-07-16', 'Transgender', 'Retailer', 'Employee Test 13', 'Employee Test 13', 'employee', 'Heading-Image-Template-3-ql3c7ub4dm6jf53qdee9uxumudxcenol634q8hdnuw.jpg', '1'),
+(15, 5, 'Employee Test 14', 'Employee Test 14', 'Employee Test 14', 0, 'Employee Test 14', 'Employee Test 14', 0, '2025-07-16', 'Transgender', 'Retailer', 'Employee Test 14', 'Employee Test 14', 'employee', 'remarks.jpeg', '1'),
+(16, 6, 'Employee Test 15', 'Employee Test 15', 'Employee Test 15', 0, 'Employee Test 15', 'Employee Test 15', 0, '2025-07-16', 'Male', 'Retailer', 'Employee Test 15', 'Employee Test 15', 'employee', 'remarks.jpeg', '1'),
+(17, 7, 'Employee Test 161', 'Employee Test 16', 'Employee Test 16', 0, 'Employee Test 16', 'Employee Test 16', 0, '2025-07-16', 'Transgender', 'Retailer', 'Employee Test 161', 'Employee Test 16', 'employee', 'remarks.jpeg', '1'),
+(18, 1, 'Employee Test 16', 'Employee Test 16', 'Employee Test 16', 0, 'Employee Test 16', 'Employee Test 16', 0, '2025-07-16', 'Transgender', 'Admin', 'Employee Test 16', 'Employee Test 16', 'admin', 'remarks.jpeg', '1'),
+(19, 1, 'Employee Test 17', 'Employee Test 17', 'Employee Test 17', 0, 'Employee Test 17', 'Employee Test 17', 0, '2025-07-21', 'Male', 'Admin', 'Employee Test 17', 'Employee Test 17', 'admin', 'uploads/dealer_6878d67ef41a81.80310863.jpg', '1'),
+(20, 7, 'Employee Test 18', 'Employee Test 18', 'Employee Test 18', 0, 'Employee Test 18', 'Employee Test 18', 0, '2025-07-21', 'Female', 'Retailer', 'Employee Test 18', 'Employee Test 18', 'employee', 'uploads/dealer_6878d6dd842bf5.58900929.jpg', '1'),
+(21, 1, 'Employee Test 19', 'Employee Test 19', 'Employee Test 19', 0, 'Employee Test 19', 'Employee Test 19', 0, '2025-07-21', 'Male', 'Admin', 'Employee Test 19', 'Employee Test 19', 'admin', 'uploads/dealer_6878d7e789def6.39097023.jpg', '1'),
+(22, 1, 'Employee Test 20', 'Employee Test 20', 'Employee Test 20', 0, 'Employee Test 20', 'Employee Test 20', 0, '2025-07-21', 'Female', 'Admin', 'Employee Test 20', 'Employee Test 20', 'admin', 'uploads/dealer_6878e632e350f4.25646760.jpg', '1'),
+(23, 1, 'Employee Test 21', 'Employee Test 21', 'Employee Test 21', 882679, 'Employee Test 21', 'Employee Test 11', 110091, '2025-07-16', 'Male', 'Admin', 'Employee Test 21', 'Employee Test 21', 'admin', '61Edzdb4SOL._SL1500_.jpg', '1');
 
 -- --------------------------------------------------------
 
@@ -176,7 +176,10 @@ INSERT INTO `orders` (`id`, `order_id`, `shop_id`, `employee_id`, `scheme`, `pay
 (21, 'ORD-20250724-1753339018-100003', 100003, 20, 'Test3', 'Cash', 'Paid', 1800.00, '2025-07-24 12:06:58', '2025-07-24', 1),
 (22, 'ORD-20250724-1753339196-100007', 100007, 17, 'Test6', 'Online', 'Paid', 2750.00, '2025-07-24 12:09:56', '2025-07-24', 1),
 (23, 'ORD-20250724-1753358176-100001', 100001, 1, 'Test1', 'Cash', 'Pending', 0.00, '2025-07-24 17:26:16', NULL, 1),
-(24, 'ORD-20250724-1753377260-100001', 100001, 20, 'Test1', 'Cash', 'Pending', 400.00, '2025-07-24 22:44:20', NULL, 1);
+(24, 'ORD-20250724-1753377260-100001', 100001, 20, 'Test1', 'Cash', 'Pending', 400.00, '2025-07-24 22:44:20', NULL, 1),
+(25, 'ORD-20250727-1753638788-100008', 100008, 17, 'Test shop 20', 'Cash', 'Pending', 4500.00, '2025-07-27 23:23:09', NULL, 1),
+(26, 'ORD-20250727-1753638819-100009', 100009, 17, 'erttr', 'Cash', 'Pending', 450.00, '2025-07-27 23:23:39', NULL, 1),
+(27, 'ORD-20250727-1753638950-100010', 100010, 17, 'Test7', 'Cash', 'Pending', 750.00, '2025-07-27 23:25:50', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -253,7 +256,10 @@ INSERT INTO `order_items` (`id`, `order_id`, `product_id`, `quantity`, `price`, 
 (53, 'ORD-20250724-1753339018-100003', 3, 4, 450.00, 1),
 (54, 'ORD-20250724-1753339196-100007', 2, 5, 550.00, 1),
 (55, 'ORD-20250724-1753358176-100001', 1, 4, 0.00, 1),
-(56, 'ORD-20250724-1753377260-100001', 11, 2, 200.00, 1);
+(56, 'ORD-20250724-1753377260-100001', 11, 2, 200.00, 1),
+(57, 'ORD-20250727-1753638788-100008', 3, 10, 450.00, 1),
+(58, 'ORD-20250727-1753638819-100009', 3, 1, 450.00, 1),
+(59, 'ORD-20250727-1753638950-100010', 5, 5, 150.00, 1);
 
 -- --------------------------------------------------------
 
@@ -303,7 +309,10 @@ INSERT INTO `payments` (`id`, `order_id`, `shop_id`, `amount`, `payment_type`, `
 (21, 'ORD-20250724-1753339018-100003', 100003, 1800.00, 'cash', 'Paid', '2025-07-24 12:06:58', 20, '2025-07-24 12:07:47', 'Cash is collected ', 1),
 (22, 'ORD-20250724-1753339196-100007', 100007, 2750.00, 'online', 'Paid', '2025-07-24 12:09:56', 17, '2025-07-24 12:13:22', 'Cash is collected ', 1),
 (23, 'ORD-20250724-1753358176-100001', 100001, 0.00, NULL, 'Pending', '2025-07-24 17:26:16', NULL, NULL, NULL, 1),
-(24, 'ORD-20250724-1753377260-100001', 100001, 400.00, NULL, 'Pending', '2025-07-24 22:44:20', NULL, NULL, NULL, 1);
+(24, 'ORD-20250724-1753377260-100001', 100001, 400.00, NULL, 'Pending', '2025-07-24 22:44:20', NULL, NULL, NULL, 1),
+(25, 'ORD-20250727-1753638788-100008', 100008, 4500.00, NULL, 'Pending', '2025-07-27 23:23:09', NULL, NULL, NULL, 1),
+(26, 'ORD-20250727-1753638819-100009', 100009, 450.00, NULL, 'Pending', '2025-07-27 23:23:39', NULL, NULL, NULL, 1),
+(27, 'ORD-20250727-1753638950-100010', 100010, 750.00, NULL, 'Pending', '2025-07-27 23:25:50', NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -338,7 +347,8 @@ INSERT INTO `products` (`id`, `name`, `sku`, `price`, `is_deleted`) VALUES
 (13, 'Test 3', 'Test 3', 250.00, 1),
 (14, 'Test 4', 'Test 4', 450.00, 1),
 (15, 'Abhishek Singh', 'SKU00111', 100.00, 0),
-(16, 'Test 5', 'Test 5', 10.00, 0);
+(16, 'Test 5', 'Test 5', 10.00, 0),
+(18, 'Test A', 'Test A', 99.00, 1);
 
 -- --------------------------------------------------------
 
@@ -359,6 +369,9 @@ CREATE TABLE `shop` (
   `longitude` varchar(50) NOT NULL,
   `scheme` varchar(50) NOT NULL,
   `reporting_id` int(40) NOT NULL,
+  `stock_latitude` decimal(10,8) DEFAULT NULL,
+  `stock_longitude` decimal(11,8) DEFAULT NULL,
+  `stock_user_id` int(50) DEFAULT NULL,
   `is_deleted` enum('1','0') NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -366,14 +379,17 @@ CREATE TABLE `shop` (
 -- Dumping data for table `shop`
 --
 
-INSERT INTO `shop` (`shop_id`, `name`, `fathername`, `gst`, `phone`, `address`, `pin`, `area`, `latitude`, `longitude`, `scheme`, `reporting_id`, `is_deleted`) VALUES
-(100001, 'Test1', 'Test1', 'Test1', 982645242, 'Test1', 110031, 'Test1', '28.6621696', '77.1915776', 'Test1', 15, '1'),
-(100002, 'Test2', 'Test2', 'Test2', 243229486, 'Test2', 110092, 'Test2', '28.6621696', '77.1915776', 'Test2', 4, '1'),
-(100003, 'Test3', 'Test3', 'Test3', 94673842, 'Test3', 110091, 'Test3', '28.6621696', '77.3292032', 'Test3', 20, '1'),
-(100004, 'Test4', 'Test4', 'Test4', 2147483647, 'Test4', 110051, 'Test4', '28.6621696', '77.3292032', 'Test4', 5, '1'),
-(100005, 'Abhishek Singh', 'Ram', 'Test 1', 2147483647, 'Trilok Puri', 110091, 'Delhi', '28.6083775', '77.3043599', 'XYZ', 16, '1'),
-(100006, 'Test5', 'Test5', 'Test5', 0, 'Test5', 110051, 'Test5', '28.6083727', '77.3043593', 'Test5', 7, ''),
-(100007, 'Test6', 'Test6', 'Test6', 0, 'Test6', 0, 'Test6', '28.6621696', '77.2636672', 'Test6', 17, '');
+INSERT INTO `shop` (`shop_id`, `name`, `fathername`, `gst`, `phone`, `address`, `pin`, `area`, `latitude`, `longitude`, `scheme`, `reporting_id`, `stock_latitude`, `stock_longitude`, `stock_user_id`, `is_deleted`) VALUES
+(100001, 'Test01', 'Test1', 'Test1', 982645242, 'Test1', 110031, 'Test1', '28.6621696', '77.1915776', 'Test1', 15, 28.64250880, 77.09655040, 3, '1'),
+(100002, 'Test2', 'Test2', 'Test2', 243229486, 'Test2', 110092, 'Test2', '28.6621696', '77.1915776', 'Test2', 4, 28.64250880, 77.09655040, 3, '1'),
+(100003, 'Test3', 'Test3', 'Test3', 94673842, 'Test3', 110091, 'Test3', '28.6621696', '77.3292032', 'Test3', 20, NULL, NULL, NULL, '1'),
+(100004, 'Test4', 'Test4', 'Test4', 2147483647, 'Test4', 110051, 'Test4', '28.6621696', '77.3292032', 'Test4', 5, 28.64250880, 77.09655040, 3, '1'),
+(100005, 'Abhishek Singh', 'Ram', 'Test 1', 2147483647, 'Trilok Puri', 110091, 'Delhi', '28.6083775', '77.3043599', 'ABC', 16, NULL, NULL, NULL, '1'),
+(100006, 'Test5', 'Test5', 'Test5', 0, 'Test5', 110051, 'Test5', '28.6083727', '77.3043593', 'Test5', 7, NULL, NULL, NULL, ''),
+(100007, 'Test6', 'Test6', 'Test6', 0, 'Test6', 0, 'Test6', '28.6621696', '77.2636672', 'Test6', 17, NULL, NULL, NULL, ''),
+(100008, 'Test5', 'Test5', 'Test5', 87544, 'Test5', 110091, '', '28.6457856', '77.0932736', 'Test shop 20', 11, 28.59250270, 77.33215550, 11, '1'),
+(100009, 'Test6', 'Test6', 'Test6', 664535345, 'Test6', 110012, '', '28.6457856', '77.0932736', 'erttr', 11, 28.59250270, 77.33215550, 11, '1'),
+(100010, 'Test7', 'Test7', 'Test7', 436338, 'Test7', 110051, '', '28.6621696', '77.2374528', 'Test7', 17, 28.66216960, 77.23745280, 17, '1');
 
 -- --------------------------------------------------------
 
@@ -395,30 +411,30 @@ CREATE TABLE `stock` (
 --
 
 INSERT INTO `stock` (`id`, `product_id`, `shop_id`, `quantity`, `last_updated`, `is_deleted`) VALUES
-(1, 1, 100002, 5, '2025-07-22 19:59:48', 1),
-(2, 2, 100002, 10, '2025-07-22 19:59:48', 1),
-(3, 3, 100002, 15, '2025-07-22 19:59:48', 1),
-(4, 4, 100002, 9, '2025-07-22 19:59:48', 1),
-(5, 5, 100002, 7, '2025-07-22 19:59:48', 1),
-(6, 6, 100002, 20, '2025-07-22 19:59:48', 1),
-(7, 7, 100002, 15, '2025-07-22 19:59:48', 1),
-(8, 8, 100002, 11, '2025-07-22 19:59:48', 1),
-(9, 9, 100002, 2, '2025-07-22 19:59:48', 1),
-(10, 10, 100002, 5, '2025-07-22 19:59:48', 1),
-(11, 11, 100002, 9, '2025-07-22 19:59:48', 1),
-(12, 1, 100001, 7, '2025-07-22 20:16:15', 1),
-(13, 2, 100001, 9, '2025-07-22 20:16:15', 1),
-(14, 3, 100001, 8, '2025-07-22 20:16:15', 1),
-(15, 4, 100001, 0, '2025-07-22 20:16:15', 1),
-(16, 5, 100001, 5, '2025-07-22 20:16:15', 1),
-(17, 6, 100001, 7, '2025-07-22 20:16:15', 1),
-(18, 7, 100001, 17, '2025-07-22 20:16:15', 1),
-(19, 8, 100001, 0, '2025-07-22 20:16:15', 1),
-(20, 9, 100001, 20, '2025-07-22 20:16:15', 1),
-(21, 10, 100001, 10, '2025-07-22 20:16:15', 1),
-(22, 11, 100001, 50, '2025-07-22 20:16:15', 1),
-(23, 13, 100001, 50, '2025-07-22 20:16:15', 1),
-(24, 14, 100001, 50, '2025-07-22 20:16:15', 1),
+(1, 1, 100002, 5, '2025-07-25 16:36:59', 1),
+(2, 2, 100002, 10, '2025-07-25 16:36:59', 1),
+(3, 3, 100002, 15, '2025-07-25 16:36:59', 1),
+(4, 4, 100002, 9, '2025-07-25 16:36:59', 1),
+(5, 5, 100002, 7, '2025-07-25 16:36:59', 1),
+(6, 6, 100002, 20, '2025-07-25 16:36:59', 1),
+(7, 7, 100002, 15, '2025-07-25 16:36:59', 1),
+(8, 8, 100002, 11, '2025-07-25 16:36:59', 1),
+(9, 9, 100002, 2, '2025-07-25 16:36:59', 1),
+(10, 10, 100002, 5, '2025-07-25 16:36:59', 1),
+(11, 11, 100002, 9, '2025-07-25 16:36:59', 1),
+(12, 1, 100001, 7, '2025-07-25 16:29:13', 1),
+(13, 2, 100001, 9, '2025-07-25 16:29:13', 1),
+(14, 3, 100001, 8, '2025-07-25 16:29:13', 1),
+(15, 4, 100001, 0, '2025-07-25 16:29:13', 1),
+(16, 5, 100001, 5, '2025-07-25 16:29:13', 1),
+(17, 6, 100001, 7, '2025-07-25 16:29:13', 1),
+(18, 7, 100001, 17, '2025-07-25 16:29:13', 1),
+(19, 8, 100001, 0, '2025-07-25 16:29:13', 1),
+(20, 9, 100001, 20, '2025-07-25 16:29:13', 1),
+(21, 10, 100001, 10, '2025-07-25 16:29:13', 1),
+(22, 11, 100001, 50, '2025-07-25 16:29:13', 1),
+(23, 13, 100001, 50, '2025-07-25 16:29:13', 1),
+(24, 14, 100001, 50, '2025-07-25 16:29:13', 1),
 (25, 1, 100003, 6, '2025-07-24 09:31:00', 1),
 (26, 2, 100003, 1, '2025-07-24 09:31:00', 1),
 (27, 3, 100003, 6, '2025-07-24 09:31:00', 1),
@@ -432,32 +448,32 @@ INSERT INTO `stock` (`id`, `product_id`, `shop_id`, `quantity`, `last_updated`, 
 (35, 11, 100003, 8, '2025-07-24 09:31:00', 1),
 (36, 13, 100003, 9, '2025-07-24 09:31:00', 1),
 (37, 14, 100003, 1, '2025-07-24 09:31:00', 1),
-(38, 1, 100004, 7, '2025-07-22 20:21:00', 1),
-(39, 2, 100004, 10, '2025-07-22 20:21:00', 1),
-(40, 3, 100004, 4, '2025-07-22 20:21:00', 1),
-(41, 4, 100004, 8, '2025-07-22 20:21:00', 1),
-(42, 5, 100004, 9, '2025-07-22 20:21:00', 1),
-(43, 6, 100004, 2, '2025-07-22 20:21:00', 1),
-(44, 7, 100004, 5, '2025-07-22 20:21:00', 1),
-(45, 8, 100004, 5, '2025-07-22 20:21:00', 1),
-(46, 9, 100004, 2, '2025-07-22 20:21:00', 1),
-(47, 10, 100004, 7, '2025-07-22 20:21:00', 1),
-(48, 11, 100004, 2, '2025-07-22 20:21:00', 1),
-(49, 13, 100004, 9, '2025-07-22 20:21:00', 1),
-(50, 14, 100004, 5, '2025-07-22 20:21:00', 1),
-(51, 1, 100005, 39, '2025-07-22 20:22:23', 1),
-(52, 2, 100005, 29, '2025-07-22 20:22:23', 1),
-(53, 3, 100005, 4, '2025-07-22 20:22:23', 1),
-(54, 4, 100005, 53, '2025-07-22 20:22:23', 1),
-(55, 5, 100005, 5, '2025-07-22 20:22:23', 1),
-(56, 6, 100005, 8, '2025-07-22 20:22:23', 1),
-(57, 7, 100005, 1, '2025-07-22 20:22:23', 1),
-(58, 8, 100005, 4, '2025-07-22 20:22:23', 1),
-(59, 9, 100005, 5, '2025-07-22 20:22:23', 1),
-(60, 10, 100005, 3, '2025-07-22 20:22:23', 1),
-(61, 11, 100005, 8, '2025-07-22 20:22:23', 1),
-(62, 13, 100005, 2, '2025-07-22 20:22:23', 1),
-(63, 14, 100005, 6, '2025-07-22 20:22:23', 1),
+(38, 1, 100004, 7, '2025-07-25 16:36:53', 1),
+(39, 2, 100004, 10, '2025-07-25 16:36:53', 1),
+(40, 3, 100004, 4, '2025-07-25 16:36:53', 1),
+(41, 4, 100004, 8, '2025-07-25 16:36:53', 1),
+(42, 5, 100004, 9, '2025-07-25 16:36:53', 1),
+(43, 6, 100004, 2, '2025-07-25 16:36:53', 1),
+(44, 7, 100004, 5, '2025-07-25 16:36:53', 1),
+(45, 8, 100004, 5, '2025-07-25 16:36:53', 1),
+(46, 9, 100004, 2, '2025-07-25 16:36:53', 1),
+(47, 10, 100004, 7, '2025-07-25 16:36:53', 1),
+(48, 11, 100004, 2, '2025-07-25 16:36:53', 1),
+(49, 13, 100004, 9, '2025-07-25 16:36:53', 1),
+(50, 14, 100004, 5, '2025-07-25 16:36:53', 1),
+(51, 1, 100005, 39, '2025-07-25 15:49:48', 1),
+(52, 2, 100005, 29, '2025-07-25 15:49:48', 1),
+(53, 3, 100005, 4, '2025-07-25 15:49:48', 1),
+(54, 4, 100005, 53, '2025-07-25 15:49:48', 1),
+(55, 5, 100005, 5, '2025-07-25 15:49:48', 1),
+(56, 6, 100005, 8, '2025-07-25 15:49:48', 1),
+(57, 7, 100005, 1, '2025-07-25 15:49:48', 1),
+(58, 8, 100005, 4, '2025-07-25 15:49:48', 1),
+(59, 9, 100005, 5, '2025-07-25 15:49:48', 1),
+(60, 10, 100005, 3, '2025-07-25 15:49:48', 1),
+(61, 11, 100005, 8, '2025-07-25 15:49:48', 1),
+(62, 13, 100005, 2, '2025-07-25 15:49:48', 1),
+(63, 14, 100005, 6, '2025-07-25 15:49:48', 1),
 (64, 15, 100006, 5, '2025-07-24 05:48:39', 1),
 (65, 1, 100006, 1, '2025-07-24 05:48:39', 1),
 (66, 2, 100006, 2, '2025-07-24 05:48:39', 1),
@@ -480,7 +496,63 @@ INSERT INTO `stock` (`id`, `product_id`, `shop_id`, `quantity`, `last_updated`, 
 (87, 15, 100007, 0, '2025-07-24 09:29:58', 1),
 (88, 16, 100007, 0, '2025-07-24 09:29:58', 1),
 (102, 15, 100003, 0, '2025-07-24 09:31:00', 1),
-(103, 16, 100003, 0, '2025-07-24 09:31:00', 1);
+(103, 16, 100003, 0, '2025-07-24 09:31:00', 1),
+(132, 15, 100005, 0, '2025-07-25 15:49:48', 1),
+(133, 16, 100005, 0, '2025-07-25 15:49:48', 1),
+(162, 15, 100001, 0, '2025-07-25 16:29:13', 1),
+(163, 16, 100001, 0, '2025-07-25 16:29:13', 1),
+(177, 15, 100004, 0, '2025-07-25 16:36:53', 1),
+(178, 16, 100004, 0, '2025-07-25 16:36:53', 1),
+(190, 13, 100002, 0, '2025-07-25 16:36:59', 1),
+(191, 14, 100002, 0, '2025-07-25 16:36:59', 1),
+(192, 15, 100002, 0, '2025-07-25 16:36:59', 1),
+(193, 16, 100002, 0, '2025-07-25 16:36:59', 1),
+(194, 1, 100008, 6, '2025-07-26 16:02:06', 1),
+(195, 2, 100008, 9, '2025-07-26 16:02:06', 1),
+(196, 3, 100008, 3, '2025-07-26 16:02:06', 1),
+(197, 4, 100008, 8, '2025-07-26 16:02:06', 1),
+(198, 5, 100008, 2, '2025-07-26 16:02:06', 1),
+(199, 6, 100008, 5, '2025-07-26 16:02:06', 1),
+(200, 7, 100008, 0, '2025-07-26 16:02:06', 1),
+(201, 8, 100008, 0, '2025-07-26 16:02:06', 1),
+(202, 9, 100008, 0, '2025-07-26 16:02:06', 1),
+(203, 10, 100008, 0, '2025-07-26 16:02:06', 1),
+(204, 11, 100008, 0, '2025-07-26 16:02:06', 1),
+(205, 13, 100008, 0, '2025-07-26 16:02:06', 1),
+(206, 14, 100008, 0, '2025-07-26 16:02:06', 1),
+(207, 15, 100008, 5, '2025-07-26 16:02:06', 1),
+(208, 16, 100008, 0, '2025-07-26 16:02:06', 1),
+(209, 1, 100009, 0, '2025-07-26 16:02:51', 1),
+(210, 2, 100009, 5, '2025-07-26 16:02:51', 1),
+(211, 3, 100009, 0, '2025-07-26 16:02:51', 1),
+(212, 4, 100009, 7, '2025-07-26 16:02:51', 1),
+(213, 5, 100009, 0, '2025-07-26 16:02:51', 1),
+(214, 6, 100009, 10, '2025-07-26 16:02:51', 1),
+(215, 7, 100009, 0, '2025-07-26 16:02:51', 1),
+(216, 8, 100009, 0, '2025-07-26 16:02:51', 1),
+(217, 9, 100009, 0, '2025-07-26 16:02:51', 1),
+(218, 10, 100009, 0, '2025-07-26 16:02:51', 1),
+(219, 11, 100009, 0, '2025-07-26 16:02:51', 1),
+(220, 13, 100009, 0, '2025-07-26 16:02:51', 1),
+(221, 14, 100009, 0, '2025-07-26 16:02:51', 1),
+(222, 15, 100009, 0, '2025-07-26 16:02:51', 1),
+(223, 16, 100009, 0, '2025-07-26 16:02:51', 1),
+(224, 1, 100010, 0, '2025-07-27 23:26:24', 1),
+(225, 2, 100010, 0, '2025-07-27 23:26:24', 1),
+(226, 3, 100010, 0, '2025-07-27 23:26:24', 1),
+(227, 4, 100010, 0, '2025-07-27 23:26:24', 1),
+(228, 5, 100010, 0, '2025-07-27 23:26:24', 1),
+(229, 6, 100010, 0, '2025-07-27 23:26:24', 1),
+(230, 7, 100010, 0, '2025-07-27 23:26:24', 1),
+(231, 8, 100010, 0, '2025-07-27 23:26:24', 1),
+(232, 9, 100010, 0, '2025-07-27 23:26:24', 1),
+(233, 10, 100010, 0, '2025-07-27 23:26:24', 1),
+(234, 11, 100010, 0, '2025-07-27 23:26:24', 1),
+(235, 13, 100010, 0, '2025-07-27 23:26:24', 1),
+(236, 14, 100010, 0, '2025-07-27 23:26:24', 1),
+(237, 15, 100010, 0, '2025-07-27 23:26:24', 1),
+(238, 16, 100010, 0, '2025-07-27 23:26:24', 1),
+(239, 18, 100010, 1, '2025-07-27 23:26:24', 1);
 
 -- --------------------------------------------------------
 
@@ -602,37 +674,37 @@ ALTER TABLE `employees`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `payments`
 --
 ALTER TABLE `payments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `shop`
 --
 ALTER TABLE `shop`
-  MODIFY `shop_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100008;
+  MODIFY `shop_id` int(40) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100011;
 
 --
 -- AUTO_INCREMENT for table `stock`
 --
 ALTER TABLE `stock`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=240;
 
 --
 -- AUTO_INCREMENT for table `task`
