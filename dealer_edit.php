@@ -310,7 +310,7 @@ while ($row = $product_result->fetch_assoc()) {
     }
 
     /* Child Elements */
-    .clearfix > * {
+    .clearfix>* {
       padding: 12px 20px;
       font-size: 16px;
       border: none;
@@ -321,7 +321,7 @@ while ($row = $product_result->fetch_assoc()) {
       transition: background-color 0.3s;
     }
 
-    .clearfix > *:hover {
+    .clearfix>*:hover {
       background-color: #0056b3;
     }
 
@@ -332,7 +332,7 @@ while ($row = $product_result->fetch_assoc()) {
         align-items: stretch;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         width: 100%;
         margin-bottom: 10px;
       }
@@ -345,7 +345,7 @@ while ($row = $product_result->fetch_assoc()) {
         justify-content: flex-start;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         width: 100%;
         margin-bottom: 10px;
       }
@@ -358,7 +358,7 @@ while ($row = $product_result->fetch_assoc()) {
         justify-content: center;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         flex: 1 1 45%;
         margin: 10px;
       }
@@ -371,7 +371,7 @@ while ($row = $product_result->fetch_assoc()) {
         justify-content: space-around;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         flex: 1 1 30%;
       }
     }
@@ -383,11 +383,10 @@ while ($row = $product_result->fetch_assoc()) {
         justify-content: space-between;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         flex: 1 1 20%;
       }
     }
-  
   </style>
 
   <script>
