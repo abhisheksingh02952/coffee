@@ -163,7 +163,7 @@ authorize('employee');
       <!-- Form Content -->
       <main class="col-md-10 py-4">
 
-        <form action="" method="POST" id="geoForm" enctype="multipart/form-data">
+        <form action="" method="POST" id="geoForm"  enctype="multipart/form-data">
           <div id="data" class="container">
             <h1>Add New Shop</h1>
             <hr>
