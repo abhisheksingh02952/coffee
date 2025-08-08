@@ -4,15 +4,18 @@ authorize('employee');
 
 include 'db.php';
 
-
+// Sanitize and set shop_id
 if (isset($_GET['shop_id'])) {
-    $_SESSION['shop_id'] = $_GET['shop_id'];
+    $_SESSION['shop_id'] = intval($_GET['shop_id']);
 }
 $shop_id = $_SESSION['shop_id'] ?? 0;
 
-$result = mysqli_query($conn, "SELECT p.id AS product_id, p.name, COALESCE(s.quantity, 0) AS quantity 
+// Fetch product stock
+$result = mysqli_query($conn, "
+    SELECT p.id AS product_id, p.name, COALESCE(s.quantity, 0) AS quantity 
     FROM products p 
-    LEFT JOIN stock s ON s.product_id = p.id AND s.shop_id = $shop_id");
+    LEFT JOIN stock s ON s.product_id = p.id AND s.shop_id = $shop_id
+");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,157 +70,74 @@ $result = mysqli_query($conn, "SELECT p.id AS product_id, p.name, COALESCE(s.qua
 
         .clearfix {
             display: flex;
-            justify-content: flex-end;
+            flex-wrap: wrap;
             gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px;
+            padding: 10px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            border-radius: 10px;
         }
 
-        .btn {
-            padding: 10px 20px;
+        .clearfix>* {
+            padding: 12px 20px;
             font-size: 16px;
-            border-radius: 5px;
-            cursor: pointer;
             border: none;
-        }
-
-        .btn-primary {
+            border-radius: 6px;
             background-color: #007bff;
             color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
         }
 
-        .btn-secondary {
-            background-color: #6c757d;
-            color: white;
+        .clearfix>*:hover {
+            background-color: #0056b3;
         }
 
-        button.update {
-            background-color: #4761d3;
-            color: white;
-        }
-
-        button.update:hover {
-            background-color: #3749b5;
-        }
-
-        button.cancelbtn {
-            background-color: #6c757d;
-            color: white;
-        }
-
-        button.cancelbtn:hover {
-            background-color: #5a6268;
-        }
-
-        button.deletebtn {
-            background-color: #d9534f;
-            color: white;
-        }
-
-        button.deletebtn:hover {
-            background-color: #c9302c;
-        }
-
-        /* Responsive */
-        @media (max-width: 600px) {
+        @media (max-width: 480px) {
             .clearfix {
                 flex-direction: column;
+                align-items: stretch;
             }
 
-            button {
+            .clearfix>* {
                 width: 100%;
+                margin-bottom: 10px;
             }
         }
-        .clearfix {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-      margin: 20px;
-      padding: 10px;
-      background-color: #f1f1f1;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-    }
 
-    /* Child Elements */
-    .clearfix > * {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+        @media (min-width: 601px) and (max-width: 768px) {
+            .clearfix {
+                justify-content: center;
+            }
 
-    .clearfix > *:hover {
-      background-color: #0056b3;
-    }
+            .clearfix>* {
+                flex: 1 1 45%;
+                margin: 10px;
+            }
+        }
 
-    /* 🟡 Extra Small Devices (Phones, ≤ 480px) */
-    @media (max-width: 480px) {
-      .clearfix {
-        flex-direction: column;
-        align-items: stretch;
-      }
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .clearfix {
+                justify-content: space-around;
+            }
 
-      .clearfix > * {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
+            .clearfix>* {
+                flex: 1 1 30%;
+            }
+        }
 
-    /* 🟡 Small Devices (Phones Landscape, ≤ 600px) */
-    @media (max-width: 600px) {
-      .clearfix {
-        flex-direction: column;
-        justify-content: flex-start;
-      }
+        @media (min-width: 1025px) {
+            .clearfix {
+                justify-content: space-between;
+            }
 
-      .clearfix > * {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
-
-    /* 🟠 Medium Devices (Tablets, 601px - 768px) */
-    @media (min-width: 601px) and (max-width: 768px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .clearfix > * {
-        flex: 1 1 45%;
-        margin: 10px;
-      }
-    }
-
-    /* 🔵 Large Devices (Small Desktops, 769px - 1024px) */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: space-around;
-      }
-
-      .clearfix > * {
-        flex: 1 1 30%;
-      }
-    }
-
-    /* 🟣 Extra Large Devices (Desktops, > 1024px) */
-    @media (min-width: 1025px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .clearfix > * {
-        flex: 1 1 20%;
-      }
-    }
-  
+            .clearfix>* {
+                flex: 1 1 20%;
+            }
+        }
     </style>
 </head>
 
@@ -228,7 +148,8 @@ $result = mysqli_query($conn, "SELECT p.id AS product_id, p.name, COALESCE(s.qua
 
             <main class="col-md-10 py-4">
                 <form id="geoForm">
-                    <input type="hidden" name="shop_id" value="<?= htmlspecialchars($shop_id) ?>">
+                    <input type="hidden" name="shop_id" id="shop_id" value="<?= htmlspecialchars($shop_id) ?>">
+
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -248,10 +169,16 @@ $result = mysqli_query($conn, "SELECT p.id AS product_id, p.name, COALESCE(s.qua
                                     </td>
                                 </tr>
                             <?php } ?>
-                            <input type="hidden" id="latitude" name="latitude">
-                            <input type="hidden" id="longitude" name="longitude">
                         </tbody>
                     </table>
+
+                    <div class="form-group mb-3">
+                        <label for="scheme"><b>Scheme</b></label>
+                        <input type="text" name="scheme" id="scheme" required class="form-control">
+                    </div>
+
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
 
                     <div class="clearfix mt-3">
                         <button type="button" onclick="location.href='shop_stock_update.php'" class="btn btn-secondary deletebtn">Cancel</button>
@@ -262,7 +189,7 @@ $result = mysqli_query($conn, "SELECT p.id AS product_id, p.name, COALESCE(s.qua
         </div>
     </div>
 
-    <!-- JS Scripts -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
     <script>
@@ -276,20 +203,31 @@ $result = mysqli_query($conn, "SELECT p.id AS product_id, p.name, COALESCE(s.qua
                     formData.append("latitude", position.coords.latitude);
                     formData.append("longitude", position.coords.longitude);
 
-                    $.ajax({
-                        url: "insert_update_stock.php",
-                        type: "POST",
-                        data: formData,
-                        contentType: false,
-                        processData: false,
-                        success: function(response) {
-                            alert("Stock updated successfully!");
-                            location.href = "shop_stock_update.php";
-                        },
-                        error: function(xhr, status, error) {
-                            alert("Error: " + error);
-                        }
-                    });
+                    const shop_id = $('#shop_id').val();
+                    const scheme = $('#scheme').val();
+
+                    // First update scheme
+                    $.post("scheme_update_data.php", {
+                            shop_id: shop_id,
+                            scheme: scheme
+                        })
+                        .done(function(schemeResponse) {
+                            // Then update stock
+                            $.ajax({
+                                url: "insert_update_stock.php",
+                                type: "POST",
+                                data: formData,
+                                contentType: false,
+                                processData: false,
+                                success: function(response) {
+                                    alert("Stock updated successfully!");
+                                    location.href = "place_order.php";
+                                },
+                                error: function(xhr, status, error) {
+                                    alert("Error: " + error);
+                                }
+                            });
+                        });
                 }, function(error) {
                     alert("Geolocation Error: " + error.message);
                 });
@@ -297,6 +235,21 @@ $result = mysqli_query($conn, "SELECT p.id AS product_id, p.name, COALESCE(s.qua
                 alert("Geolocation is not supported by your browser.");
             }
         }
+
+        $(document).ready(function() {
+            // Load existing scheme
+            $.ajax({
+                url: "scheme_show.php",
+                type: "POST",
+                dataType: "json",
+                success: function(data) {
+                    if (data) {
+                        $("#shop_id").val(data.shop_id);
+                        $("#scheme").val(data.scheme);
+                    }
+                }
+            });
+        });
     </script>
 </body>
 

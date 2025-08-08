@@ -215,6 +215,7 @@ if (!$result) {
         width: 100%;
       }
     }
+
     .clearfix {
       display: flex;
       flex-wrap: wrap;
@@ -229,7 +230,7 @@ if (!$result) {
     }
 
     /* Child Elements */
-    .clearfix > * {
+    .clearfix>* {
       padding: 12px 20px;
       font-size: 16px;
       border: none;
@@ -240,7 +241,7 @@ if (!$result) {
       transition: background-color 0.3s;
     }
 
-    .clearfix > *:hover {
+    .clearfix>*:hover {
       background-color: #0056b3;
     }
 
@@ -251,7 +252,7 @@ if (!$result) {
         align-items: stretch;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         width: 100%;
         margin-bottom: 10px;
       }
@@ -264,7 +265,7 @@ if (!$result) {
         justify-content: flex-start;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         width: 100%;
         margin-bottom: 10px;
       }
@@ -277,7 +278,7 @@ if (!$result) {
         justify-content: center;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         flex: 1 1 45%;
         margin: 10px;
       }
@@ -290,7 +291,7 @@ if (!$result) {
         justify-content: space-around;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         flex: 1 1 30%;
       }
     }
@@ -302,11 +303,10 @@ if (!$result) {
         justify-content: space-between;
       }
 
-      .clearfix > * {
+      .clearfix>* {
         flex: 1 1 20%;
       }
     }
-  
   </style>
 
 </head>

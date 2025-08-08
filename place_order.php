@@ -229,13 +229,14 @@ if (isset($_GET['shop_id'])) {
             <tr>
               <th>Shop ID</th>
               <th>Name</th>
-              <th>Father Name</th>
-              <th>GST NO</th>
               <th>Address</th>
-              <th>Pin Code</th>
               <th>Area</th>
               <th>Phone</th>
               <th>Scheme</th>
+              <th>Last Order Id</th>
+              <th>Last Payment</th>
+              <th>Last Payment Status</th>
+              <th>Update Stack</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -264,16 +265,7 @@ if (isset($_GET['shop_id'])) {
             "data": "name"
           },
           {
-            "data": "fathername"
-          },
-          {
-            "data": "gst"
-          },
-          {
             "data": "address"
-          },
-          {
-            "data": "pin"
           },
           {
             "data": "area"
@@ -283,6 +275,22 @@ if (isset($_GET['shop_id'])) {
           },
           {
             "data": "scheme"
+          },
+           {
+            "data": "order_id"
+          },
+           {
+            "data": "payment_status"
+          },
+           {
+            "data": "collection_date"
+          },
+          {
+            data: null,
+            render: function(data, type, row) {
+              return `<a href="insert_stock_form.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Stack Update</a>`;
+
+            }
           },
           {
             data: null,

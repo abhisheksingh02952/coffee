@@ -1,23 +1,23 @@
 <?php
 
 session_start();
-// Create connection
 include 'db.php';
 
+if (!isset($_SESSION['employee_id'])) {
+    echo json_encode(["error" => "User not authenticated"]);
+    exit;
+}
 
+$user_id = mysqli_real_escape_string($conn, $_SESSION['employee_id']);
 
-// Sanitize the session value (assumes it's an integer)
-$user_id = (int) $_SESSION['user_id'];
-
-$sql = "SELECT * FROM employees WHERE user_id = $user_id AND is_deleted = 1";
+$sql = "SELECT * FROM employees WHERE employee_code = '$user_id' AND status = 'Active'";
 $result = mysqli_query($conn, $sql) or die("Query Error");
 
 $data = [];
 
-if(mysqli_num_rows($result) > 0){
+if (mysqli_num_rows($result) > 0) {
     $data = mysqli_fetch_assoc($result);
 }
 
 echo json_encode($data);
-
 ?>

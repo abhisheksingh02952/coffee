@@ -31,31 +31,207 @@ while ($row = $product_result->fetch_assoc()) {
   include "head.php";
   ?>
   <style>
-    * {
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
+  * {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+
+  html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background-color: #fff;
+  }
+
+  .container-fluid {
+    height: 100%;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    min-height: 10vh;
+  }
+
+  #sidebar {
+    min-height: 100vh;
+    background: #2b2b2b;
+    color: white;
+  }
+
+  #sidebar .nav-link {
+    color: #ccc;
+  }
+
+  #sidebar .nav-link.active,
+  #sidebar .nav-link:hover {
+    background-color: #495057;
+    color: #ffc107 !important;
+  }
+
+  main {
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+  .container {
+    max-width: 550px;
+    margin: 100px auto 0;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  h1 {
+    text-align: center;
+    color: #333;
+  }
+
+  label {
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="date"],
+  input[type="number"],
+  input[type="file"],
+  select {
+    width: 70%;
+    padding: 8px 10px;
+    margin-bottom: 750px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background: #f9f9f9;
+    margin: 2px;
+    margin-top: 5px;
+    color: #000;
+    height: inherit;
+  }
+
+  input:focus,
+  select:focus {
+    background-color: #eee;
+    outline: none;
+  }
+
+  select {
+    appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px 16px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f5f5f5;
+    color: #000;
+  }
+
+  th, td {
+    padding: 12px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+
+  th {
+    background-color: #ddd;
+  }
+
+  .clearfix {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+  }
+
+  .clearfix > * {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    flex: 1 1 20%;
+  }
+
+  button.update {
+    background-color: #4761d3;
+  }
+
+  button.update:hover {
+    background-color: #3749b5;
+  }
+
+  button.cancelbtn {
+    background-color: #6c757d;
+  }
+
+  button.cancelbtn:hover {
+    background-color: #5a6268;
+  }
+
+  button.deletebtn {
+    background-color: #d9534f;
+  }
+
+  button.deletebtn:hover {
+    background-color: #c9302c;
+  }
+
+  .buttons {
+    background-color: #007bff;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 6px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    width: 30%;
+  }
+
+  .buttons:hover {
+    background-color: #0056b3;
+  }
+
+  .remove {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .remove:hover {
+    background-color: #bd2130;
+  }
+
+  @media (max-width: 768px) {
+    .clearfix {
+      flex-direction: column;
     }
 
-    .container {
-      max-width: 600px;
-      margin: auto;
-      padding: 20px;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #333;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: bold;
-      color: #444;
+    .clearfix > * {
+      width: 100%;
+      margin-bottom: 10px;
     }
 
     input[type="text"],
@@ -64,330 +240,376 @@ while ($row = $product_result->fetch_assoc()) {
     input[type="number"],
     select,
     input[type="file"] {
-      width: 53%;
-      padding: 12px 15px;
-      margin-bottom: 20px;
-      border: none;
-      border-radius: 5px;
-      background: #f1f1f1;
-      transition: background-color 0.3s ease;
-    }
-
-    input[type="text"]:focus,
-    input[type="password"]:focus,
-    input[type="date"]:focus,
-    input[type="number"]:focus,
-    select:focus,
-    input[type="file"]:focus {
-      background-color: #e0e0e0;
-      outline: none;
-    }
-
-    select {
-      appearance: none;
-      background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-      background-repeat: no-repeat;
-      background-position: right 10px center;
-      background-size: 16px 16px;
-    }
-
-    button.update {
-      background-color: #4761d3;
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      margin: 10px 5px 0 0;
-      border-radius: 5px;
-      cursor: pointer;
-      width: 30%;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-    }
-
-    button.update:hover {
-      background-color: #3749b5;
-    }
-
-    .clearfix {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-    }
-
-    @media (max-width: 600px) {
-      button.update {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
-
-    /* Full-width input fields */
-    input[type=text],
-    input[type=password] {
       width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    input[type=text]:focus,
-    input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    hr {
-      border: 1px solid #f1f1f1;
-      margin-bottom: 25px;
-    }
-
-    /* Set a style for all buttons */
-    /* Full-width input fields */
-    input[type=text],
-    input[type=password] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    input[type=text]:focus,
-    input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    hr {
-      border: 1px solid #f1f1f1;
-      margin-bottom: 25px;
-    }
-
-    /* Set a style for all buttons */
-    .buttone {
-      text-align: center;
-      margin: 10px;
-      float: right;
-      background-color: rgb(71, 97, 211);
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 20%;
-      opacity: 0.9;
-    }
-
-    .button:hover {
-      opacity: 1;
     }
 
     .buttons {
-      text-align: center;
-      margin: 10px;
-      float: right;
-      background-color: rgb(71, 97, 211);
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 30%;
-      opacity: 0.9;
-    }
-
-    .buttons:hover {
-      opacity: 1;
-    }
-
-
-    .remove,
-    .cancel {
-      text-align: center;
-      margin: 10px;
-      float: right;
-      background-color: rgba(194, 56, 31, 1);
-      color: white;
-      padding: 14px 20px;
-      margin: 1px;
-      border: none;
-      cursor: pointer;
-      width: 30%;
-      opacity: 0.9;
-      height: 43px;
-      float: right;
-      margin-left: 90px;
-    }
-
-    .remove:hover {
-      opacity: 1;
-    }
-
-    a.button {
-      display: inline-block;
-      text-align: center;
-      color: white;
-      text-decoration: none;
-      padding: 14px 20px;
-      margin: 8px 0;
       width: 100%;
     }
+  }
+</style>
 
-    /* Add padding to container elements */
-    .container {
-      padding: 16px;
-    }
 
-    /* Clear floats */
-    .clearfix::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
 
-    button.update {
-      background-color: #4761d3;
-      color: white;
-    }
 
-    button.update:hover {
-      background-color: #3749b5;
-    }
+  <!--  <style>
+            * {
+              box-sizing: border-box;
+              font-family: Arial, sans-serif;
+            }
 
-    button.cancelbtn {
-      background-color: #6c757d;
-      color: white;
-    }
+            .container {
+              max-width: 600px;
+              margin: auto;
+              padding: 20px;
+              background: #ffffff;
+              border-radius: 10px;
+              box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
 
-    button.cancelbtn:hover {
-      background-color: #5a6268;
-    }
+            h1 {
+              text-align: center;
+              margin-bottom: 20px;
+              color: #333;
+            }
 
-    button.deletebtn {
-      background-color: #d9534f;
-      color: white;
-    }
+            label {
+              display: block;
+              margin-bottom: 6px;
+              font-weight: bold;
+              color: #444;
+            }
 
-    button.deletebtn:hover {
-      background-color: #c9302c;
-    }
+            input[type="text"],
+            input[type="password"],
+            input[type="date"],
+            input[type="number"],
+            select,
+            input[type="file"] {
+              width: 53%;
+              padding: 12px 15px;
+              margin-bottom: 20px;
+              border: none;
+              border-radius: 5px;
+              background: #f1f1f1;
+              transition: background-color 0.3s ease;
+            }
 
-    /* Responsive */
-    @media (max-width: 600px) {
-      .clearfix {
-        flex-direction: column;
-      }
+            input[type="text"]:focus,
+            input[type="password"]:focus,
+            input[type="date"]:focus,
+            input[type="number"]:focus,
+            select:focus,
+            input[type="file"]:focus {
+              background-color: #e0e0e0;
+              outline: none;
+            }
 
-      button {
-        width: 100%;
-      }
-    }
+            select {
+              appearance: none;
+              background-image: url('data:image/svg+xml;utf8,<svg fill="%23666" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+              background-repeat: no-repeat;
+              background-position: right 10px center;
+              background-size: 16px 16px;
+            }
 
-    #sidebar {
-      min-height: 100vh;
-    }
+            button.update {
+              background-color: #4761d3;
+              color: white;
+              border: none;
+              padding: 14px 20px;
+              margin: 10px 5px 0 0;
+              border-radius: 5px;
+              cursor: pointer;
+              width: 30%;
+              font-size: 16px;
+              transition: background-color 0.3s ease;
+            }
 
-    .nav-link.active,
-    .nav-link:hover {
-      background-color: #495057;
-      color: #ffc107 !important;
-    }
+            button.update:hover {
+              background-color: #3749b5;
+            }
 
-    .clearfix {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-      margin: 20px;
-      padding: 10px;
-      background-color: #f1f1f1;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-    }
+            .clearfix {
+              display: flex;
+              justify-content: space-between;
+              flex-wrap: wrap;
+            }
 
-    /* Child Elements */
-    .clearfix>* {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
+            @media (max-width: 600px) {
+              button.update {
+                width: 100%;
+                margin-bottom: 10px;
+              }
+            }
 
-    .clearfix>*:hover {
-      background-color: #0056b3;
-    }
+            /* Full-width input fields */
+            input[type=text],
+            input[type=password] {
+              width: 100%;
+              padding: 15px;
+              margin: 5px 0 22px 0;
+              display: inline-block;
+              border: none;
+              background: #f1f1f1;
+            }
 
-    /* 🟡 Extra Small Devices (Phones, ≤ 480px) */
-    @media (max-width: 480px) {
-      .clearfix {
-        flex-direction: column;
-        align-items: stretch;
-      }
+            input[type=text]:focus,
+            input[type=password]:focus {
+              background-color: #ddd;
+              outline: none;
+            }
 
-      .clearfix>* {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
+            hr {
+              border: 1px solid #f1f1f1;
+              margin-bottom: 25px;
+            }
 
-    /* 🟡 Small Devices (Phones Landscape, ≤ 600px) */
-    @media (max-width: 600px) {
-      .clearfix {
-        flex-direction: column;
-        justify-content: flex-start;
-      }
+            /* Set a style for all buttons */
+            /* Full-width input fields */
+            input[type=text],
+            input[type=password] {
+              width: 100%;
+              padding: 15px;
+              margin: 5px 0 22px 0;
+              display: inline-block;
+              border: none;
+              background: #f1f1f1;
+            }
 
-      .clearfix>* {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
+            input[type=text]:focus,
+            input[type=password]:focus {
+              background-color: #ddd;
+              outline: none;
+            }
 
-    /* 🟠 Medium Devices (Tablets, 601px - 768px) */
-    @media (min-width: 601px) and (max-width: 768px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: center;
-      }
+            hr {
+              border: 1px solid #f1f1f1;
+              margin-bottom: 25px;
+            }
 
-      .clearfix>* {
-        flex: 1 1 45%;
-        margin: 10px;
-      }
-    }
+            /* Set a style for all buttons */
+            .buttone {
+              text-align: center;
+              margin: 10px;
+              float: right;
+              background-color: rgb(71, 97, 211);
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 20%;
+              opacity: 0.9;
+            }
 
-    /* 🔵 Large Devices (Small Desktops, 769px - 1024px) */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: space-around;
-      }
+            .button:hover {
+              opacity: 1;
+            }
 
-      .clearfix>* {
-        flex: 1 1 30%;
-      }
-    }
+            .buttons {
+              text-align: center;
+              margin: 10px;
+              float: right;
+              background-color: rgb(71, 97, 211);
+              color: white;
+              padding: 14px 20px;
+              margin: 8px 0;
+              border: none;
+              cursor: pointer;
+              width: 30%;
+              opacity: 0.9;
+            }
 
-    /* 🟣 Extra Large Devices (Desktops, > 1024px) */
-    @media (min-width: 1025px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: space-between;
-      }
+            .buttons:hover {
+              opacity: 1;
+            }
 
-      .clearfix>* {
-        flex: 1 1 20%;
-      }
-    }
-  </style>
+
+            .remove,
+            .cancel {
+              text-align: center;
+              margin: 10px;
+              float: right;
+              background-color: rgba(194, 56, 31, 1);
+              color: white;
+              padding: 14px 20px;
+              margin: 1px;
+              border: none;
+              cursor: pointer;
+              width: 30%;
+              opacity: 0.9;
+              height: 43px;
+              float: right;
+              margin-left: 90px;
+            }
+
+            .remove:hover {
+              opacity: 1;
+            }
+
+            a.button {
+              display: inline-block;
+              text-align: center;
+              color: white;
+              text-decoration: none;
+              padding: 14px 20px;
+              margin: 8px 0;
+              width: 100%;
+            }
+
+            /* Add padding to container elements */
+            .container {
+              padding: 16px;
+            }
+
+            /* Clear floats */
+            .clearfix::after {
+              content: "";
+              clear: both;
+              display: table;
+            }
+
+            button.update {
+              background-color: #4761d3;
+              color: white;
+            }
+
+            button.update:hover {
+              background-color: #3749b5;
+            }
+
+            button.cancelbtn {
+              background-color: #6c757d;
+              color: white;
+            }
+
+            button.cancelbtn:hover {
+              background-color: #5a6268;
+            }
+
+            button.deletebtn {
+              background-color: #d9534f;
+              color: white;
+            }
+
+            button.deletebtn:hover {
+              background-color: #c9302c;
+            }
+
+            /* Responsive */
+            @media (max-width: 600px) {
+              .clearfix {
+                flex-direction: column;
+              }
+
+              button {
+                width: 100%;
+              }
+            }
+
+            #sidebar {
+              min-height: 100vh;
+            }
+
+            .nav-link.active,
+            .nav-link:hover {
+              background-color: #495057;
+              color: #ffc107 !important;
+            }
+
+            .clearfix {
+              display: flex;
+              flex-wrap: wrap;
+              gap: 10px;
+              justify-content: space-between;
+              align-items: center;
+              margin: 20px;
+              padding: 10px;
+              background-color: #f1f1f1;
+              border: 1px solid #ddd;
+              border-radius: 10px;
+            }
+
+            /* Child Elements */
+            .clearfix>* {
+              padding: 12px 20px;
+              font-size: 16px;
+              border: none;
+              border-radius: 6px;
+              background-color: #007bff;
+              color: white;
+              cursor: pointer;
+              transition: background-color 0.3s;
+            }
+
+            .clearfix>*:hover {
+              background-color: #0056b3;
+            }
+
+            /* 🟡 Extra Small Devices (Phones, ≤ 480px) */
+            @media (max-width: 480px) {
+              .clearfix {
+                flex-direction: column;
+                align-items: stretch;
+              }
+
+              .clearfix>* {
+                width: 100%;
+                margin-bottom: 10px;
+              }
+            }
+
+            /* 🟡 Small Devices (Phones Landscape, ≤ 600px) */
+            @media (max-width: 600px) {
+              .clearfix {
+                flex-direction: column;
+                justify-content: flex-start;
+              }
+
+              .clearfix>* {
+                width: 100%;
+                margin-bottom: 10px;
+              }
+            }
+
+            /* 🟠 Medium Devices (Tablets, 601px - 768px) */
+            @media (min-width: 601px) and (max-width: 768px) {
+              .clearfix {
+                flex-direction: row;
+                justify-content: center;
+              }
+
+              .clearfix>* {
+                flex: 1 1 45%;
+                margin: 10px;
+              }
+            }
+
+            /* 🔵 Large Devices (Small Desktops, 769px - 1024px) */
+            @media (min-width: 769px) and (max-width: 1024px) {
+              .clearfix {
+                flex-direction: row;
+                justify-content: space-around;
+              }
+
+              .clearfix>* {
+                flex: 1 1 30%;
+              }
+            }
+
+            /* 🟣 Extra Large Devices (Desktops, > 1024px) */
+            @media (min-width: 1025px) {
+              .clearfix {
+                flex-direction: row;
+                justify-content: space-between;
+              }
+
+              .clearfix>* {
+                flex: 1 1 20%;
+              }
+            }
+        </style>     -->
 
   <script>
     function addRow() {
@@ -459,7 +681,7 @@ while ($row = $product_result->fetch_assoc()) {
             </select><br>
 
             <div class="clearfix">
-              <button type="button" class="cancel" onclick="location.href='all_shop.php'" class="cancelbtn">Cancel</button>
+              <button type="button" class="cancel" onclick="location.href='place_order.php'" class="cancelbtn">Cancel</button>
               <button type="submit" name="submit" id="profile-update-data" class="update">Submit</button>
             </div>
           </div>
