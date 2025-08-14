@@ -237,6 +237,7 @@ if (isset($_GET['shop_id'])) {
               <th>Last Payment</th>
               <th>Last Payment Status</th>
               <th>Update Stack</th>
+              <th>Check Stack</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -289,6 +290,13 @@ if (isset($_GET['shop_id'])) {
             data: null,
             render: function(data, type, row) {
               return `<a href="insert_stock_form.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Stack Update</a>`;
+
+            }
+          },
+          {
+            data: null,
+            render: function(data, type, row) {
+              return `<a href="shop_stock_check.php?shop_id=${row.shop_id}&scheme=${row.scheme}" class="btn btn-sm btn-primary">Stack Update</a>`;
 
             }
           },

@@ -181,7 +181,7 @@ $result = mysqli_query($conn, "
                     <input type="hidden" id="longitude" name="longitude">
 
                     <div class="clearfix mt-3">
-                        <button type="button" onclick="location.href='shop_stock_update.php'" class="btn btn-secondary deletebtn">Cancel</button>
+                        <button type="button" onclick="location.href='place_order.php'" class="btn btn-secondary deletebtn">Cancel</button>
                         <button type="button" class="btn btn-primary update" onclick="submitWithLocation()">Submit</button>
                     </div>
                 </form>

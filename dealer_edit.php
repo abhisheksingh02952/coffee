@@ -31,223 +31,225 @@ while ($row = $product_result->fetch_assoc()) {
   include "head.php";
   ?>
   <style>
-  * {
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-
-  html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    color: #000;
-    background-color: #fff;
-  }
-
-  .container-fluid {
-    height: 100%;
-  }
-
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 10vh;
-  }
-
-  #sidebar {
-    min-height: 100vh;
-    background: #2b2b2b;
-    color: white;
-  }
-
-  #sidebar .nav-link {
-    color: #ccc;
-  }
-
-  #sidebar .nav-link.active,
-  #sidebar .nav-link:hover {
-    background-color: #495057;
-    color: #ffc107 !important;
-  }
-
-  main {
-    flex-grow: 1;
-    padding: 20px;
-  }
-
-  .container {
-    max-width: 550px;
-    margin: 100px auto 0;
-    padding: 20px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  h1 {
-    text-align: center;
-    color: #333;
-  }
-
-  label {
-    margin-bottom: 6px;
-    font-weight: bold;
-    color: #333;
-  }
-
-  input[type="text"],
-  input[type="password"],
-  input[type="date"],
-  input[type="number"],
-  input[type="file"],
-  select {
-    width: 70%;
-    padding: 8px 10px;
-    margin-bottom: 750px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: #f9f9f9;
-    margin: 2px;
-    margin-top: 5px;
-    color: #000;
-    height: inherit;
-  }
-
-  input:focus,
-  select:focus {
-    background-color: #eee;
-    outline: none;
-  }
-
-  select {
-    appearance: none;
-    background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 16px 16px;
-  }
-
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: #f5f5f5;
-    color: #000;
-  }
-
-  th, td {
-    padding: 12px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
-
-  th {
-    background-color: #ddd;
-  }
-
-  .clearfix {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px 0;
-    padding: 10px;
-    background-color: #f1f1f1;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-  }
-
-  .clearfix > * {
-    padding: 12px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    flex: 1 1 20%;
-  }
-
-  button.update {
-    background-color: #4761d3;
-  }
-
-  button.update:hover {
-    background-color: #3749b5;
-  }
-
-  button.cancelbtn {
-    background-color: #6c757d;
-  }
-
-  button.cancelbtn:hover {
-    background-color: #5a6268;
-  }
-
-  button.deletebtn {
-    background-color: #d9534f;
-  }
-
-  button.deletebtn:hover {
-    background-color: #c9302c;
-  }
-
-  .buttons {
-    background-color: #007bff;
-    padding: 12px 20px;
-    font-size: 16px;
-    border-radius: 6px;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 30%;
-  }
-
-  .buttons:hover {
-    background-color: #0056b3;
-  }
-
-  .remove {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    padding: 10px 16px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-
-  .remove:hover {
-    background-color: #bd2130;
-  }
-
-  @media (max-width: 768px) {
-    .clearfix {
-      flex-direction: column;
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
 
-    .clearfix > * {
-      width: 100%;
-      margin-bottom: 10px;
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      color: #000;
+      background-color: #fff;
+    }
+
+    .container-fluid {
+      height: 100%;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      min-height: 10vh;
+    }
+
+    #sidebar {
+      min-height: 100vh;
+      background: #2b2b2b;
+      color: white;
+    }
+
+    #sidebar .nav-link {
+      color: #ccc;
+    }
+
+    #sidebar .nav-link.active,
+    #sidebar .nav-link:hover {
+      background-color: #495057;
+      color: #ffc107 !important;
+    }
+
+    main {
+      flex-grow: 1;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 550px;
+      margin: 100px auto 0;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+
+    label {
+      margin-bottom: 6px;
+      font-weight: bold;
+      color: #333;
     }
 
     input[type="text"],
     input[type="password"],
     input[type="date"],
     input[type="number"],
-    select,
-    input[type="file"] {
+    input[type="file"],
+    select {
+      width: 70%;
+      padding: 8px 10px;
+      margin-bottom: 750px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background: #f9f9f9;
+      margin: 2px;
+      margin-top: 5px;
+      color: #000;
+      height: inherit;
+    }
+
+    input:focus,
+    select:focus {
+      background-color: #eee;
+      outline: none;
+    }
+
+    select {
+      appearance: none;
+      background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="20" viewBox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      background-size: 16px 16px;
+    }
+
+    table {
       width: 100%;
+      border-collapse: collapse;
+      background-color: #f5f5f5;
+      color: #000;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      border: 1px solid #ccc;
+      text-align: center;
+    }
+
+    th {
+      background-color: #ddd;
+    }
+
+    .clearfix {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: space-between;
+      align-items: center;
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #f1f1f1;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+    }
+
+    .clearfix>* {
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      flex: 1 1 20%;
+    }
+
+    button.update {
+      background-color: #4761d3;
+    }
+
+    button.update:hover {
+      background-color: #3749b5;
+    }
+
+    button.cancelbtn {
+      background-color: #6c757d;
+    }
+
+    button.cancelbtn:hover {
+      background-color: #5a6268;
+    }
+
+    button.deletebtn {
+      background-color: #d9534f;
+    }
+
+    button.deletebtn:hover {
+      background-color: #c9302c;
     }
 
     .buttons {
-      width: 100%;
+      background-color: #007bff;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      color: white;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      width: 30%;
     }
-  }
-</style>
+
+    .buttons:hover {
+      background-color: #0056b3;
+    }
+
+    .remove {
+      background-color: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .remove:hover {
+      background-color: #bd2130;
+    }
+
+    @media (max-width: 768px) {
+      .clearfix {
+        flex-direction: column;
+      }
+
+      .clearfix>* {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="password"],
+      input[type="date"],
+      input[type="number"],
+      select,
+      input[type="file"] {
+        width: 100%;
+      }
+
+      .buttons {
+        width: 100%;
+      }
+    }
+  </style>
 
 
 
@@ -733,14 +735,36 @@ while ($row = $product_result->fetch_assoc()) {
       $("#profile-update-data").on("click", function(e) {
         e.preventDefault();
 
+        let isValid = true;
+
+        // Check each quantity field before sending
+        $("input[name='quantity[]']").each(function() {
+          let qty = parseInt($(this).val());
+          if (isNaN(qty) || qty < 1) {
+            alert("Quantity must be at least 1.");
+            $(this).focus();
+            isValid = false;
+            return false; // Stop loop
+          }
+        });
+
+        if (!isValid) return;
+
         let formData = $("#geoForm").serialize();
 
         $.ajax({
           url: "order_submit.php",
           type: "POST",
           data: formData,
+          dataType: "json",
           success: function(data) {
-            alert("Order submitted successfully.");
+            if (data.status === "success") {
+              alert(data.message);
+            } else if (data.status === "pending") {
+              alert(data.message);
+            } else {
+              alert("Error: " + data.message);
+            }
           },
           error: function(xhr, status, error) {
             console.error("AJAX Error: ", status, error);
@@ -748,6 +772,7 @@ while ($row = $product_result->fetch_assoc()) {
           }
         });
       });
+
     });
   </script>
 </body>

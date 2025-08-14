@@ -237,7 +237,7 @@ if (isset($_GET['order_ids'])) {
               <th>Collection Employee ID</th>
               <th>Collection Employee Date</th>
               <th>Remarks</th>
-              <?php if ($_SESSION['position'] == "Distributor Sales") { ?>
+              <?php if ($_SESSION['position'] == "Distributor") { ?>
                 <th>Action</th>
               <?php } ?>
             </tr>
