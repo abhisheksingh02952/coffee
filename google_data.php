@@ -1,5 +1,5 @@
 <?php
-$mysqli = new mysqli("localhost", "root", "", "test");
+$mysqli = new mysqli("localhost", "root", "", "test1");
 $mysqli->set_charset("utf8");
 
 // Get the parent node to start from (e.g., via session or GET/POST)
