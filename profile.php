@@ -11,245 +11,169 @@ authorize('employee');
   ?>
   <style>
     * {
-      box-sizing: border-box
-    }
+  box-sizing: border-box;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
 
-    /* Full-width input fields */
-    input[type=text],
-    input[type=password] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-    }
+/* ===== General Body ===== */
+body {
+  background: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
 
-    input[type=text]:focus,
-    input[type=password]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
+/* ===== Form Container ===== */
+.container {
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  margin: 20px auto;
+  max-width: 100%;
+}
 
-    hr {
-      border: 1px solid #f1f1f1;
-      margin-bottom: 25px;
-    }
+h1 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  text-align: center;
+  color: #333;
+}
 
-    /* Set a style for all buttons */
-    button {
-      text-align: center;
-      margin: 10px;
-      float: right;
-      background-color: rgb(71, 97, 211);
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 35%;
-      opacity: 0.9;
-    }
+hr {
+  border: 0;
+  height: 1px;
+  background: #eee;
+  margin: 15px 0;
+}
 
-    button:hover {
-      opacity: 1;
-    }
+/* ===== Input Fields ===== */
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 15px;
+  margin: 8px 0 18px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #f9f9f9;
+  transition: all 0.3s ease;
+}
 
-    a.button {
-      display: inline-block;
-      text-align: center;
-      color: white;
-      text-decoration: none;
-      padding: 14px 20px;
-      margin: 8px 0;
-      width: 100%;
-    }
+input[type=text]:focus,
+input[type=password]:focus {
+  background-color: #fff;
+  border-color: #4761d3;
+  box-shadow: 0 0 6px rgba(71, 97, 211, 0.3);
+  outline: none;
+}
+
+/* ===== Buttons ===== */
+button,
+a.button {
+  display: inline-block;
+  text-align: center;
+  color: white;
+  background-color: #4761d3;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+button:hover,
+a.button:hover {
+  background-color: #3749b5;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Cancel / Delete Buttons */
+button.cancelbtn { background-color: #6c757d; }
+button.cancelbtn:hover { background-color: #5a6268; }
+button.deletebtn { background-color: #d9534f; }
+button.deletebtn:hover { background-color: #c9302c; }
+
+/* ===== Flexbox Button Area ===== */
+.clearfix {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+/* ===== Sidebar Styling ===== */
+#sidebar {
+  min-height: 100vh;
+  background: #343a40;
+  padding-top: 20px;
+  transition: all 0.3s ease;
+}
+
+#sidebar .nav-link {
+  color: #ddd;
+  padding: 12px 20px;
+  display: block;
+  border-radius: 6px;
+  margin: 4px 10px;
+  transition: all 0.3s ease;
+}
+
+#sidebar .nav-link.active,
+#sidebar .nav-link:hover {
+  background-color: #495057;
+  color: #ffc107 !important;
+  transform: translateX(4px);
+}
+
+/* ===== RESPONSIVE BREAKPOINTS ===== */
+
+/* Phones (≤ 480px) */
+@media (max-width: 480px) {
+  .container { width: 95%; padding: 15px; }
+  h1 { font-size: 1.5rem; }
+  .clearfix { flex-direction: column; align-items: stretch; }
+  .clearfix > * { width: 100%; }
+  #sidebar { 
+    position: fixed; 
+    width: 70%; 
+    left: -100%; 
+    top: 0; 
+    z-index: 1000; 
+  }
+  #sidebar.active { left: 0; }
+}
+
+/* Tablets (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container { width: 85%; }
+  .clearfix { justify-content: center; }
+  .clearfix > * { flex: 1 1 45%; }
+}
+
+/* Small Desktops (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container { width: 70%; }
+  .clearfix { justify-content: space-around; }
+  .clearfix > * { flex: 1 1 30%; }
+}
+
+/* Large Desktops (≥ 1025px) */
+@media (min-width: 1025px) {
+  .container { width: 550px; }
+  .clearfix { justify-content: flex-end; }
+}
 
 
-    /* Add padding to container elements */
-    .container {
-      padding: 16px;
-    }
-
-    .clearfix {
-      display: flow-root;
-    }
-
-    /* Clear floats */
-    .clearfix::after {
-      content: "";
-      clear: both;
-      display: flex;
-    }
 
 
-
-    /* Change styles for cancel button and signup button on extra small screens */
-    @media screen and (max-width: 300px) {
-
-      .cancelbtn,
-      .update {
-        width: 100%;
-      }
-    }
-
-    @media (min-width: 1200px) {
-      .container {
-        width: 550px;
-      }
-    }
-
-    @media (min-width: 992px) {
-      .container {
-        width: 550px;
-      }
-    }
-
-    @media (min-width: 768px) {
-      .container {
-        width: 550px;
-      }
-    }
-
-    button.update {
-      background-color: #4761d3;
-      color: white;
-    }
-
-    button.update:hover {
-      background-color: #3749b5;
-    }
-
-    button.cancelbtn {
-      background-color: #6c757d;
-      color: white;
-    }
-
-    button.cancelbtn:hover {
-      background-color: #5a6268;
-    }
-
-    button.deletebtn {
-      background-color: #d9534f;
-      color: white;
-    }
-
-    button.deletebtn:hover {
-      background-color: #c9302c;
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      .clearfix {
-        flex-direction: column;
-      }
-
-      button {
-        width: 100%;
-      }
-    }
-
-    #sidebar {
-      min-height: 100vh;
-    }
-
-    .nav-link.active,
-    .nav-link:hover {
-      background-color: #495057;
-      color: #ffc107 !important;
-    }
-    .clearfix {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      justify-content: space-between;
-      align-items: center;
-      margin: 20px;
-      padding: 10px;
-      background-color: #f1f1f1;
-      border: 1px solid #ddd;
-      border-radius: 10px;
-    }
-
-    /* Child Elements */
-    .clearfix > * {
-      padding: 12px 20px;
-      font-size: 16px;
-      border: none;
-      border-radius: 6px;
-      background-color: #007bff;
-      color: white;
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .clearfix > *:hover {
-      background-color: #0056b3;
-    }
-
-    /* 🟡 Extra Small Devices (Phones, ≤ 480px) */
-    @media (max-width: 480px) {
-      .clearfix {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .clearfix > * {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
-
-    /* 🟡 Small Devices (Phones Landscape, ≤ 600px) */
-    @media (max-width: 600px) {
-      .clearfix {
-        flex-direction: column;
-        justify-content: flex-start;
-      }
-
-      .clearfix > * {
-        width: 100%;
-        margin-bottom: 10px;
-      }
-    }
-
-    /* 🟠 Medium Devices (Tablets, 601px - 768px) */
-    @media (min-width: 601px) and (max-width: 768px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: center;
-      }
-
-      .clearfix > * {
-        flex: 1 1 45%;
-        margin: 10px;
-      }
-    }
-
-    /* 🔵 Large Devices (Small Desktops, 769px - 1024px) */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: space-around;
-      }
-
-      .clearfix > * {
-        flex: 1 1 30%;
-      }
-    }
-
-    /* 🟣 Extra Large Devices (Desktops, > 1024px) */
-    @media (min-width: 1025px) {
-      .clearfix {
-        flex-direction: row;
-        justify-content: space-between;
-      }
-
-      .clearfix > * {
-        flex: 1 1 20%;
-      }
-    }
-  
   </style>
 </head>
 
@@ -280,10 +204,6 @@ authorize('employee');
             <!-- Email -->
             <label for="email"><b>Email Id</b></label>
             <input type="text" name="email" id="email" required>
-
-            <!-- Address -->
-            <label for="address"><b>Address</b></label>
-            <input type="text" name="address" id="address" required>
 
             <!-- Optional: Location -->
             <label for="location"><b>Location</b></label>

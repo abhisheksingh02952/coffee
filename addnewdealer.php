@@ -163,7 +163,7 @@ authorize('employee');
       <!-- Form Content -->
       <main class="col-md-10 py-4">
 
-        <form action="" method="POST" id="geoForm"  enctype="multipart/form-data">
+        <form action="" method="POST" id="geoForm" enctype="multipart/form-data">
           <div id="data" class="container">
             <h1>Add New Shop</h1>
             <hr>
@@ -202,6 +202,18 @@ authorize('employee');
             </div>
           </div>
         </form>
+        <div>
+          <form action="" method="POST" id="uploadExcel" enctype="multipart/form-data">
+            <div id="data" class="container">
+              <h1>Bulk Upload Data</h1>
+              <hr>
+              <input type="file" name="excelFile" accept=".xls,.xlsx" required>
+              <button type="submit">Upload</button>
+
+            </div>
+          </form>
+          <div id="message"></div>
+        </div>
       </main>
     </div>
   </div>
@@ -250,6 +262,25 @@ authorize('employee');
           }
         });
       });
+    });
+
+     $("#uploadExcel").on('submit', function(e) {
+        e.preventDefault();
+        var formData = new FormData(this);
+
+        $.ajax({
+            url: 'fileupload.php',
+            type: 'POST',
+            data: formData,
+            contentType: false,
+            processData: false,
+            success: function(response) {
+                $("#message").html(response);
+            },
+            error: function() {
+                $("#message").html("Error uploading file.");
+            }
+        });
     });
   </script>
 </body>

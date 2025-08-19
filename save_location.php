@@ -3,7 +3,6 @@
 session_start();
 include 'db.php';
 
-
 $user_id = $_SESSION['user_id'];
 $username = $_SESSION['username'] ?? null;
 if (!$user_id AND !$username ) {
